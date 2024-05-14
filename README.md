@@ -34,6 +34,6 @@ This is a E-commerce Project for selling books
   + In Visual Studio, select Tools > NuGet Package Manager > Package Manager Console
   + Change the default project to BookStore.Migrations Project
   + Add commands:
-    + add-mirgration
-    + update-database
+    + `add-mirgration`
+    + `update-database`
   
