@@ -14,9 +14,5 @@
   <ItemGroup>
     <ProjectReference Include="..\BookStore.DAL\BookStore.DAL.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
 
 </Project>

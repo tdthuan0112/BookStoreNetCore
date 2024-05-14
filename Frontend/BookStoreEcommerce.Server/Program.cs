@@ -1,4 +1,5 @@
 using BookStore.BLL.Interfaces;
+using BookStore.BLL.Mapping;
 using BookStore.BLL.Services;
 using BookStore.DAL;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
 builder.Services.AddDbContext<BookStoreContext>(options =>
 {

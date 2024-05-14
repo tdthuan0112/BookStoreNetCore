@@ -1,15 +1,39 @@
-﻿using BookStore.BLL.Interfaces;
+﻿using AutoMapper;
+using BookStore.BLL.Interfaces;
+using BookStore.BLL.Models.DTO;
 using BookStore.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.BLL.Services
 {
     public class BookService : IBookService
     {
         private readonly BookStoreContext _context;
-        public BookService(BookStoreContext context) {
+        private readonly IMapper _mapper;
+
+        public BookService(BookStoreContext context, IMapper mapper) {
             _context = context;
+            _mapper = mapper;
         }
 
-        //public async Task<List<>>
+        /// <summary>
+        /// Get All Books From the Database
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public async Task<List<BookDTO>> GetAllBooks()
+        {
+            List<BookDTO> listBooksDTO;
+            try
+            {
+                var listBooks = await _context.Book.AsNoTracking().ToListAsync();
+                listBooksDTO = _mapper.Map<List<BookDTO>>(listBooks);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(message: $"Error in get all books - ${ex.Message}");
+            }
+            return listBooksDTO != null && listBooksDTO.Count != 0 ? listBooksDTO : [];
+        }
     }
 }

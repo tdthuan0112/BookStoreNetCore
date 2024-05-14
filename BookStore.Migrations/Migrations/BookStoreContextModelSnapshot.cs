@@ -24,15 +24,15 @@ namespace BookStore.Migrations.Migrations
 
             modelBuilder.Entity("BookCategory", b =>
                 {
-                    b.Property<Guid>("BookId")
+                    b.Property<Guid>("ListBooksBookId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid>("ListCategoriesCategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("BookId", "CategoryId");
+                    b.HasKey("ListBooksBookId", "ListCategoriesCategoryId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ListCategoriesCategoryId");
 
                     b.ToTable("BookCategory");
                 });
@@ -529,13 +529,13 @@ namespace BookStore.Migrations.Migrations
                 {
                     b.HasOne("BookStore.DAL.Models.Book", null)
                         .WithMany()
-                        .HasForeignKey("BookId")
+                        .HasForeignKey("ListBooksBookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookStore.DAL.Models.Category", null)
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("ListCategoriesCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
