@@ -1,3 +1,5 @@
+using BookStore.BLL.Interfaces;
+using BookStore.BLL.Services;
 using BookStore.DAL;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<BookStoreContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("BookStore.Migrations"));
 });
+
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
