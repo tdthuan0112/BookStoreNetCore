@@ -4,7 +4,8 @@ namespace BookStore.DAL.Models
 {
     public class Book
     {
-        public Book() {
+        public Book()
+        {
             BookId = Guid.NewGuid();
         }
 
@@ -13,6 +14,7 @@ namespace BookStore.DAL.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public string Description { get; set; }
+        public string Url { get; set; }
         public string ImageUrl { get; set; }
         public int QuantityInStock { get; set; }
         public int QuantitySold { get; set; }
@@ -24,6 +26,7 @@ namespace BookStore.DAL.Models
         public Guid ModifiedBy { get; set; }
         public DateTime DateLastModified { get; set; }
         public bool IsActive { get; set; }
+        public double Rating { get; set; }
 
         public virtual ICollection<Category> ListCategories { get; set; }
         public virtual ICollection<Review> ListReviews { get; set; }

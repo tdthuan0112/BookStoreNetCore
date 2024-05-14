@@ -1,17 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BookStore.DAL.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BookStore.DAL.Models
+namespace BookStore.BLL.Models.DTO
 {
-    public class User
+    public class UserDTO
     {
-        public User()
-        {
-            UserId = Guid.NewGuid();
-            DateCreated = DateTime.Now;
-        }
-
-        [Key]
         public Guid UserId { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
@@ -33,11 +26,8 @@ namespace BookStore.DAL.Models
         public DateTime DateLastModified { get; set; }
         public bool IsActive { get; set; }
         public Guid DefaultUserPaymentId { get; set; }
-
-        [ForeignKey(("RoleId"))]
         public Guid RoleId { get; set; }
 
-        public virtual Role Role { get; set; }
-        public virtual ICollection<UserPayment> ListUserPayments { get; set; }
+        public Role Role { get; set; }
     }
 }

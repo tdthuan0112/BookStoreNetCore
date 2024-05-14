@@ -4,13 +4,15 @@ namespace BookStore.DAL.Models
 {
     public class Category
     {
-        public Category() { }
+        public Category() {
+            DateCreated = DateTime.Now;
+        }
 
         [Key, Required]
         public Guid CategoryId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         public string Url { get; set; }
+        public int Quantity { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime DateCreated { get; set; }
         public Guid ModifiedBy { get; set; }

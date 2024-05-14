@@ -2,8 +2,8 @@
 
 namespace BookStore.BLL.Interfaces
 {
-    public interface IBookService
+    public interface IUserService
     {
-        Task<List<BookDTO>> GetAllBooks();
+        Task<List<UserDTO>> GetAllUsers();
     }
 }

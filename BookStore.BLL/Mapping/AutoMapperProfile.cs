@@ -9,6 +9,9 @@ namespace BookStore.BLL.Mapping
         public AutoMapperProfile() {
             CreateMap<Book, BookDTO>();
             CreateMap<BookDTO, Book>();
+
+            CreateMap<User, UserDTO>();
+
         }
     }
 }

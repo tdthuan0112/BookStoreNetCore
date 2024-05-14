@@ -21,6 +21,7 @@ builder.Services.AddDbContext<BookStoreContext>(options =>
 });
 
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
