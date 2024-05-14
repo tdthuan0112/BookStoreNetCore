@@ -1,0 +1,21 @@
+.cartAndCheckoutHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.logoAndTitle {
+  display: flex;
+}
+
+.link {
+  display: flex;
+  text-decoration: unset;
+  align-items: center;
+}
+
+.bookStoreTitle {
+  color: #D70F13;
+  margin-right: 10px;
+}

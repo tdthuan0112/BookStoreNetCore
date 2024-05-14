@@ -1,0 +1,63 @@
+.bookRecommendation {
+  margin: 48px auto;
+}
+
+.recommendHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerTitle {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18.75px;
+  text-align: left;
+}
+
+.seeMore {
+  color: #1A1417;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.seeMore:hover {
+  color: rgba(215, 15, 19, 0.9);
+  text-decoration: underline;
+}
+
+.booksList {
+  display: grid;
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 0;
+  gap: 50px;
+}
+
+.singleBook {
+  list-style-type:none;
+  border: none;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  height: 28px;
+}
+
+.author {
+  font-size: 12px;
+  font-weight: 500;
+  color: #C4C4C4;
+}
+
+.originalPrice {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 4px;
+}

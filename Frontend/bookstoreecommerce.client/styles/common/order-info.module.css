@@ -1,0 +1,33 @@
+.orderInfo {
+  line-height: 32px;
+}
+
+.thankyouText {
+  font-size: 18px;
+  color: #B70017;
+}
+
+.orderId {
+  padding: 12px 32px;
+  background-color: #58B712;
+  color: #fff;
+  font-size: 22px;
+}
+
+.myOrderLink {
+  color: #007ff0;
+}
+
+.myOrderLink:hover {
+  text-decoration: underline;
+}
+
+.helperBlock {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background-color: #F7F7F7;
+  line-height: 20px;
+}

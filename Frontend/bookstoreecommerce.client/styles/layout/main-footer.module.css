@@ -1,0 +1,27 @@
+.footer {
+  background: #5C4C4D;
+  color: white;
+  padding: 24px 0 32px 0;
+}
+
+.highlight {
+  color: rgba(215, 15, 19, 0.9);
+}
+
+.footer main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer main div h1 {
+  margin: 0 0 15px 0;
+}
+
+.footer main div h3 {
+  margin-top: 4px;
+}
+
+.footer main div p {
+  margin: 8px 0;
+}

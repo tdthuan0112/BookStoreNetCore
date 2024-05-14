@@ -1,0 +1,16 @@
+.background {
+  background-color: #ffcac6;
+}
+
+.adminBackground {
+  background-color: #F6F6F6;
+}
+
+.content {
+  width: 1200px;
+  height: 550px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,32 @@
+.productOrdered {
+  padding: 20px 18px;
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+}
+
+.listProductOrderedItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.subtotal, .shippingFee, .paymentTotal {
+  display: flex;
+  justify-content: space-between;
+  line-height: 24px;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.paymentTotalText {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.finalPrice {
+  color: #D70F13;
+  font-size: 16px;
+}

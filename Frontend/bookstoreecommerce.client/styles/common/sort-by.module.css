@@ -1,0 +1,23 @@
+.sortBy {
+  display: flex;
+  align-items: center;
+}
+
+.sortList {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.sortItem {
+  list-style: none;
+}
+
+.sortItem a {
+  text-decoration: unset;
+  color: #000;
+}
+
+.sortItem a:hover {
+  color: rgba(215, 15, 19, 0.9);
+}

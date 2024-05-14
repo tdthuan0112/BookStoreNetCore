@@ -1,0 +1,19 @@
+.paymentMethod {
+  padding: 20px 18px;
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+}
+
+.listMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  margin: 15px 0 5px 0;
+}
+
+.inputItem {
+  display: flex;
+  gap: 10px;
+  line-height: 24px;
+}

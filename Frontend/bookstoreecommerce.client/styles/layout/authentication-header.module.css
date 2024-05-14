@@ -1,0 +1,31 @@
+.authenticationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.logoAndTitle {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  text-decoration: unset;
+  align-items: center;
+}
+
+.bookStoreTitle {
+  color: #D70F13;
+  margin-right: 10px;
+}
+
+.needHelp {
+  color: #D70F13;
+  font-weight: 500;
+}
+
+.needHelp:hover {
+  text-decoration: underline;
+}

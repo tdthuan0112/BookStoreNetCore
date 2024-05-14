@@ -1,0 +1,11 @@
+.orderSuccessPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

@@ -1,0 +1,98 @@
+.bookDetail{
+  background-color: white;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.bookContent {
+  width: 580px;
+}
+
+.title {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+
+.author {
+  line-height: 32px;
+  margin: 10px auto;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto;
+}
+
+.priceAndSale {
+  background: #dfdfdf9c;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px auto;
+}
+
+.originalPrice {
+  text-decoration-line: line-through;
+  font-size: 20px;
+  color: #bcbbbb;
+}
+
+.finalPrice {
+  font-size: 30px;
+  color: #D0011B;
+  line-height: 30px;
+}
+
+.salePercent {
+  background-color: #D70F13;
+  padding: 4px 24px;
+  color: white;
+}
+
+.buttonBlock {
+  display: flex;
+  gap: 20px;
+}
+
+.addToCartBtn {
+  background-color: #FBEBED;
+  width: 200px;
+  height: 40px;
+  border: 1px solid #D70F13;
+  border-radius: 4px;
+  color: #D70F13;
+  cursor: pointer;
+}
+
+.buyNowBtn {
+  background-color: #D70F13;
+  width: 200px;
+  height: 40px;
+  border: 1px solid #D70F13;
+  border-radius: 4px;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.descriptionTitle {
+  color: #333333;
+  font-size: 18px;
+  margin-top: 24px;
+  font-weight: 400;
+}
+
+.descriptionBlock {
+  background-color: white;
+  padding: 24px;
+  margin: 12px 0;
+  line-height: 24px;
+}

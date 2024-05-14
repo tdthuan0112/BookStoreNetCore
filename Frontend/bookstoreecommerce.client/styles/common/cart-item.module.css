@@ -1,0 +1,35 @@
+.cartItem {
+  display: grid;
+  grid-template-columns: 40% 15% 15% 15% 15%;
+  justify-items: center;
+}
+
+.imageAndTitle {
+  display: grid;
+  grid-template-columns: 75px auto;
+  gap: 10px;
+
+  width: 100%;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+
+.author {
+  line-height: 24px;
+}
+
+.deleteBtn {
+  padding: 4px 8px;
+  border-radius: 2px
+}
+
+.hr {
+  border: 1px solid #e5e5e5;
+  width: 100%;
+}

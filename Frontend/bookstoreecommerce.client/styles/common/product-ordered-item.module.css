@@ -1,0 +1,26 @@
+.bookItem {
+  display: grid;
+  grid-template-columns: 75px auto;
+  gap: 10px;
+}
+
+.bookContent {
+  line-height: 24px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.author {
+  color: #737373;
+}
+
+.price {
+  color: #D70F13;
+}
+
+.hrStyle {
+  width: 100%;
+  color: #C4C4C4;
+}

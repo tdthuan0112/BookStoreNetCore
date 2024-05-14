@@ -1,0 +1,33 @@
+.bannerBackground {
+  background: #F9F7F9;
+}
+
+.bannerContent {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  margin: auto;
+}
+
+.content {
+  align-self: center;
+  width: 250px;
+}
+
+.button {
+  margin-top: 24px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.title {
+  margin-top: 0;
+  font-size: 40px;
+}
+
+.description {
+  font-size: 18px;
+  color: #5C4C4D;
+
+}

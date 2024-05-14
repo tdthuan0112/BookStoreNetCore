@@ -1,0 +1,35 @@
+.inputQuantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputQuantity input::-webkit-outer-spin-button,
+.inputQuantity input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.inputQuantity input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
+  width: 30px;
+  height: 25px;
+  border: none;
+  border-top: 1px solid #C4C4C4;
+  border-bottom: 1px solid #C4C4C4;
+  padding: 0;
+  text-align: center;
+}
+
+.inputQuantity input[type=number]:focus {
+  outline: none;
+}
+
+.inputQuantity button {
+  background-color: #fff;
+  width: 30px;
+  height: 27px;
+  border: 1px solid #C4C4C4;
+  cursor: pointer;
+}

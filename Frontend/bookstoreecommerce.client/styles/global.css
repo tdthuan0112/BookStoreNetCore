@@ -1,0 +1,48 @@
+html {
+  font: 14px Arial, Helvetica, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin: 0
+}
+
+.btn-primary {
+  background: #D70F13B2;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 64px;
+  color: white;
+  cursor: pointer;
+}
+
+a {
+  list-style: none;
+  color: black;
+  text-decoration: unset;
+}
+
+li {
+  list-style: none;
+}
+
+.btn-primary:hover {
+  background: #D70F13E6;
+}
+
+.layout-primary {
+  width: 900px;
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}

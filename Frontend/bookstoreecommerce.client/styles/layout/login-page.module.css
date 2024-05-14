@@ -1,0 +1,61 @@
+.loginPage {
+  width: 500px;
+  background-color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.signupBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.newToBookStore {
+  color: #a4a3a3;
+}
+
+.signUplink {
+  color: #D70F13;
+}
+
+.signUplink:hover {
+  text-decoration: underline;
+}
+
+.userInputForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.userInputForm input {
+  height: 30px;
+  border: 1px solid #a4a3a3;
+  border-radius: 8px;
+  padding: 4px 12px ;
+}
+
+.userInputForm input:focus {
+  outline: none;
+}
+
+.loginBtn {
+  background-color:#D70F13;
+}
+
+.fogotPassword {
+  color: #0055AA;
+  line-height: 50px;
+}
+
+.fogotPassword:hover {
+  text-decoration: underline;
+}

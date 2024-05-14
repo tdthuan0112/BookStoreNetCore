@@ -1,0 +1,46 @@
+.categoryCatalog {
+  width: 200px;
+}
+
+.categoryCatalog hr {
+  margin: 0;
+}
+
+.headerCatalog {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px
+}
+
+.categoryList {
+  padding: 0;
+}
+
+.categoryItem {
+  list-style: none;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 24px;
+}
+
+.categoryName {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+
+.quantity {
+  color: #C4C4C4;
+}
+
+.active {
+  color: #d70f13e6;
+}
+
+.categoryItem:hover .categoryName, .categoryItem:hover .quantity  {
+  color: #d70f13e6;
+}

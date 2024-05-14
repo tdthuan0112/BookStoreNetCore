@@ -1,0 +1,22 @@
+.advertising {
+  margin: 12px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.advertising li {
+  list-style-type:none;
+}
+
+.title {
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+.description {
+  margin-top: 4px;
+  font-weight: 300;
+  opacity: 0.5;
+}

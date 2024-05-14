@@ -1,0 +1,70 @@
+.customerReviewTitle {
+  color: #333333;
+  font-size: 18px;
+  margin-top: 24px;
+  font-weight: 400;
+}
+
+.customerReviewBlock {
+  background-color: white;
+  padding: 24px;
+  margin: 12px 0;
+  line-height: 24px;
+}
+
+.backgroundBlock {
+  background-color: #FFFBF8;
+  border: 1px solid #F9EDE5;
+  padding: 10px;
+  margin: 0 -10px;
+}
+
+.scoreAndFilter {
+  display: grid;
+  grid-template-columns: 120px auto;
+  gap: 20px;
+}
+
+.scoreBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.averageScore {
+  color: #D70F13;
+  font-size: 26px;
+}
+
+.fillerBlock {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.fillerBlock button{
+  cursor: pointer;
+  color: #D70F13;
+  border: 1px solid #C4C4C4;
+  border-radius: 4px;
+  background-color: white;
+  padding: 8px 24px;
+}
+
+.fillerBlock button:hover {
+  border-color: #D70F13;
+}
+
+.reviewDetailBlock {
+  margin: 20px 0;
+}
+
+.userName {
+  font-weight: 600;
+}
+
+.dateCreated {
+  color: #939393
+}

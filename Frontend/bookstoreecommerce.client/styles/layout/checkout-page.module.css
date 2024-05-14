@@ -1,0 +1,12 @@
+.checkoutPage {
+  display: grid;
+  grid-template-columns: 60% auto;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

@@ -1,0 +1,32 @@
+.checkoutInfo {
+  padding: 20px 18px;
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+}
+
+.infoItem {
+  display: grid;
+  grid-template-columns: 25% auto;
+  gap: 10px;
+  line-height: 24px;
+}
+
+.title {
+  color: #737373;
+}
+
+.changeBtn {
+  display: flex;
+  justify-content: flex-end;
+  color: #D70F13;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.changeBtn:hover {
+  text-decoration: underline;
+}
+
+.checkoutInfo hr {
+  border: 1px solid #C4C4C4;
+}

@@ -1,0 +1,9 @@
+.categoryPage {
+  display: flex;
+  padding-top: 32px;
+  justify-content: space-between;
+}
+
+.main {
+  width: 650px;
+}
