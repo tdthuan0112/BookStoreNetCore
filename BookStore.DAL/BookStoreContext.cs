@@ -19,6 +19,7 @@ namespace BookStore.DAL
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserPayment> UserPayment { get; set; }
+        public virtual DbSet<BookCategory> BookCategory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

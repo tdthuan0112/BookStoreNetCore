@@ -1,6 +1,5 @@
 ﻿using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
-using BookStore.DAL;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreEcommerce.Server.Controllers
@@ -30,6 +29,15 @@ namespace BookStoreEcommerce.Server.Controllers
         {
             var responseModel = new BaseResponseModel();
             var result = await _bookService.GetBestSellerBooks();
+            responseModel.Data = result;
+            return ReturnData(responseModel);
+        }
+
+        [HttpGet("GetBookByUrl/{categoryUrl}")]
+        public async Task<IActionResult> GetBookByUrl(string categoryUrl)
+        {
+            var responseModel = new BaseResponseModel();
+            var result = await _bookService.GetBookByUrl(categoryUrl);
             responseModel.Data = result;
             return ReturnData(responseModel);
         }

@@ -6,5 +6,6 @@ namespace BookStore.BLL.Interfaces
     {
         Task<List<BookDTO>> GetAllBooks();
         Task<List<BookDTO>> GetBestSellerBooks();
+        Task<List<BookDTO>> GetBookByUrl(string categoryUrl);
     }
 }
