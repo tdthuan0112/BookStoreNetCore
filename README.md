@@ -25,6 +25,7 @@ This is a E-commerce Project for selling books
   + Clone the project to local directory
   + Open Visual Studio 2022
   + Select "Open a project or solution" => Select and open the BookStoreNetCore.sln
+  + Switch to branch `develop`
 ### Set start up project
   + Set "BookStoreEcommerce.Server" as Start up Project
 ### Config appsettings.json and generate DB
@@ -38,7 +39,7 @@ This is a E-commerce Project for selling books
     + `update-database`
   + Stash the appsettings file in local
 
-### Push Code to Git:
+## Push Code to Git:
 > [!IMPORTANT]
 > Discard appsettings file before push
   
