@@ -36,12 +36,11 @@ bld/
 # but keep track of directories ending in .cache
 !*.[Cc]ache/
 
-#json 
-appsettings.*
-
 # Ignore Appsettings
-**/appsettings.*.json
-**/appsettings.json
+appsettings.*
+appsettings.*.json
+appsettings.json
+*.json
 
 #BookStore.Migration
 # Migrations
