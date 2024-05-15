@@ -40,7 +40,6 @@ bld/
 appsettings.*
 appsettings.*.json
 appsettings.json
-*.json
 
 #BookStore.Migration
-# Migrations
+# [Mm]igrations
