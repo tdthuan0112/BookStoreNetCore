@@ -34,6 +34,10 @@ This is a E-commerce Project for selling books
   + In Visual Studio, select Tools > NuGet Package Manager > Package Manager Console
   + Change the default project to BookStore.Migrations Project
   + Add commands:
-    + `add-mirgration`
+    + `add-mirgration InitialDb -project WebApplication1.Migrations`
     + `update-database`
+  + Stash the appsettings file in local
+
+## Push Code to Git:
+  + Discard appsettings file
   
