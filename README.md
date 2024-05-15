@@ -38,6 +38,7 @@ This is a E-commerce Project for selling books
     + `update-database`
   + Stash the appsettings file in local
 
-## Push Code to Git:
-  + Discard appsettings file
+### Push Code to Git:
+> [!IMPORTANT]
+> Discard appsettings file before push
   
