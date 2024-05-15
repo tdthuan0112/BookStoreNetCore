@@ -17,10 +17,19 @@ namespace BookStoreEcommerce.Server.Controllers
         }
 
         [HttpGet("GetAllBooks")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> GetAllBooks()
         {
             var responseModel = new BaseResponseModel();
             var result = await _bookService.GetAllBooks();
+            responseModel.Data = result;
+            return ReturnData(responseModel);
+        }
+
+        [HttpGet("GetBestSellerBooks")]
+        public async Task<IActionResult> GetBestSellerBooks()
+        {
+            var responseModel = new BaseResponseModel();
+            var result = await _bookService.GetBestSellerBooks();
             responseModel.Data = result;
             return ReturnData(responseModel);
         }

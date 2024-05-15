@@ -19,5 +19,6 @@
         public DateTime DateLastModified { get; set; }
         public bool IsActive { get; set; }
         public double Rating { get; set; }
+        public ICollection<CategoryDTO> ListCategories { get; set; }
     }
 }

@@ -1,14 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BookStore.DAL.Models;
 
-namespace BookStore.DAL.Models
+namespace BookStore.BLL.Models.DTO
 {
-    public class Category
+    public class CategoryDTO
     {
-        public Category() {
-            DateCreated = DateTime.Now;
-        }
-
-        [Key, Required]
         public Guid CategoryId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
@@ -18,7 +13,5 @@ namespace BookStore.DAL.Models
         public Guid ModifiedBy { get; set; }
         public DateTime DateLastModified { get; set; }
         public bool IsActive { get; set; }
-
-        public ICollection<Book> ListBooks { get; set; }
     }
 }

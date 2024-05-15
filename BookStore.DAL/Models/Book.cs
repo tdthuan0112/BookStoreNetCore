@@ -28,7 +28,7 @@ namespace BookStore.DAL.Models
         public bool IsActive { get; set; }
         public double Rating { get; set; }
 
-        public virtual ICollection<Category> ListCategories { get; set; }
-        public virtual ICollection<Review> ListReviews { get; set; }
+        public ICollection<Category> ListCategories { get; set; }
+        public ICollection<Review> ListReviews { get; set; }
     }
 }

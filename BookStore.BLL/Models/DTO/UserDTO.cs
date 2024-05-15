@@ -26,7 +26,6 @@ namespace BookStore.BLL.Models.DTO
         public DateTime DateLastModified { get; set; }
         public bool IsActive { get; set; }
         public Guid DefaultUserPaymentId { get; set; }
-        public Guid RoleId { get; set; }
 
         public Role Role { get; set; }
     }

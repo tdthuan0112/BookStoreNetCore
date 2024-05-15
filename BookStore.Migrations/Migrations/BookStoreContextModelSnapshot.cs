@@ -22,21 +22,6 @@ namespace BookStore.Migrations.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BookCategory", b =>
-                {
-                    b.Property<Guid>("ListBooksBookId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ListCategoriesCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ListBooksBookId", "ListCategoriesCategoryId");
-
-                    b.HasIndex("ListCategoriesCategoryId");
-
-                    b.ToTable("BookCategory");
-                });
-
             modelBuilder.Entity("BookStore.DAL.Models.Book", b =>
                 {
                     b.Property<Guid>("BookId")
@@ -103,10 +88,10 @@ namespace BookStore.Migrations.Migrations
                     b.HasData(
                         new
                         {
-                            BookId = new Guid("951360cd-83cc-4e69-a84c-9fc82f122947"),
+                            BookId = new Guid("2eecb227-a05e-4def-89ef-ff4b8b7e1843"),
                             Author = "Delia Owens",
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8379),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(6499),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             DiscountPrice = 10m,
@@ -116,17 +101,17 @@ namespace BookStore.Migrations.Migrations
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             OriginalPrice = 16.99m,
                             QuantityInStock = 200,
-                            QuantitySold = 0,
+                            QuantitySold = 24,
                             Rating = 4.7999999999999998,
                             Title = "Where the Crawdads Sing",
                             Url = "/where-the-crawdads-sing"
                         },
                         new
                         {
-                            BookId = new Guid("52d2ae8a-fa54-4e6c-ac9f-45e2ea8e062e"),
+                            BookId = new Guid("c47636df-5572-4834-af21-7207ce87ed87"),
                             Author = "Thomas H. Cormen",
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8402),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(6719),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             DiscountPrice = 12m,
@@ -136,17 +121,17 @@ namespace BookStore.Migrations.Migrations
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             OriginalPrice = 23.99m,
                             QuantityInStock = 150,
-                            QuantitySold = 0,
+                            QuantitySold = 16,
                             Rating = 4.5,
                             Title = "Introduction to Algorithms",
                             Url = "/introduction-to-algorithms"
                         },
                         new
                         {
-                            BookId = new Guid("0d2634ff-d823-4745-b9d7-e87d582d6173"),
+                            BookId = new Guid("a42e7b4c-cf11-40da-81ee-6a9cd401815c"),
                             Author = "Lori Gottlieb",
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8418),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(6722),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             DiscountPrice = 8m,
@@ -156,17 +141,17 @@ namespace BookStore.Migrations.Migrations
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             OriginalPrice = 17.59m,
                             QuantityInStock = 240,
-                            QuantitySold = 0,
+                            QuantitySold = 7,
                             Rating = 3.6000000000000001,
                             Title = "Maybe You Should Talk to Someone",
                             Url = "/maybe-you-should-talk-to-someone"
                         },
                         new
                         {
-                            BookId = new Guid("0af62686-4f09-4692-9a50-66d26e6a1c09"),
+                            BookId = new Guid("e576a03f-6247-4b57-af16-d8df4bb12c2a"),
                             Author = "Barbara O’Neal",
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8432),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(6839),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             DiscountPrice = 11m,
@@ -176,17 +161,17 @@ namespace BookStore.Migrations.Migrations
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             OriginalPrice = 30.99m,
                             QuantityInStock = 210,
-                            QuantitySold = 0,
+                            QuantitySold = 42,
                             Rating = 4.2000000000000002,
                             Title = "When We Believed in Mermaids",
                             Url = "/when-we-believed-in-mermaids"
                         },
                         new
                         {
-                            BookId = new Guid("3c50e1aa-8b8f-495b-b262-e90c20241433"),
+                            BookId = new Guid("7e8f7dbe-3d72-4bf1-b512-55c901641ea4"),
                             Author = "David Crow",
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8446),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(6853),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                             DiscountPrice = 14m,
@@ -196,10 +181,87 @@ namespace BookStore.Migrations.Migrations
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             OriginalPrice = 14.99m,
                             QuantityInStock = 110,
-                            QuantitySold = 0,
+                            QuantitySold = 6,
                             Rating = 3.3999999999999999,
                             Title = "The Pale-Faced Lie",
                             Url = "/the-pale-faced-lie"
+                        });
+                });
+
+            modelBuilder.Entity("BookStore.DAL.Models.BookCategory", b =>
+                {
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("BookId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("BookCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            BookId = new Guid("2eecb227-a05e-4def-89ef-ff4b8b7e1843"),
+                            CategoryId = new Guid("15dadf90-183e-4ffb-b8a8-87f847488e58")
+                        },
+                        new
+                        {
+                            BookId = new Guid("c47636df-5572-4834-af21-7207ce87ed87"),
+                            CategoryId = new Guid("15dadf90-183e-4ffb-b8a8-87f847488e58")
+                        },
+                        new
+                        {
+                            BookId = new Guid("a42e7b4c-cf11-40da-81ee-6a9cd401815c"),
+                            CategoryId = new Guid("15dadf90-183e-4ffb-b8a8-87f847488e58")
+                        },
+                        new
+                        {
+                            BookId = new Guid("e576a03f-6247-4b57-af16-d8df4bb12c2a"),
+                            CategoryId = new Guid("15dadf90-183e-4ffb-b8a8-87f847488e58")
+                        },
+                        new
+                        {
+                            BookId = new Guid("7e8f7dbe-3d72-4bf1-b512-55c901641ea4"),
+                            CategoryId = new Guid("15dadf90-183e-4ffb-b8a8-87f847488e58")
+                        },
+                        new
+                        {
+                            BookId = new Guid("2eecb227-a05e-4def-89ef-ff4b8b7e1843"),
+                            CategoryId = new Guid("1b154465-0947-4d09-8988-7c1ffb4cc1ac")
+                        },
+                        new
+                        {
+                            BookId = new Guid("a42e7b4c-cf11-40da-81ee-6a9cd401815c"),
+                            CategoryId = new Guid("1b154465-0947-4d09-8988-7c1ffb4cc1ac")
+                        },
+                        new
+                        {
+                            BookId = new Guid("7e8f7dbe-3d72-4bf1-b512-55c901641ea4"),
+                            CategoryId = new Guid("1b154465-0947-4d09-8988-7c1ffb4cc1ac")
+                        },
+                        new
+                        {
+                            BookId = new Guid("c47636df-5572-4834-af21-7207ce87ed87"),
+                            CategoryId = new Guid("3f17c3b3-02ea-480d-8e73-da9b65f11de1")
+                        },
+                        new
+                        {
+                            BookId = new Guid("e576a03f-6247-4b57-af16-d8df4bb12c2a"),
+                            CategoryId = new Guid("3f17c3b3-02ea-480d-8e73-da9b65f11de1")
+                        },
+                        new
+                        {
+                            BookId = new Guid("e576a03f-6247-4b57-af16-d8df4bb12c2a"),
+                            CategoryId = new Guid("e455903a-7908-49e7-9a39-66a4453d9fb8")
+                        },
+                        new
+                        {
+                            BookId = new Guid("7e8f7dbe-3d72-4bf1-b512-55c901641ea4"),
+                            CategoryId = new Guid("74096c18-d9a9-44a3-af91-12e55ae22d91")
                         });
                 });
 
@@ -262,9 +324,9 @@ namespace BookStore.Migrations.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = new Guid("60c25b1f-2ebf-427e-8a8c-896d10cda29d"),
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8161),
+                            CategoryId = new Guid("15dadf90-183e-4ffb-b8a8-87f847488e58"),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 382, DateTimeKind.Local).AddTicks(8805),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
@@ -274,9 +336,9 @@ namespace BookStore.Migrations.Migrations
                         },
                         new
                         {
-                            CategoryId = new Guid("25bb8e35-68e8-432b-981a-796ad4dd8a0a"),
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8277),
+                            CategoryId = new Guid("1b154465-0947-4d09-8988-7c1ffb4cc1ac"),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(5360),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
@@ -286,9 +348,9 @@ namespace BookStore.Migrations.Migrations
                         },
                         new
                         {
-                            CategoryId = new Guid("ba4f371a-2090-4234-aaca-228653e61e6c"),
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8291),
+                            CategoryId = new Guid("3f17c3b3-02ea-480d-8e73-da9b65f11de1"),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(5372),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
@@ -298,9 +360,9 @@ namespace BookStore.Migrations.Migrations
                         },
                         new
                         {
-                            CategoryId = new Guid("1cd608b5-c9db-48e9-8b03-8e03e738e196"),
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8303),
+                            CategoryId = new Guid("e455903a-7908-49e7-9a39-66a4453d9fb8"),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(5375),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
@@ -310,9 +372,9 @@ namespace BookStore.Migrations.Migrations
                         },
                         new
                         {
-                            CategoryId = new Guid("654f4c05-9cf0-4be7-ae6e-3d3789efd12c"),
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8316),
+                            CategoryId = new Guid("74096c18-d9a9-44a3-af91-12e55ae22d91"),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(5376),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
@@ -569,9 +631,9 @@ namespace BookStore.Migrations.Migrations
                     b.HasData(
                         new
                         {
-                            RoleId = new Guid("5ea82ea9-f04f-4718-993e-5eff478d6fd0"),
-                            CreatedBy = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8499),
+                            RoleId = new Guid("3bd50e45-f68f-41b8-bbce-6a66d4c35fe0"),
+                            CreatedBy = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(9534),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             ModifiedBy = new Guid("00000000-0000-0000-0000-000000000000"),
@@ -655,9 +717,9 @@ namespace BookStore.Migrations.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("0f2153fc-bcce-4876-9fcf-383ab9799a70"),
+                            UserId = new Guid("36beea9d-4c24-4163-8dbe-0179de943759"),
                             Address = "123 Highway 1k",
-                            DateCreated = new DateTime(2024, 5, 15, 1, 37, 40, 850, DateTimeKind.Local).AddTicks(8475),
+                            DateCreated = new DateTime(2024, 5, 15, 12, 27, 44, 383, DateTimeKind.Local).AddTicks(8851),
                             DateLastModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1999, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DefaultUserPaymentId = new Guid("00000000-0000-0000-0000-000000000000"),
@@ -669,7 +731,7 @@ namespace BookStore.Migrations.Migrations
                             LastName = "Tran",
                             PhoneNumber = "0123 456 789",
                             Province = "Binh Duong",
-                            RoleId = new Guid("5ea82ea9-f04f-4718-993e-5eff478d6fd0"),
+                            RoleId = new Guid("3bd50e45-f68f-41b8-bbce-6a66d4c35fe0"),
                             UserName = "Administrator",
                             UserPassword = "123456",
                             Ward = "Di An"
@@ -729,17 +791,17 @@ namespace BookStore.Migrations.Migrations
                     b.ToTable("UserPayment");
                 });
 
-            modelBuilder.Entity("BookCategory", b =>
+            modelBuilder.Entity("BookStore.DAL.Models.BookCategory", b =>
                 {
                     b.HasOne("BookStore.DAL.Models.Book", null)
                         .WithMany()
-                        .HasForeignKey("ListBooksBookId")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookStore.DAL.Models.Category", null)
                         .WithMany()
-                        .HasForeignKey("ListCategoriesCategoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
