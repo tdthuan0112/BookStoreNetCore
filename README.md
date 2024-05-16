@@ -22,6 +22,10 @@ This is a E-commerce Project for selling books
   + Miscrosoft SQL Server Management Studio
 
 ## How to install and run the Project
+### Config Host
+  + Open C:\Windows\System32\drivers\etc\host
+  + Add `127.0.0.1  www.bookstore.com`
+### Run Project
   + Clone the project to local directory
   + Open Visual Studio 2022
   + Select "Open a project or solution" => Select and open the BookStoreNetCore.sln
