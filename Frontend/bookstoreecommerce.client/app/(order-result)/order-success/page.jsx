@@ -8,7 +8,7 @@ import { BTN_PRIMARY, LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
 import orderSuccessImg from "@/assets/img/order-success.png";
 
 import classes from "@/styles/layout/order-success.module.css";
-import { navigateAllBooks } from "@/lib/action/actions";
+import { navigateAllBooks } from "@/lib/helper/navigate-helper";
 
 export default function OrderSuccessPage() {
   function handleContinueShopping() {

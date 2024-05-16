@@ -5,7 +5,7 @@ import { DUMMY_BOOKS } from "@/lib/constant/constantData";
 import CartItem from "@/components/cartAndCheckout/cart-item";
 
 import classes from "@/styles/layout/cart-page.module.css";
-import { navigateCheckout } from "@/lib/action/actions";
+import { navigateCheckout } from "@/lib/helper/navigate-helper";
 
 export default function CartPage() {
   function handleCheckout() {

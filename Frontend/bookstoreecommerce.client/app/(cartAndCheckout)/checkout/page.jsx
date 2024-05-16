@@ -7,7 +7,7 @@ import ShippingMethod from "@/components/cartAndCheckout/shipping-method";
 
 import { BTN_PRIMARY, LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
 import classes from "@/styles/layout/checkout-page.module.css";
-import { navigateOrderSuccess } from "@/lib/action/actions";
+import { navigateOrderSuccess } from "@/lib/helper/navigate-helper";
 
 export default function CheckoutPage() {
   function handeClickPlaceOrder() {

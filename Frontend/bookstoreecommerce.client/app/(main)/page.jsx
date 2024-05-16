@@ -5,12 +5,19 @@ import BookRecommendation from "@/components/book/book-recommendation";
 import SubscribeEmail from "@/components/common/subscribe-email";
 
 import { DUMMY_BOOKS } from "@/lib/constant/constantData";
+import { getAllBook } from "@/api/book";
 
 export default function HomePage() {
   //TODO
-  function fetchBestSellerBook() {}
+  const fetchBestSellerBook = async () => {
+    const response = await getAllBook();
+    const data = response.data.data;
+    console.log(data);
+  };
   //TODO
   function fetchBestOfTheMonth() {}
+
+  fetchBestSellerBook();
   return (
     <main>
       <Banner />
