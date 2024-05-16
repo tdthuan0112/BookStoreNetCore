@@ -27,9 +27,9 @@ This is a E-commerce Project for selling books
   + Add `127.0.0.1  www.bookstore.com`
 ### Run Project
   + Clone the project to local directory
+  + Switch to branch `develop`
   + Open Visual Studio 2022
   + Select "Open a project or solution" => Select and open the BookStoreNetCore.sln
-  + Switch to branch `develop`
 ### Set start up project
   + Set "BookStoreEcommerce.Server" as Start up Project
 ### Config appsettings.json and generate DB
