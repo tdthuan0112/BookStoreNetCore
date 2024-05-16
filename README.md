@@ -9,8 +9,9 @@ This is a E-commerce Project for selling books
 ## Techs:
   + Front-end:
     + Nextjs v14.2.3 (SSR) combine with React (CSR)
-      + Nextjx App Router
-      + Styling: CSS Modules
+      + Router: [App Router Nextjs](https://nextjs.org/docs/app)
+      + Fetch data: [Axios](https://axios-http.com/docs/intro)
+      + Styling: [CSS Modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
   + Back-end: Dotnet core 8.0 (C#) 
   + Database: Sql
   + Figma: UI Design [Link](https://www.figma.com/design/ccWc9G7tfY7p65BmHLdFxZ/BookStore---Present?node-id=0-1&t=XKQYWf6Ga5RNvBpI-0)
