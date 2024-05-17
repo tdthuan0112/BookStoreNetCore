@@ -5,14 +5,14 @@ import BookRecommendation from "@/components/book/book-recommendation";
 import SubscribeEmail from "@/components/common/subscribe-email";
 
 import { DUMMY_BOOKS } from "@/lib/constant/constantData";
-import { getAllBook } from "@/api/book";
+import BookApi from "@/api/book";
+
+const BOOK_API = new BookApi();
 
 export default function HomePage() {
   //TODO
   const fetchBestSellerBook = async () => {
-    const response = await getAllBook();
-    const data = response.data.data;
-    console.log(data);
+    const response = BOOK_API.getAllBook();
   };
   //TODO
   function fetchBestOfTheMonth() {}

@@ -1,5 +1,12 @@
-import { API } from "@/api/index";
+import RestApiConnection from "@/api/rest-api-connection";
+class BookApi extends RestApiConnection {
+  constructor() {
+    super("book");
+  }
 
-export function getAllBook() {
-  return API.get("/Book/GetAllBooks");
+  getAllBook() {
+    return super.get("GetAllBooks", {});
+  }
 }
+
+export default BookApi;

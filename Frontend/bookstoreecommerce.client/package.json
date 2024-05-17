@@ -4,13 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev -H www.bookstore.com",
-    "open-browser": "start http://localhost:3000",
+    "dev": "next dev -H www.bookstore.com --experimental-https",
+    "open-browser": "start https://www.bookstore.com:3000",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "axios": "^1.6.8",
     "js-guid": "^1.0.2",
     "next": "^14.2.3",
     "react": "^18.2.0",

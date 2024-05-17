@@ -35,8 +35,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://www.bookstore.com:3000",
-                                              "http://localhost:3000");
+                          policy.WithOrigins(
+                                            "http://www.bookstore.com:3000",
+                                            "https://www.bookstore.com:3000"
+                                            )
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod(); ;
                       });
 });
 
