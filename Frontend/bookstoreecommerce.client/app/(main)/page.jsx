@@ -4,27 +4,21 @@ import Articles from "@/components/article/articles";
 import BookRecommendation from "@/components/book/book-recommendation";
 import SubscribeEmail from "@/components/common/subscribe-email";
 
-import { DUMMY_BOOKS } from "@/lib/constant/constantData";
-import BookApi from "@/api/book";
+import { BOOK_API } from "@/api/index";
 
-const BOOK_API = new BookApi();
+export default async function HomePage() {
+  const books = await BOOK_API.getAllBook();
 
-export default function HomePage() {
-  //TODO
-  const fetchBestSellerBook = async () => {
-    const response = BOOK_API.getAllBook();
-  };
   //TODO
   function fetchBestOfTheMonth() {}
 
-  fetchBestSellerBook();
   return (
     <main>
       <Banner />
       <Advertising />
       <Articles />
-      <BookRecommendation title="Best Seller" listBooks={DUMMY_BOOKS} />
-      <BookRecommendation title="Best of the Month" listBooks={DUMMY_BOOKS} />
+      <BookRecommendation title="Best Seller" listBooks={books} />
+      <BookRecommendation title="Best of the Month" listBooks={books} />
       <SubscribeEmail />
     </main>
   );

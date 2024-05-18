@@ -1,5 +1,20 @@
-import https from "https";
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
+const intitConfig = () => {
+  let config = {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    cache: IS_PRODUCTION === "production" ? "force-cache" : "no-store",
+  };
+
+  if (IS_PRODUCTION) {
+    config = { ...config, next: { revalidate: 3600 } };
+  }
+
+  return config;
+};
 class RestApiConnection {
   #config;
   #baseApiUrl;
@@ -7,25 +22,16 @@ class RestApiConnection {
   constructor(subPath) {
     this.#baseApiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     this.#subPath = subPath;
-    this.#config = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    };
+    this.#config = intitConfig();
   }
 
   buildQuery(endpoint) {
     return `${this.#baseApiUrl}/${this.#subPath}/${endpoint}`;
   }
 
-  get(endpoint = "", payload = {}) {
+  async get(endpoint = "", payload = {}) {
     const url = this.buildQuery(endpoint);
-    return this._fetch(
-      url,
-      { method: "GET", headers: this.#config.headers },
-      payload
-    );
+    return await this._fetch(url, { method: "GET", ...this.#config }, payload);
   }
 
   post(endpoint = "", payload = {}) {
@@ -37,24 +43,26 @@ class RestApiConnection {
     );
   }
 
-  _fetch(url, config, payload) {
+  async _fetch(url, config, payload) {
     console.log(url);
     console.log(config);
 
-    const httpsAgent = new https.Agent({
-      rejectUnauthorized: false,
-    });
-
-    fetch(url, {
-      method: config.method,
-      headers: config.headers,
+    const result = await fetch(url, {
+      ...config,
     })
       .then((response) => {
+        //TODO HANDLE ERROR
+        //...........
+
         return response.json();
       })
       .then((result) => {
-        console.log(result);
+        //TODO HANDLE DATA (OPTIONAL)
+        //THINKING.......
+
+        return result.data;
       });
+    return result;
   }
 }
 

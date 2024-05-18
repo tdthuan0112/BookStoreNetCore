@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev -H www.bookstore.com --experimental-https",
+    "dev": "next dev -H www.bookstore.com --experimental-https ",
     "open-browser": "start https://www.bookstore.com:3000",
     "build": "next build",
     "start": "next start"

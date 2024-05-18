@@ -4,8 +4,8 @@ class BookApi extends RestApiConnection {
     super("book");
   }
 
-  getAllBook() {
-    return super.get("GetAllBooks", {});
+  async getAllBook() {
+    return await super.get("GetAllBooks", {});
   }
 }
 
