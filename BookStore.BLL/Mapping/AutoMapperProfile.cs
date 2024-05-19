@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookStore.BLL.Models.DTO;
+using BookStore.BLL.Models.Request;
 using BookStore.DAL.Models;
 
 namespace BookStore.BLL.Mapping
@@ -12,6 +13,9 @@ namespace BookStore.BLL.Mapping
             CreateMap<User, UserDTO>();
 
             CreateMap<Category, CategoryDTO>();
+
+            CreateMap<RequestModelAddToCart, CartItem>();
+            CreateMap<RequestModelCart, CartItem>();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace BookStore.DAL.Constant
                 Name = "All Books",
                 Url = "all-books",
                 CreatedBy = AdministratorId,
-                Quantity = 100,
+                Quantity = 5,
                 IsActive = true
             },
             new Category {
@@ -21,7 +21,7 @@ namespace BookStore.DAL.Constant
                 Name = "Art & Music",
                 Url = "art-and-music",
                 CreatedBy = AdministratorId,
-                Quantity = 100,
+                Quantity = 3,
                 IsActive = true
             },
             new Category {
@@ -29,7 +29,7 @@ namespace BookStore.DAL.Constant
                 Name = "Biographies",
                 Url = "biographies",
                 CreatedBy = AdministratorId,
-                Quantity = 100,
+                Quantity = 2,
                 IsActive = true
             },
             new Category {
@@ -37,7 +37,7 @@ namespace BookStore.DAL.Constant
                 Name = "Kids",
                 Url = "kids",
                 CreatedBy = AdministratorId,
-                Quantity = 100,
+                Quantity = 1,
                 IsActive = true
             },
             new Category {
@@ -45,7 +45,7 @@ namespace BookStore.DAL.Constant
                 Name = "Tech",
                 Url = "tech",
                 CreatedBy = AdministratorId,
-                Quantity = 100,
+                Quantity = 1,
                 IsActive = true
             }
         ];

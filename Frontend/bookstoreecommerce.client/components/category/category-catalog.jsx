@@ -4,17 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 import catalogIcon from "@/assets/img/catalog.png";
-import { DUMMY_CATEGORIES } from "@/lib/constant/constantData";
 
 import classes from "@/styles/layout/category-catalog.module.css";
 import { usePathname } from "next/navigation";
 import { Guid } from "js-guid";
 
-export default function CategoryCatalog() {
-  const pathName = usePathname();
-
-  //TODO
-  function fetchCategoryCatelog() {}
+export default function CategoryCatalog({ allCategories }) {
+  const pathName = usePathname().replace("/", "");
 
   return (
     <div className={classes.categoryCatalog}>
@@ -24,7 +20,7 @@ export default function CategoryCatalog() {
       </div>
       <hr />
       <ul className={classes.categoryList}>
-        {DUMMY_CATEGORIES.map((category) => {
+        {allCategories.map((category) => {
           let isActive;
           if (category.url === pathName) isActive = true;
           return (

@@ -47,13 +47,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
-  height: 28px;
+  height: 32px;
 }
 
 .author {
   font-size: 12px;
   font-weight: 500;
   color: #C4C4C4;
+  line-height: 18px;
 }
 
 .originalPrice {

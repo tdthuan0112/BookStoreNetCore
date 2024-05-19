@@ -37,6 +37,7 @@ li {
 .layout-primary {
   width: 900px;
   margin: 0 auto;
+  /* min-height: 550px; */
 }
 
 button {

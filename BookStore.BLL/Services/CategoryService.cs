@@ -23,8 +23,20 @@ namespace BookStore.BLL.Services
             List<CategoryDTO> listCategoryDTO;
             try
             {
-                var listCategories = await _context.Category.AsNoTracking().ToListAsync();
-                listCategoryDTO = _mapper.Map<List<CategoryDTO>>(listCategories);
+                var listCategories = await _context.Category.AsNoTracking().OrderBy(x => x.Name).ToListAsync();
+                if (listCategories != null && listCategories.Count != 0)
+                {
+                    int indexOfAllBook = listCategories.FindIndex(x => x.Url.Equals("all-books"));
+                    var allBookCate = listCategories[indexOfAllBook];
+                    listCategories.RemoveAt(indexOfAllBook);
+                    listCategories.Insert(indexOfAllBook, allBookCate);
+                    listCategoryDTO = _mapper.Map<List<CategoryDTO>>(listCategories);
+                }
+                else
+                {
+                    listCategoryDTO = [];
+                }
+
             }
             catch (Exception ex)
             {

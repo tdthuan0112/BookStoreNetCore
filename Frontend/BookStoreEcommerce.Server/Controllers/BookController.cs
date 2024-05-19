@@ -1,4 +1,5 @@
-﻿using BookStore.BLL.Interfaces;
+﻿using BookStore.BLL.Enum;
+using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,11 +17,13 @@ namespace BookStoreEcommerce.Server.Controllers
         }
 
         [HttpGet("GetAllBooks")]
-        public async Task<IActionResult> GetAllBooks()
+        public IActionResult GetAllBooks()
         {
             var responseModel = new BaseResponseModel();
-            var result = await _bookService.GetAllBooks();
+            ResponseError responseError = ResponseError.NoError;
+            var result = _bookService.GetAllBooks(ref responseError);
             responseModel.Data = result;
+            responseModel.SetResponseError(responseError);
             return ReturnData(responseModel);
         }
 
@@ -33,11 +36,20 @@ namespace BookStoreEcommerce.Server.Controllers
             return ReturnData(responseModel);
         }
 
-        [HttpGet("GetBookByUrl/{categoryUrl}")]
-        public async Task<IActionResult> GetBookByUrl(string categoryUrl)
+        [HttpGet("GetBooksByCategoryUrl/{categoryUrl}")]
+        public async Task<IActionResult> GetBooksByCategoryUrl(string categoryUrl)
         {
             var responseModel = new BaseResponseModel();
-            var result = await _bookService.GetBookByUrl(categoryUrl);
+            var result = await _bookService.GetBooksByCategoryUrl(categoryUrl);
+            responseModel.Data = result;
+            return ReturnData(responseModel);
+        }
+
+        [HttpGet("GetBookDetailByUrl/{bookUrl}")]
+        public IActionResult GetBookDetailByUrl(string bookUrl)
+        {
+            var responseModel = new BaseResponseModel();
+            var result = _bookService.GetBookDetailByUrl(bookUrl);
             responseModel.Data = result;
             return ReturnData(responseModel);
         }

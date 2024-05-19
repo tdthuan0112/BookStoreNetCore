@@ -10,7 +10,7 @@ const intitConfig = () => {
   };
 
   if (IS_PRODUCTION) {
-    config = { ...config, next: { revalidate: 3600 } };
+    config = { ...config, next: { revalidate: 3600 } }; //In seconds
   }
 
   return config;
@@ -52,7 +52,8 @@ class RestApiConnection {
     })
       .then((response) => {
         //TODO HANDLE ERROR
-        //...........
+        //if(response.code !== 200)
+        //THINKING...........
 
         return response.json();
       })

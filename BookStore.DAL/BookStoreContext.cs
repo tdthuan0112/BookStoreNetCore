@@ -30,6 +30,8 @@ namespace BookStore.DAL
                     l => l.HasOne<Category>().WithMany().HasForeignKey(e => e.CategoryId),
                     r => r.HasOne<Book>().WithMany().HasForeignKey(e => e.BookId)
                 );
+            modelBuilder.Entity<CartItem>()
+                .HasKey(l => new { l.UserId, l.BookId });
 
             SeedData_Category(modelBuilder);
             SeedData_Book(modelBuilder);

@@ -1,11 +1,13 @@
-﻿using BookStore.BLL.Models.DTO;
+﻿using BookStore.BLL.Enum;
+using BookStore.BLL.Models.DTO;
 
 namespace BookStore.BLL.Interfaces
 {
     public interface IBookService
     {
-        Task<List<BookDTO>> GetAllBooks();
+        List<BookDTO> GetAllBooks(ref ResponseError response);
         Task<List<BookDTO>> GetBestSellerBooks();
-        Task<List<BookDTO>> GetBookByUrl(string categoryUrl);
+        Task<List<BookDTO>> GetBooksByCategoryUrl(string categoryUrl);
+        BookDTO GetBookDetailByUrl(string bookUrl);
     }
 }

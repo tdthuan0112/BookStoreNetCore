@@ -7,6 +7,10 @@ class BookApi extends RestApiConnection {
   async getAllBook() {
     return await super.get("GetAllBooks", {});
   }
+
+  async getBookByCategoryUrl(categoryUrl) {
+    return await super.get(`GetBooksByCategoryUrl/${categoryUrl}`, {});
+  }
 }
 
 export default BookApi;

@@ -25,16 +25,18 @@
 }
 
 .title {
-  height: 28px;
+  min-height: 20px;
   text-decoration: unset;
   color: unset
 }
 
 .title h3 {
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 1;
-  margin: 0;
+  -webkit-line-clamp: 2;
+  line-height: 20px;
 }
 
 .rating {

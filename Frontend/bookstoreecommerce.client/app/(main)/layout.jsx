@@ -5,7 +5,7 @@ export default function MainLayout({ children }) {
   return (
     <>
       <MainHeader />
-      {children}
+      <div style={{ minHeight: "600px" }}>{children}</div>
       <MainFooter />
     </>
   );

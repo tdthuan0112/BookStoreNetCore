@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookStore.BLL.Constant;
+using BookStore.BLL.Enum;
 using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models.DTO;
 using BookStore.DAL;
@@ -13,7 +14,10 @@ namespace BookStore.BLL.Services
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
-        public BookService(BookStoreContext context, ICategoryService categoryService, IMapper mapper)
+        public BookService(
+            BookStoreContext context,
+            ICategoryService categoryService,
+            IMapper mapper)
         {
             _context = context;
             _categoryService = categoryService;
@@ -25,20 +29,21 @@ namespace BookStore.BLL.Services
         /// </summary>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public async Task<List<BookDTO>> GetAllBooks()
+        public List<BookDTO> GetAllBooks(ref ResponseError responseError)
         {
             List<BookDTO> listBooksDTO;
             try
             {
-                var listBooks = await _context.Book
+                var listBooks = _context.Book
                     .AsNoTracking()
                     .Include(x => x.ListCategories)
-                    .ToListAsync();
+                    .ToList();
                 listBooksDTO = _mapper.Map<List<BookDTO>>(listBooks);
 
             }
             catch (Exception ex)
             {
+                responseError = ResponseError.ErrorGetAllBook;
                 throw new Exception(message: $"Error in get all books - ${ex.Message}");
             }
             return listBooksDTO != null && listBooksDTO.Count != 0 ? listBooksDTO : [];
@@ -58,12 +63,12 @@ namespace BookStore.BLL.Services
             }
             catch (Exception ex)
             {
-                throw new Exception(message: $"Error in get all books - ${ex.Message}");
+                throw new Exception(message: $"Error in get best seller books - ${ex.Message}");
             }
             return listBooksDTO != null && listBooksDTO.Count != 0 ? listBooksDTO : [];
         }
 
-        public async Task<List<BookDTO>> GetBookByUrl(string categoryUrl)
+        public async Task<List<BookDTO>> GetBooksByCategoryUrl(string categoryUrl)
         {
             List<BookDTO> listBooksDTO;
             try
@@ -74,7 +79,7 @@ namespace BookStore.BLL.Services
                 {
                     var listBooks = await _context.BookCategory
                         .Where(bookCate => bookCate.CategoryId == category.CategoryId)
-                        .Join(_context.Book, bookCate => bookCate.BookId, book => book.BookId, (bookCate, book) => book )
+                        .Join(_context.Book, bookCate => bookCate.BookId, book => book.BookId, (bookCate, book) => book)
                         .Include(book => book.ListCategories)
                         .ToListAsync();
 
@@ -83,9 +88,30 @@ namespace BookStore.BLL.Services
             }
             catch (Exception ex)
             {
-                throw new Exception(message: $"Error in get all books - ${ex.Message}");
+                throw new Exception(message: $"Error in get books by category URL: ${categoryUrl}- ${ex.Message}");
             }
             return listBooksDTO != null && listBooksDTO.Count != 0 ? listBooksDTO : [];
+        }
+
+        public BookDTO GetBookDetailByUrl(string bookUrl)
+        {
+            BookDTO bookDTO;
+            try
+            {
+                var bookDetail = _context.Book
+                    .AsNoTracking()
+                    .FirstOrDefault(x => x.Url.Equals(bookUrl));
+                if (bookDetail != null)
+                {
+                    bookDTO = _mapper.Map<BookDTO>(bookDetail);
+                }
+                else bookDTO = new();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(message: $"Error in get books by bookUrl: ${bookUrl} - ${ex.Message}");
+            }
+            return bookDTO;
         }
     }
 }
