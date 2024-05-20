@@ -47,4 +47,8 @@ This is a E-commerce Project for selling books
 ## Push Code to Git:
 > [!IMPORTANT]
 > Discard appsettings file before push
-  
+
+# References
+  + [Iconify](https://icon-sets.iconify.design/?query=facebook)
+  + [VectorStock](https://www.vectorstock.com/royalty-free-vectors/girl-reading-vectors-order_isolated)
+  + [Vecteezy](https://www.vecteezy.com/free-vector/reading)
