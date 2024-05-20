@@ -34,7 +34,7 @@ This is a E-commerce Project for selling books
 ### Set start up project
   + Set "BookStoreEcommerce.Server" as Start up Project
 ### Config appsettings.json and generate DB
-  + Open appsettings.json and appsettings.Development.json in /Frontend/bookstoreecommerce.client
+  + Open appsettings.json and appsettings.Development.json in /Frontend/BookstoreEcommerce.Server
   + Replace "DefaultConnection" into your local DB Connection String
     + ex: "bookStoreConnectionString" -> "Server=`your-local-server-name`;Database=`your-custom-db-name`;Trusted_Connection=true;TrustServerCertificate=true"
   + In Visual Studio, select Tools > NuGet Package Manager > Package Manager Console
