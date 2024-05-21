@@ -34,17 +34,21 @@ This is a E-commerce Project for selling books
 ### Set start up project
   + Set "BookStoreEcommerce.Server" as Start up Project
 ### Config appsettings.json and generate DB
-  + Open appsettings.json and appsettings.Development.json in /Frontend/bookstoreecommerce.client
+  + Open appsettings.json and appsettings.Development.json in /Frontend/BookstoreEcommerce.Server
   + Replace "DefaultConnection" into your local DB Connection String
     + ex: "bookStoreConnectionString" -> "Server=`your-local-server-name`;Database=`your-custom-db-name`;Trusted_Connection=true;TrustServerCertificate=true"
   + In Visual Studio, select Tools > NuGet Package Manager > Package Manager Console
-  + Change the default project to BookStore.Migrations Project
+  + In Package Manager Console, Change the default project to BookStore.Migrations Project
   + Add commands:
-    + `add-mirgration InitialDb -project WebApplication1.Migrations`
+    + `add-migration InitialDb -project BookStore.Migrations`
     + `update-database`
   + Stash the appsettings file in local
 
 ## Push Code to Git:
 > [!IMPORTANT]
 > Discard appsettings file before push
-  
+
+# References
+  + [Iconify](https://icon-sets.iconify.design/?query=facebook)
+  + [VectorStock](https://www.vectorstock.com/royalty-free-vectors/girl-reading-vectors-order_isolated)
+  + [Vecteezy](https://www.vecteezy.com/free-vector/reading)
