@@ -3,6 +3,7 @@ using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
 using BookStore.BLL.Models.Request;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookStoreEcommerce.Server.Controllers
 {
@@ -40,7 +41,7 @@ namespace BookStoreEcommerce.Server.Controllers
         }
 
         [HttpDelete("DeleteCategory")]
-        public IActionResult DeleteCategory(Guid categoryId)
+        public IActionResult DeleteCategory([Required] Guid categoryId)
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();

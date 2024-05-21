@@ -7,7 +7,7 @@ import QuantityCounter from "@/components/common/quantity-counter";
 
 export default function BookDetail({ book }) {
   const finalPrice = book.originalPrice;
-
+  console.log(book);
   return (
     <>
       <div className={classes.bookDetail}>
@@ -28,7 +28,7 @@ export default function BookDetail({ book }) {
             <p className={classes.finalPrice}>${finalPrice}</p>
             <p className={classes.salePercent}>Sale 20%</p>
           </div>
-          <QuantityCounter max={10} />
+          <QuantityCounter max={book.quantityInStock} />
           <div className={classes.buttonBlock}>
             <button className={classes.addToCartBtn}>Add to Cart</button>
             <button className={classes.buyNowBtn}>Buy Now</button>
