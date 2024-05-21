@@ -5,6 +5,7 @@ namespace BookStore.DAL.Models
     public class Category
     {
         public Category() {
+            IsActive = true;
             DateCreated = DateTime.Now;
         }
 

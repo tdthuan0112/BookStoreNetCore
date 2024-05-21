@@ -6,7 +6,6 @@
         public Guid BookId { get; set; }
     }
 
-
     public class RequestModelAddToCart : RequestModelCart
     {
         public int Quantity { get; set; }

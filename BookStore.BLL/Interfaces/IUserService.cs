@@ -1,10 +1,11 @@
-﻿using BookStore.BLL.Models.DTO;
+﻿using BookStore.BLL.Models;
+using BookStore.BLL.Models.DTO;
 
 namespace BookStore.BLL.Interfaces
 {
     public interface IUserService
     {
-        Task<List<UserDTO>> GetAllUsers();
-        UserDTO GetUserById(Guid userId);
+        List<UserDTO> GetAllUsers(BaseResponseErrorModel responseErrorModel);
+        UserDTO GetUserById(Guid userId, BaseResponseErrorModel responseErrorModel);
     }
 }

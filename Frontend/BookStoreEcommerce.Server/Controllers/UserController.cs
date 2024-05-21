@@ -17,11 +17,13 @@ namespace BookStoreEcommerce.Server.Controllers
         }
 
         [HttpGet("GetAllUsers")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var responseModel = new BaseResponseModel();
-            var result = await _userService.GetAllUsers();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _userService.GetAllUsers(baseResponseErrorModel);
             responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
     }

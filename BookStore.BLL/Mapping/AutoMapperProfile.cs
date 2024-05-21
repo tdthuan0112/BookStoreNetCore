@@ -11,8 +11,10 @@ namespace BookStore.BLL.Mapping
             CreateMap<Book, BookDTO>();
 
             CreateMap<User, UserDTO>();
+            CreateMap<UserDTO, User>();
 
             CreateMap<Category, CategoryDTO>();
+            CreateMap<CategoryDTO, Category>();
 
             CreateMap<RequestModelAddToCart, CartItem>();
             CreateMap<RequestModelCart, CartItem>();

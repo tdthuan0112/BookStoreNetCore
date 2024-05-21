@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using BookStore.BLL.Enum;
 using BookStore.BLL.Interfaces;
+using BookStore.BLL.Models;
 using BookStore.BLL.Models.DTO;
+using BookStore.BLL.Models.Request;
 using BookStore.DAL;
 using BookStore.DAL.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +21,12 @@ namespace BookStore.BLL.Services
             _mapper = mapper;
         }
 
-        public async Task<List<CategoryDTO>> GetAllCategories()
+        public List<CategoryDTO> GetAllCategories(BaseResponseErrorModel responseErrorModel)
         {
-            List<CategoryDTO> listCategoryDTO;
+            List<CategoryDTO> listCategoryDTO = new();
             try
             {
-                var listCategories = await _context.Category.AsNoTracking().OrderBy(x => x.Name).ToListAsync();
+                var listCategories = _context.Category.AsNoTracking().OrderBy(x => x.Name).ToList();
                 if (listCategories != null && listCategories.Count != 0)
                 {
                     int indexOfAllBook = listCategories.FindIndex(x => x.Url.Equals("all-books"));
@@ -40,25 +43,87 @@ namespace BookStore.BLL.Services
             }
             catch (Exception ex)
             {
-                throw new Exception(message: $"Error in get all categories - ${ex.Message}");
+                responseErrorModel.SetErrorModel(ResponseError.ErrorGetAllCategory, ex.Message);
             }
             return listCategoryDTO != null && listCategoryDTO.Count != 0 ? listCategoryDTO : [];
         }
 
-        public async Task<CategoryDTO> FindCategoryByUrl(string url)
+        public CategoryDTO FindCategoryByUrl(string url, BaseResponseErrorModel responseErrorModel)
         {
-            CategoryDTO categoryDTO;
+            CategoryDTO categoryDTO = new();
             try
             {
-                Category category = await _context.Category.Where(x => x.Url.Equals(url)).SingleAsync();
+                Category category = _context.Category.Where(x => x.Url.Equals(url)).Single();
                 categoryDTO = _mapper.Map<CategoryDTO>(category);
             }
             catch (Exception ex)
             {
-                throw new Exception(message: $"Error in get category by URL - ${ex.Message}");
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInFindCategoryByUrl, ex.Message);
             }
 
             return categoryDTO ?? new CategoryDTO();
+        }
+
+        public List<CategoryDTO> AddCategory(RequestModelCategory requestModel, BaseResponseErrorModel responseErrorModel)
+        {
+            //VALIDATE REQUEST
+            Category category = new Category
+            {
+                CategoryId = Guid.NewGuid(),
+                Name = requestModel.Name,
+                Url = requestModel.Url,
+                CreatedBy = requestModel.CreatedBy,
+                DateCreated = DateTime.Now,
+                IsActive = true
+            };
+            if (category != null)
+            {
+                try
+                {
+                    _context.Category.Add(category);
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategory, ex.Message);
+                }
+            }
+            return GetAllCategories(responseErrorModel);
+        }
+
+        public CategoryDTO FindCategoryById(Guid categoryId, BaseResponseErrorModel responseErrorModel)
+        {
+            CategoryDTO categoryDTO = new();
+            try
+            {
+                Category category = _context.Category.Where(x => x.CategoryId.Equals(categoryId)).Single();
+                categoryDTO = _mapper.Map<CategoryDTO>(category);
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInFindCategoryById, ex.Message);
+            }
+
+            return categoryDTO ?? new CategoryDTO();
+        }
+
+        public List<CategoryDTO> DeleteCategory(Guid categoryId, BaseResponseErrorModel responseErrorModel)
+        {
+            List<CategoryDTO> listCategoryDTO = [];
+            try
+            {
+                Category category = _context.Category.Where(x => x.CategoryId.Equals(categoryId)).Single();
+                _context.Category.Remove(category);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInDeleteCategoryById, ex.Message);
+            }
+
+            listCategoryDTO = GetAllCategories(responseErrorModel);
+
+            return listCategoryDTO ?? [];
         }
     }
 }

@@ -21,10 +21,10 @@ namespace BookStoreEcommerce.Server.Controllers
         public IActionResult GetCart([Required] Guid userId)
         {
             var responseModel = new BaseResponseModel();
-            ResponseError responseError = ResponseError.NoError;
-            var result = _cartService.GetCart(userId, ref responseError);
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _cartService.GetCart(userId, baseResponseErrorModel);
             responseModel.Data = result;
-            responseModel.SetResponseError(responseError);
+            responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
 
@@ -32,10 +32,10 @@ namespace BookStoreEcommerce.Server.Controllers
         public IActionResult AddToCart([FromBody] RequestModelAddToCart requestModel)
         {
             var responseModel = new BaseResponseModel();
-            ResponseError responseError = ResponseError.NoError;
-            var result = _cartService.AddToCart(requestModel, ref responseError);
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _cartService.AddToCart(requestModel, baseResponseErrorModel);
             responseModel.Data = result;
-            responseModel.SetResponseError(responseError);
+            responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
 
@@ -43,10 +43,10 @@ namespace BookStoreEcommerce.Server.Controllers
         public IActionResult UpdateCart([FromBody] RequestModelAddToCart requestModel)
         {
             var responseModel = new BaseResponseModel();
-            ResponseError responseError = ResponseError.NoError;
-            var result = _cartService.UpdateCart(requestModel, ref responseError);
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _cartService.UpdateCart(requestModel, baseResponseErrorModel);
             responseModel.Data = result;
-            responseModel.SetResponseError(responseError);
+            responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
 
@@ -54,10 +54,10 @@ namespace BookStoreEcommerce.Server.Controllers
         public IActionResult UpdateCart([FromBody] RequestModelCart requestModel)
         {
             var responseModel = new BaseResponseModel();
-            ResponseError responseError = ResponseError.NoError;
-            var result = _cartService.DeleteCart(requestModel, ref responseError);
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _cartService.DeleteCart(requestModel, baseResponseErrorModel);
             responseModel.Data = result;
-            responseModel.SetResponseError(responseError);
+            responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
     }

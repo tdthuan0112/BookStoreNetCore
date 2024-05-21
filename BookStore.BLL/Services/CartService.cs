@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookStore.BLL.Enum;
 using BookStore.BLL.Interfaces;
+using BookStore.BLL.Models;
 using BookStore.BLL.Models.DTO;
 using BookStore.BLL.Models.Request;
 using BookStore.DAL;
@@ -19,7 +20,7 @@ namespace BookStore.BLL.Services
             _mapper = mapper;
         }
 
-        public CartDTO GetCart(Guid userId, ref ResponseError responseError)
+        public CartDTO GetCart(Guid userId, BaseResponseErrorModel responseErrorModel)
         {
             CartDTO cartDTO = new();
             try
@@ -53,12 +54,12 @@ namespace BookStore.BLL.Services
             }
             catch (Exception ex)
             {
-                responseError = ResponseError.ErrorGetCart;
+                responseErrorModel.SetErrorModel(ResponseError.ErrorGetCart, ex.Message);
             }
             return cartDTO ?? new CartDTO();
         }
 
-        public CartDTO AddToCart(RequestModelAddToCart requestModel, ref ResponseError responseError)
+        public CartDTO AddToCart(RequestModelAddToCart requestModel, BaseResponseErrorModel responseErrorModel)
         {
             //TODO VALIDATE REQUEST ???
             CartItem cartItem = _mapper.Map<CartItem>(requestModel);
@@ -77,14 +78,14 @@ namespace BookStore.BLL.Services
                     }
                     else
                     {
-                        responseError = ResponseError.CouldNotFoundCartItem;
+                        responseErrorModel.ResponseError = ResponseError.CouldNotFoundCartItem;
                     }
                 }
                 catch (Exception ex)
                 {
-                    responseError = ResponseError.ErrorAddToCartCart;
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorAddToCartCart, ex.Message);
                 }
-                cartDTO = GetCart(requestModel.UserId, ref responseError);
+                cartDTO = GetCart(requestModel.UserId, responseErrorModel);
             }
 
             // TODO
@@ -92,7 +93,7 @@ namespace BookStore.BLL.Services
             return cartDTO ?? new CartDTO();
         }
 
-        public CartDTO UpdateCart(RequestModelAddToCart requestModel, ref ResponseError responseError)
+        public CartDTO UpdateCart(RequestModelAddToCart requestModel, BaseResponseErrorModel responseErrorModel)
         {
             //TODO VALIDATE REQUEST ???
             CartItem cartItem = _mapper.Map<CartItem>(requestModel);
@@ -115,9 +116,9 @@ namespace BookStore.BLL.Services
                 }
                 catch (Exception ex)
                 {
-                    responseError = ResponseError.ErrorInUpdateCart;
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorInUpdateCart, ex.Message);
                 }
-                cartDTO = GetCart(requestModel.UserId, ref responseError);
+                cartDTO = GetCart(requestModel.UserId, responseErrorModel);
             }
 
             // TODO
@@ -125,7 +126,7 @@ namespace BookStore.BLL.Services
             return cartDTO ?? new CartDTO();
         }
 
-        public CartDTO DeleteCart(RequestModelCart requestModel, ref ResponseError responseError)
+        public CartDTO DeleteCart(RequestModelCart requestModel, BaseResponseErrorModel responseErrorModel)
         {
             //TODO VALIDATE REQUEST ???
             CartItem cartItem = _mapper.Map<CartItem>(requestModel);
@@ -144,9 +145,9 @@ namespace BookStore.BLL.Services
                 }
                 catch (Exception ex)
                 {
-                    responseError = ResponseError.ErrorInUpdateCart;
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorInUpdateCart, ex.Message);
                 }
-                cartDTO = GetCart(requestModel.UserId, ref responseError);
+                cartDTO = GetCart(requestModel.UserId, responseErrorModel);
             }
 
             // TODO

@@ -20,27 +20,32 @@ namespace BookStoreEcommerce.Server.Controllers
         public IActionResult GetAllBooks()
         {
             var responseModel = new BaseResponseModel();
-            ResponseError responseError = ResponseError.NoError;
-            var result = _bookService.GetAllBooks(ref responseError);
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.GetAllBooks(baseResponseErrorModel);
             responseModel.Data = result;
-            responseModel.SetResponseError(responseError);
+            responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
 
         [HttpGet("GetBestSellerBooks")]
-        public async Task<IActionResult> GetBestSellerBooks()
+        public IActionResult GetBestSellerBooks()
         {
             var responseModel = new BaseResponseModel();
-            var result = await _bookService.GetBestSellerBooks();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.GetBestSellerBooks(baseResponseErrorModel);
+            responseModel.SetResponseError(baseResponseErrorModel);
             responseModel.Data = result;
             return ReturnData(responseModel);
         }
 
         [HttpGet("GetBooksByCategoryUrl/{categoryUrl}")]
-        public async Task<IActionResult> GetBooksByCategoryUrl(string categoryUrl)
+        public IActionResult GetBooksByCategoryUrl(string categoryUrl)
         {
             var responseModel = new BaseResponseModel();
-            var result = await _bookService.GetBooksByCategoryUrl(categoryUrl);
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.GetBooksByCategoryUrl(categoryUrl, baseResponseErrorModel);
+            responseModel.SetResponseError(baseResponseErrorModel);
+
             responseModel.Data = result;
             return ReturnData(responseModel);
         }
@@ -49,7 +54,9 @@ namespace BookStoreEcommerce.Server.Controllers
         public IActionResult GetBookDetailByUrl(string bookUrl)
         {
             var responseModel = new BaseResponseModel();
-            var result = _bookService.GetBookDetailByUrl(bookUrl);
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.GetBookDetailByUrl(bookUrl, baseResponseErrorModel);
+            responseModel.SetResponseError(baseResponseErrorModel);
             responseModel.Data = result;
             return ReturnData(responseModel);
         }

@@ -1,4 +1,5 @@
 ﻿using BookStore.BLL.Enum;
+using BookStore.BLL.Models;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -20,6 +21,11 @@ namespace BookStore.BLL.Extensions
         {
             return enumValue.GetType().GetMember(enumValue.ToString()).First()
                 .GetCustomAttribute<DescriptionAttribute>()?.Description ?? string.Empty;
+        }
+
+        public static bool HasError(this BaseResponseErrorModel responseErrorModel)
+        {
+            return (responseErrorModel != null && (responseErrorModel.ResponseError.HasError() || responseErrorModel.SystemErrorMessage != string.Empty));
         }
     }
 }

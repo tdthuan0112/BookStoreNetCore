@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using BookStore.BLL.Enum;
 using BookStore.BLL.Interfaces;
+using BookStore.BLL.Models;
 using BookStore.BLL.Models.DTO;
 using BookStore.DAL;
 using Microsoft.EntityFrameworkCore;
@@ -22,25 +24,25 @@ namespace BookStore.BLL.Services
         /// </summary>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public async Task<List<UserDTO>> GetAllUsers()
+        public List<UserDTO> GetAllUsers(BaseResponseErrorModel responseErrorModel)
         {
-            List<UserDTO> listUsersDTO;
+            List<UserDTO> listUsersDTO = [];
             try
             {
-                var listUsers = await _context.User
+                var listUsers = _context.User
                     .AsNoTracking()
                     .Include(e => e.Role)
-                    .ToListAsync();
+                    .ToList();
                 listUsersDTO = _mapper.Map<List<UserDTO>>(listUsers);
             }
             catch (Exception ex)
             {
-                throw new Exception(message: $"Error in get all books - ${ex.Message}");
+                responseErrorModel.SetErrorModel(ResponseError.ErrorGetAllUsers, ex.Message);
             }
             return listUsersDTO != null && listUsersDTO.Count != 0 ? listUsersDTO : [];
         }
 
-        public UserDTO GetUserById(Guid userId)
+        public UserDTO GetUserById(Guid userId, BaseResponseErrorModel responseErrorModel)
         {
             #region HARDCODE HERE - MODIFY LATER
             var adminUser = _context.User
@@ -49,7 +51,7 @@ namespace BookStore.BLL.Services
             userId = adminUser != null ? adminUser.UserId : new Guid("57630d03-6fb1-434a-81ed-8f55343b69fd");
             #endregion
 
-            UserDTO userDTO;
+            UserDTO userDTO = new();
             try
             {
                 var user = _context.User
@@ -64,7 +66,7 @@ namespace BookStore.BLL.Services
             }
             catch (Exception ex)
             {
-                throw new Exception(message: $"Error in get user by id: ${userId} - ${ex.Message}");
+                responseErrorModel.SetErrorModel(ResponseError.ErrorGetUserById, ex.Message);
             }
             return userDTO;
         }
