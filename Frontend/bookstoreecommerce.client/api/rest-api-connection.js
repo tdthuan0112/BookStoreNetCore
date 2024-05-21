@@ -34,22 +34,21 @@ class RestApiConnection {
     return await this._fetch(url, { method: "GET", ...this.#config }, payload);
   }
 
-  post(endpoint = "", payload = {}) {
+  async post(endpoint = "", payload) {
     const url = this.buildQuery(endpoint);
-    return _fetch(
-      url,
-      { method: "POST", headers: this.#config.headers },
-      payload
-    );
+    return await this._fetch(url, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      ...this.#config,
+    });
   }
 
   async _fetch(url, config, payload) {
-    console.log(url);
-    console.log(config);
+    // console.log(url);
+    // console.log(config);
+    // console.log(payload);
 
-    const result = await fetch(url, {
-      ...config,
-    })
+    const result = await fetch(url, config)
       .then((response) => {
         //TODO HANDLE ERROR
         //if(response.code !== 200)

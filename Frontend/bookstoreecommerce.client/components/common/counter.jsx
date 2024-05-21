@@ -3,8 +3,8 @@
 import { useState } from "react";
 import classes from "@/styles/common/counter.module.css";
 
-export default function Counter({ max }) {
-  const [counter, setCounter] = useState(1);
+export default function Counter({ max, intialValue = 1 }) {
+  const [counter, setCounter] = useState(intialValue);
 
   function decrease() {
     setCounter((prevCounter) => {

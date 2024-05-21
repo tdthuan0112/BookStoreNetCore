@@ -25,7 +25,7 @@ export default function CartItem({ cartItem }) {
         </div>
         <div>{unitPrice}</div>
         <div>
-          <Counter max={10} />
+          <Counter max={cartItem.quantity} intialValue={cartItem.quantity} />
         </div>
         <div>{totalPrice}</div>
         <div>

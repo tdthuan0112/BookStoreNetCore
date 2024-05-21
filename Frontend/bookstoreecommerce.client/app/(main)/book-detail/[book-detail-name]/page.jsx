@@ -7,15 +7,16 @@ import BookDetail from "@/components/book/book-detail";
 import CustomerReviews from "@/components/customer-reviews/customer-review";
 
 import classes from "@/styles/layout/book-detail-page.module.css";
+import { BOOK_API } from "@/api";
 
-export default function BookDetailPage({ params }) {
+export default async function BookDetailPage({ params }) {
   const bookUrl = params["book-detail-name"];
-  const book = DUMMY_BOOKS.find((bookItem) => bookItem.url.includes(bookUrl));
 
-  //TODO
-  function fetchBookDetailByUrl(bookUrl) {}
+  let book = await BOOK_API.getBookDetailByUrl(bookUrl);
+  console.log(book);
 
-  if (!book) notFound();
+  //TODO HANDLE NOT FOUND BOOK
+  // if (!book) notFound();
   return (
     <div className={LAYOUT_PRIMARY + classes.bookDetailPage}>
       <BookDetail book={book} />

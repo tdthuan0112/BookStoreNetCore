@@ -73,13 +73,14 @@ namespace BookStore.BLL.Services
                     if (findingItem != null)
                     {
                         findingItem.Quantity += cartItem.Quantity;
-                        _context.SaveChanges();
 
                     }
                     else
                     {
-                        responseErrorModel.ResponseError = ResponseError.CouldNotFoundCartItem;
+                        _context.Add(cartItem);
                     }
+                    _context.SaveChanges();
+
                 }
                 catch (Exception ex)
                 {

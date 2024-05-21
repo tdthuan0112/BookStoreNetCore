@@ -1,6 +1,5 @@
 ﻿using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
-using BookStore.BLL.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreEcommerce.Server.Controllers

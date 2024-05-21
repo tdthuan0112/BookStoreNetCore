@@ -13,7 +13,6 @@ import AdminBackgroundImg from "@/assets/img/admin-authentication-background.png
 import classes from "@/styles/layout/authentication-layout.module.css";
 export default function AuthenticationLayout({ children }) {
   const pathName = usePathname();
-  console.log(pathName);
   const isAdmin = pathName === "/admin/login";
   let pageUrl = capitalizeFirstLetter(pathName.replace("/buyer/", ""));
 

@@ -1,16 +1,17 @@
-"use client";
-
 import { BTN_PRIMARY, LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
 import { DUMMY_BOOKS } from "@/lib/constant/constantData";
 import CartItem from "@/components/cartAndCheckout/cart-item";
 
 import classes from "@/styles/layout/cart-page.module.css";
 import { navigateCheckout } from "@/lib/helper/navigate-helper";
+import { CART_API } from "@/api";
 
-export default function CartPage() {
-  function handleCheckout() {
-    navigateCheckout();
-  }
+export default async function CartPage() {
+  let cart = await CART_API.getCart();
+
+  // function handleCheckout() {
+  //   navigateCheckout();
+  // }
 
   return (
     <div className={LAYOUT_PRIMARY + classes.cartPage}>
@@ -23,17 +24,15 @@ export default function CartPage() {
         <p>Action</p>
       </div>
       <div className={classes.listCartItems}>
-        {DUMMY_BOOKS.map((book) => (
-          <CartItem key={book.bookId} cartItem={book} />
+        {cart.cartItems.map((cartitem) => (
+          <CartItem key={cartitem.bookId} cartItem={cartitem} />
         ))}
       </div>
       <div className={classes.summaryBlock}>
         <h2>
           Total: <span className={classes.totalPrice}>16.99 $</span>
         </h2>
-        <button onClick={handleCheckout} className={BTN_PRIMARY}>
-          Check Out
-        </button>
+        <button className={BTN_PRIMARY}>Check Out</button>
       </div>
     </div>
   );
