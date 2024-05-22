@@ -43,6 +43,15 @@ class RestApiConnection {
     });
   }
 
+  async delete(endpoint = "", payload) {
+    const url = this.buildQuery(endpoint);
+    return await this._fetch(url, {
+      method: "DELETE",
+      body: JSON.stringify(payload),
+      ...this.#config,
+    });
+  }
+
   async _fetch(url, config, payload) {
     // console.log(url);
     // console.log(config);

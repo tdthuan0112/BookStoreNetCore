@@ -1,21 +1,31 @@
 import RestApiConnection from "@/api/rest-api-connection";
-import { USER_API } from ".";
-
 class CartApi extends RestApiConnection {
   constructor() {
     super("cart");
   }
 
   async getCart(userId) {
-    const listUsers = await USER_API.getAllUsers();
-    return await super.get(`GetCart/?userId=${listUsers[0].userId}`);
+    return await super.get(`GetCart?userId=${userId}`);
   }
 
-  async addToCart(bookId, quantity = 1) {
-    const listUsers = await USER_API.getAllUsers();
-
+  async addToCart(userId, bookId, quantity = 1) {
     return await super.post(`AddToCart`, {
-      userId: listUsers[0].userId,
+      userId,
+      bookId,
+      quantity,
+    });
+  }
+
+  async deleteCart(userId, bookId) {
+    return await super.delete(`deleteCart`, {
+      userId,
+      bookId,
+    });
+  }
+
+  async updateCart(userId, bookId, quantity) {
+    return await super.post(`updateCart`, {
+      userId,
       bookId,
       quantity,
     });

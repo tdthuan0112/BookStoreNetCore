@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookStore.BLL.Enum;
+using BookStore.BLL.Extensions;
 using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
 using BookStore.BLL.Models.DTO;
@@ -14,10 +15,14 @@ namespace BookStore.BLL.Services
     {
         private readonly BookStoreContext _context;
         private readonly IMapper _mapper;
-        public CartService(BookStoreContext context, IMapper mapper)
+        private readonly ICommonService _commonService;
+        private readonly IBookService _bookService;
+        public CartService(BookStoreContext context, IMapper mapper, ICommonService commonService, IBookService bookService)
         {
             _context = context;
             _mapper = mapper;
+            _commonService = commonService;
+            _bookService = bookService;
         }
 
         public CartDTO GetCart(Guid userId, BaseResponseErrorModel responseErrorModel)
@@ -51,6 +56,7 @@ namespace BookStore.BLL.Services
                     UserId = userId,
                     CartItems = listCartItemDTO
                 };
+                _commonService.CalculateFinalAndTotalPrice(cartDTO);
             }
             catch (Exception ex)
             {
@@ -68,25 +74,38 @@ namespace BookStore.BLL.Services
             {
                 try
                 {
-                    var findingItem = _context.CartItem
-                        .FirstOrDefault(x => x.UserId == cartItem.UserId && x.BookId == cartItem.BookId);
-                    if (findingItem != null)
+                    var book = _bookService.GetBookDetailById(requestModel.BookId, responseErrorModel);
+                    if (!responseErrorModel.HasError())
                     {
-                        findingItem.Quantity += cartItem.Quantity;
-
+                        var foundedItem = _context.CartItem
+                            .FirstOrDefault(x => x.UserId == cartItem.UserId && x.BookId == cartItem.BookId);
+                        if (foundedItem != null)
+                        {
+                            if (foundedItem.Quantity + requestModel.Quantity <= book.QuantityInStock)
+                            {
+                                foundedItem.Quantity += cartItem.Quantity;
+                            }
+                            else
+                            {
+                                responseErrorModel.SetErrorModel(ResponseError.NotEnoughtQuantityInStockWhenAddToCart);
+                            }
+                        }
+                        else
+                        {
+                            _context.Add(cartItem);
+                        }
+                        _context.SaveChanges();
                     }
-                    else
-                    {
-                        _context.Add(cartItem);
-                    }
-                    _context.SaveChanges();
 
                 }
                 catch (Exception ex)
                 {
                     responseErrorModel.SetErrorModel(ResponseError.ErrorAddToCartCart, ex.Message);
                 }
-                cartDTO = GetCart(requestModel.UserId, responseErrorModel);
+                if (!responseErrorModel.HasError())
+                {
+                    cartDTO = GetCart(requestModel.UserId, responseErrorModel);
+                }
             }
 
             // TODO

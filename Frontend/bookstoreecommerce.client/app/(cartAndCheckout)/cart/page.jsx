@@ -1,13 +1,12 @@
 import { BTN_PRIMARY, LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
-import { DUMMY_BOOKS } from "@/lib/constant/constantData";
 import CartItem from "@/components/cartAndCheckout/cart-item";
 
 import classes from "@/styles/layout/cart-page.module.css";
 import { navigateCheckout } from "@/lib/helper/navigate-helper";
-import { CART_API } from "@/api";
+import { getCartAction } from "@/actions/cart-actions";
 
 export default async function CartPage() {
-  let cart = await CART_API.getCart();
+  let cart = await getCartAction();
 
   // function handleCheckout() {
   //   navigateCheckout();
@@ -30,7 +29,8 @@ export default async function CartPage() {
       </div>
       <div className={classes.summaryBlock}>
         <h2>
-          Total: <span className={classes.totalPrice}>16.99 $</span>
+          Total:{" "}
+          <span className={classes.totalPrice}>{cart.totalPriceCart} $</span>
         </h2>
         <button className={BTN_PRIMARY}>Check Out</button>
       </div>

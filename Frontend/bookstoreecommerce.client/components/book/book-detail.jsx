@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 
 import ratingStarIcon from "@/assets/img/rating-star-full.png";
 
 import classes from "@/styles/common/book-detail.module.css";
 import QuantityCounter from "@/components/common/quantity-counter";
+import { addToCartAction, buyNowAction } from "@/actions/cart-actions";
 
 export default function BookDetail({ book }) {
   let finalPrice = book.originalPrice;
@@ -16,8 +18,9 @@ export default function BookDetail({ book }) {
       ).toFixed(2);
     }
   }
+
   return (
-    <>
+    <form>
       <div className={classes.bookDetail}>
         <Image src={book.imageUrl} alt="book" width={240} height={330} />
         <div className={classes.bookContent}>
@@ -44,8 +47,22 @@ export default function BookDetail({ book }) {
           </div>
           <QuantityCounter max={book.quantityInStock} />
           <div className={classes.buttonBlock}>
-            <button className={classes.addToCartBtn}>Add to Cart</button>
-            <button className={classes.buyNowBtn}>Buy Now</button>
+            <button
+              className={classes.addToCartBtn}
+              type="submit"
+              formAction={(formData) =>
+                addToCartAction("", book.bookId, formData)
+              }
+            >
+              Add to Cart
+            </button>
+            <button
+              className={classes.buyNowBtn}
+              type="submit"
+              formAction={(formData) => buyNowAction("", book.bookId, formData)}
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
@@ -53,6 +70,6 @@ export default function BookDetail({ book }) {
       <div className={classes.descriptionBlock}>
         <p dangerouslySetInnerHTML={{ __html: book.description }}></p>
       </div>
-    </>
+    </form>
   );
 }

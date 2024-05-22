@@ -13,15 +13,18 @@ namespace BookStore.BLL.Services
     {
         private readonly BookStoreContext _context;
         private readonly ICategoryService _categoryService;
+        private readonly ICommonService _commonService;
         private readonly IMapper _mapper;
 
         public BookService(
             BookStoreContext context,
             ICategoryService categoryService,
+            ICommonService commonService,
             IMapper mapper)
         {
             _context = context;
             _categoryService = categoryService;
+            _commonService = commonService;
             _mapper = mapper;
         }
 
@@ -84,6 +87,7 @@ namespace BookStore.BLL.Services
                         .ToList();
 
                     listBooksDTO = _mapper.Map<List<BookDTO>>(listBooks);
+                    _commonService.GetFinalPrice(listBooksDTO);
                 }
             }
             catch (Exception ex)
@@ -101,6 +105,30 @@ namespace BookStore.BLL.Services
                 var bookDetail = _context.Book
                     .AsNoTracking()
                     .FirstOrDefault(x => x.Url.Equals(bookUrl));
+                if (bookDetail != null)
+                {
+                    bookDTO = _mapper.Map<BookDTO>(bookDetail);
+                }
+                else
+                {
+                    responseErrorModel.SetErrorModel(ResponseError.CouldNotFindBookByUrl);
+                };
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorGetBookDetailByUrl, ex.Message);
+            }
+            return bookDTO;
+        }
+
+        public BookDTO GetBookDetailById(Guid bookId, BaseResponseErrorModel responseErrorModel)
+        {
+            BookDTO bookDTO = new();
+            try
+            {
+                var bookDetail = _context.Book
+                    .AsNoTracking()
+                    .FirstOrDefault(x => x.BookId.Equals(bookId));
                 if (bookDetail != null)
                 {
                     bookDTO = _mapper.Map<BookDTO>(bookDetail);

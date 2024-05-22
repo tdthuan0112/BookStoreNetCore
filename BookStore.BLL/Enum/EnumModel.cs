@@ -29,6 +29,8 @@ namespace BookStore.BLL.Enum
         ErrorAddToCartCart = 2002,
         [Description("Error in update cart")]
         ErrorInUpdateCart = 2003,
+        [Description("Error not enought quantity in stock when add to cart")]
+        NotEnoughtQuantityInStockWhenAddToCart = 2004,
         #endregion
 
         #region Category

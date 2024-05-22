@@ -11,6 +11,8 @@
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }
         public bool IsDiscountPercent { get; set; }
+        public decimal FinalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
         public bool IsActive { get; set; }
         public int Quantity { get; set; }
     }

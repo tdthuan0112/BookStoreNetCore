@@ -13,6 +13,7 @@
         public decimal OriginalPrice { get; set; }
         public decimal DiscountPrice { get; set; }
         public bool IsDiscountPercent { get; set; }
+        public decimal FinalPrice { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime DateCreated { get; set; }
         public Guid ModifiedBy { get; set; }

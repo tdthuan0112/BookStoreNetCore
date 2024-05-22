@@ -1,19 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "@/styles/common/counter.module.css";
+import { isNullOrUndefined, isType } from "@/lib/helper/common-helper";
 
-export default function Counter({ max, intialValue = 1 }) {
+export default function Counter({
+  name,
+  max,
+  intialValue = 1,
+  onHandleUpdateCart,
+}) {
   const [counter, setCounter] = useState(intialValue);
 
-  function decrease() {
+  if (
+    !isNullOrUndefined(onHandleUpdateCart) &&
+    isType(onHandleUpdateCart, "function")
+  ) {
+    useEffect(() => {
+      onHandleUpdateCart(counter);
+    }, [counter]);
+  }
+
+  function handleDecrease() {
     setCounter((prevCounter) => {
       if (prevCounter === 1) return 1;
       return prevCounter - 1;
     });
   }
 
-  function increase() {
+  function handleIncrease() {
     setCounter((prevCounter) => {
       if (prevCounter === max) return max;
       return prevCounter + 1;
@@ -21,7 +36,11 @@ export default function Counter({ max, intialValue = 1 }) {
   }
 
   function onHandleChange(event) {
-    let newValue = parseInt(event.target.value);
+    let newValue = event.target.value === "" ? 0 : parseInt(event.target.value);
+    if (newValue === 0) {
+      setCounter("");
+      return;
+    }
     if (newValue > max) {
       setCounter(max);
     } else if (newValue < 1) setCounter(1);
@@ -34,15 +53,19 @@ export default function Counter({ max, intialValue = 1 }) {
   }
   return (
     <div className={classes.inputQuantity}>
-      <button onClick={decrease}>-</button>
+      <button type="submit" formAction={handleDecrease}>
+        -
+      </button>
       <input
         type="number"
         onChange={onHandleChange}
         onBlur={onHandleBlur}
         value={counter}
-        name="quantity"
+        name={name}
       />
-      <button onClick={increase}>+</button>
+      <button type="submit" formAction={handleIncrease}>
+        +
+      </button>
     </div>
   );
 }

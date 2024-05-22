@@ -70,7 +70,7 @@ namespace BookStore.BLL.Models
     public class BaseResponseErrorModel
     {
         public ResponseError ResponseError { get; set; } = ResponseError.NoError;
-        public string SystemErrorMessage { get; set; }
+        public string SystemErrorMessage { get; set; } = String.Empty;
         public void SetErrorModel(ResponseError responseError, string systemErrorMessage = "")
         {
             this.ResponseError = responseError;

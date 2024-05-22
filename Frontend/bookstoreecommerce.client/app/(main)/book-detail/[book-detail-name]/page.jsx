@@ -13,7 +13,6 @@ export default async function BookDetailPage({ params }) {
   const bookUrl = params["book-detail-name"];
 
   let book = await BOOK_API.getBookDetailByUrl(bookUrl);
-  console.log(book);
 
   //TODO HANDLE NOT FOUND BOOK
   // if (!book) notFound();

@@ -12,7 +12,7 @@ export default function CartAndCheckoutHeader() {
     <div className={LAYOUT_PRIMARY + classes.cartAndCheckoutHeader}>
       <div className={classes.logoAndTitle}>
         <Link className={classes.link} href="/">
-          <Image src={bookStoreLogo} height={80} alt="" />
+          <Image priority={true} src={bookStoreLogo} height={80} alt="" />
           <h1 className={classes.bookStoreTitle}>BookStore</h1>
         </Link>
       </div>

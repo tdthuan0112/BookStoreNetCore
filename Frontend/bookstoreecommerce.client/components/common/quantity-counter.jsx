@@ -5,7 +5,7 @@ export default function QuantityCounter({ max }) {
   return (
     <div className={classes.quantityDiv}>
       <p>Quantity</p>
-      <Counter max={max} />
+      <Counter name="quantity" max={max} />
       <p>{`${max} ${max > 1 ? "availables" : "available"}`}</p>
     </div>
   );
