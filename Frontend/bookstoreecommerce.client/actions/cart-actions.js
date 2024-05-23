@@ -1,15 +1,25 @@
 "use server";
+
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 import { CART_API } from "@/api";
 import { getAdminUserAction } from "./user-actions";
+import { isEmptyObject, isNullOrUndefined } from "@/lib/helper/common-helper";
 
-export async function getCartAction() {
+export async function getCartAction(redirectUrl = "") {
   const adminUser = await getAdminUserAction();
   const adminId = adminUser.userId;
-
-  return await CART_API.getCart(adminId);
+  const cart = await CART_API.getCart(adminId);
+  if (
+    (isNullOrUndefined(cart) ||
+      isNullOrUndefined(cart?.cartItems) ||
+      isEmptyObject(cart.cartItems)) &&
+    redirectUrl !== ""
+  ) {
+    redirect(redirectUrl);
+  }
+  return cart;
 }
 export async function addToCartAction(userId, bookId, formData) {
   const adminUser = await getAdminUserAction();
@@ -35,7 +45,6 @@ export async function deleteCartAction(userId, bookId) {
 }
 
 export async function updateCartAction(userId, bookId, quantity) {
-  console.log("UPDATEEEEEEE");
   const adminUser = await getAdminUserAction();
   const adminId = adminUser.userId;
 

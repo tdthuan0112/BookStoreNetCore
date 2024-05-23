@@ -5,7 +5,7 @@ export default function ListBooks({ listBooks }) {
   return (
     <div className={classes.listBooks}>
       {listBooks.map((book) => (
-        <BookItemCategory book={book} />
+        <BookItemCategory key={book.bookId} book={book} />
       ))}
     </div>
   );

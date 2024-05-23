@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import classes from "@/styles/common/counter.module.css";
 import { isNullOrUndefined, isType } from "@/lib/helper/common-helper";
+
+// let firstTime = true;
 
 export default function Counter({
   name,
@@ -11,15 +13,17 @@ export default function Counter({
   onHandleUpdateCart,
 }) {
   const [counter, setCounter] = useState(intialValue);
+  const isMounted = useRef(false);
 
-  if (
-    !isNullOrUndefined(onHandleUpdateCart) &&
-    isType(onHandleUpdateCart, "function")
-  ) {
-    useEffect(() => {
-      onHandleUpdateCart(counter);
-    }, [counter]);
-  }
+  useEffect(() => {
+    if (isMounted.current) {
+      if (isType(onHandleUpdateCart, "function")) {
+        onHandleUpdateCart(counter);
+      }
+    } else {
+      isMounted.current = true;
+    }
+  }, [counter]);
 
   function handleDecrease() {
     setCounter((prevCounter) => {

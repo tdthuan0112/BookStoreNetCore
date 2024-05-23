@@ -16,7 +16,7 @@ namespace BookStoreEcommerce.Server.Controllers
         }
 
         [HttpGet("GetAllUsers")]
-        public IActionResult Index()
+        public IActionResult GetAllUsers()
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();

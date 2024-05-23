@@ -7,6 +7,25 @@
   gap: 15px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .05);
   border-radius: 4px;
+  min-height: 250px;
+}
+
+.cartEmpty {
+  padding: 30px 30px;
+  background-color: #fff;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .05);
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyText {
+  text-align: center;
+  font-size: 18px;
 }
 
 .generalHeader {
@@ -19,6 +38,11 @@
   color: #a2a2a2;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .05);
   border-radius: 4px;
+}
+
+.clickToPurchase {
+  text-align: center;
+  width: 20%;
 }
 
 .productHeader {
@@ -38,4 +62,9 @@
 
 .totalPrice {
   color: #D70F13;
+}
+
+.disableCheckout {
+  cursor: not-allowed;
+  /* pointer-events: ; */
 }

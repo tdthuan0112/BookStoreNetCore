@@ -52,5 +52,44 @@ namespace BookStore.BLL.Enum
         [Description("Error get user by id")]
         ErrorGetUserById = 4001,
         #endregion
+
+        #region Order
+        [Description("Error to get all user orders")]
+        ErrorInGetAllUserOrders = 5000,
+        [Description("Failed to submit order")]
+        FailedToSubmitOrder = 5001,
+        [Description("Failed to get order detail by order id")]
+        FailedToGetOrderDetailByOrderId = 5001,
+        #endregion
+    }
+
+    public enum OrderStatus
+    {
+        [Description("NORMAL")]
+        Normal = 0,
+        [Description("FAILED")]
+        Failed = 1,
+        [Description("SUCCESS")]
+        Success = 2,
+        [Description("PENDING")]
+        Pending = 3,
+    }
+
+    public enum ShippingMethod
+    {
+        [Description("Standard")]
+        Standard = 0,
+        [Description("Fast")]
+        Fast = 1,
+        [Description("Express")]
+        Express = 3,
+    }
+
+    public enum PaymentMethod
+    {
+        [Description("Cash Payment On Delivery (Ship COD)")]
+        COD = 0,
+        [Description("Pay with international cards Visa/Master/JCB")]
+        Card = 1,
     }
 }

@@ -156,12 +156,7 @@ namespace BookStore.BLL.Services
                 try
                 {
                     var findingItem = _context.CartItem
-                        .FirstOrDefault(x => x.UserId == cartItem.UserId && x.BookId == cartItem.BookId);
-                    if (findingItem != null)
-                    {
-                        _context.CartItem.Remove(findingItem);
-                    }
-                    _context.SaveChanges();
+                        .Where(x => x.UserId == cartItem.UserId && x.BookId == cartItem.BookId).ExecuteDelete();
                 }
                 catch (Exception ex)
                 {

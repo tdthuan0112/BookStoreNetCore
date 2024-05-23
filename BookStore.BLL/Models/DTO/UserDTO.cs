@@ -1,5 +1,4 @@
 ﻿using BookStore.DAL.Models;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore.BLL.Models.DTO
 {

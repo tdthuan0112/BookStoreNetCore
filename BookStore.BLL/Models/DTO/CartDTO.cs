@@ -5,5 +5,6 @@
         public Guid UserId { get; set; }
         public ICollection<CartItemDTO> CartItems { get; set; }
         public decimal TotalPriceCart { get; set; }
+
     }
 }

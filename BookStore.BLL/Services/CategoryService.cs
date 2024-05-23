@@ -35,11 +35,6 @@ namespace BookStore.BLL.Services
                     listCategories.Insert(indexOfAllBook, allBookCate);
                     listCategoryDTO = _mapper.Map<List<CategoryDTO>>(listCategories);
                 }
-                else
-                {
-                    listCategoryDTO = [];
-                }
-
             }
             catch (Exception ex)
             {
@@ -112,9 +107,7 @@ namespace BookStore.BLL.Services
             List<CategoryDTO> listCategoryDTO = [];
             try
             {
-                Category category = _context.Category.Where(x => x.CategoryId.Equals(categoryId)).Single();
-                _context.Category.Remove(category);
-                _context.SaveChanges();
+                _context.Category.Where(x => x.CategoryId.Equals(categoryId)).ExecuteDelete();
             }
             catch (Exception ex)
             {

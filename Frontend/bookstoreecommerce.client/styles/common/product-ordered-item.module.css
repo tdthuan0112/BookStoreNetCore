@@ -1,4 +1,4 @@
-.bookItem {
+.cartItem {
   display: grid;
   grid-template-columns: 75px auto;
   gap: 10px;

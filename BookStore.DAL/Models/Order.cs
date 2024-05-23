@@ -13,8 +13,6 @@ namespace BookStore.DAL.Models
         public int OrderNumber { get; set; }
         public string UserNote { get; set; }
         public decimal TotalPrice { get; set; }
-        public int TotalQuantity { get; set; }
-        public decimal TotalDiscountPrice { get; set; }
         public string Address { get; set; }
         public string District { get; set; }
         public string Ward { get; set; }

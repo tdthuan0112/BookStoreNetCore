@@ -53,7 +53,7 @@ class RestApiConnection {
   }
 
   async _fetch(url, config, payload) {
-    // console.log(url);
+    console.log(url);
     // console.log(config);
     // console.log(payload);
 

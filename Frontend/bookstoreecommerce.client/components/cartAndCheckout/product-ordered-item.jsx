@@ -1,22 +1,22 @@
 import classes from "@/styles/common/product-ordered-item.module.css";
 import Image from "next/image";
 
-export default function ProductOrderedItem({ bookItem }) {
+export default function ProductOrderedItem({ cartItem }) {
   return (
     <>
-      <div key={bookItem.bookId} className={classes.bookItem}>
+      <div key={cartItem.bookId} className={classes.cartItem}>
         <Image
-          src={bookItem.imageUrl}
+          src={cartItem.imageUrl}
           width={75}
           height={100}
           alt="book image"
         />
         <div className={classes.bookContent}>
-          <p className={classes.title}>{bookItem.title}</p>
-          <p className={classes.author}>by {bookItem.author}</p>
-          <p className={classes.price}>$ {bookItem.originalPrice}</p>
+          <p className={classes.title}>{cartItem.title}</p>
+          <p className={classes.author}>by {cartItem.author}</p>
+          <p className={classes.price}>$ {cartItem.totalPrice}</p>
           <p>
-            <strong>Quantity: 1</strong>
+            <strong>Quantity: {cartItem.quantity}</strong>
           </p>
         </div>
       </div>

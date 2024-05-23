@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useFormStatus } from "react-dom";
 
 import ratingStarIcon from "@/assets/img/rating-star-full.png";
 
@@ -46,24 +47,7 @@ export default function BookDetail({ book }) {
             )}
           </div>
           <QuantityCounter max={book.quantityInStock} />
-          <div className={classes.buttonBlock}>
-            <button
-              className={classes.addToCartBtn}
-              type="submit"
-              formAction={(formData) =>
-                addToCartAction("", book.bookId, formData)
-              }
-            >
-              Add to Cart
-            </button>
-            <button
-              className={classes.buyNowBtn}
-              type="submit"
-              formAction={(formData) => buyNowAction("", book.bookId, formData)}
-            >
-              Buy Now
-            </button>
-          </div>
+          <ButtonBlock book={book} />
         </div>
       </div>
       <h2 className={classes.descriptionTitle}>BOOK DESCRIPTION</h2>
@@ -73,3 +57,43 @@ export default function BookDetail({ book }) {
     </form>
   );
 }
+
+function ButtonBlock({ book }) {
+  const { pending } = useFormStatus();
+
+  return (
+    <div className={classes.buttonBlock}>
+      <button
+        className={classes.addToCartBtn}
+        type="submit"
+        disabled={pending}
+        formAction={(formData) => addToCartAction("", book.bookId, formData)}
+      >
+        {pending ? "Processing ..." : "Add to Cart"}
+      </button>
+      <button
+        className={classes.buyNowBtn}
+        type="submit"
+        disabled={pending}
+        formAction={(formData) => buyNowAction("", book.bookId, formData)}
+      >
+        {pending ? "Processing ..." : "Buy Now"}
+      </button>
+    </div>
+  );
+}
+
+// function Button({ classNameCss, book, action, btnText }) {
+//   const { pending } = useFormStatus();
+
+//   return (
+//     <button
+//       className={classNameCss}
+//       type="submit"
+//       disabled={pending}
+//       formAction={action}
+//     >
+//       {pending ? "Processing ..." : btnText}
+//     </button>
+//   );
+// }
