@@ -41,6 +41,7 @@ export default function CartItem({ cartItem }) {
           <Counter
             name="quantity"
             max={cartItem.quantityInStock}
+            type="submit"
             intialValue={cartItem.quantity}
             onHandleUpdateCart={onHandleUpdateCart}
           />

@@ -4,11 +4,10 @@ import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import classes from "@/styles/common/counter.module.css";
 import { isNullOrUndefined, isType } from "@/lib/helper/common-helper";
 
-// let firstTime = true;
-
 export default function Counter({
   name,
   max,
+  type,
   intialValue = 1,
   onHandleUpdateCart,
 }) {
@@ -24,6 +23,33 @@ export default function Counter({
       isMounted.current = true;
     }
   }, [counter]);
+
+  let decreaseButon;
+  let increaseButon;
+
+  if (type === "submit") {
+    decreaseButon = (
+      <button type="submit" formAction={handleDecrease}>
+        -
+      </button>
+    );
+    increaseButon = (
+      <button type="submit" formAction={handleIncrease}>
+        +
+      </button>
+    );
+  } else {
+    decreaseButon = (
+      <button onClick={handleDecrease} type="button">
+        -
+      </button>
+    );
+    increaseButon = (
+      <button onClick={handleIncrease} type="button">
+        +
+      </button>
+    );
+  }
 
   function handleDecrease() {
     setCounter((prevCounter) => {
@@ -57,9 +83,7 @@ export default function Counter({
   }
   return (
     <div className={classes.inputQuantity}>
-      <button type="submit" formAction={handleDecrease}>
-        -
-      </button>
+      {decreaseButon}
       <input
         type="number"
         onChange={onHandleChange}
@@ -67,9 +91,7 @@ export default function Counter({
         value={counter}
         name={name}
       />
-      <button type="submit" formAction={handleIncrease}>
-        +
-      </button>
+      {increaseButon}
     </div>
   );
 }
