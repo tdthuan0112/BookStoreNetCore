@@ -1,0 +1,107 @@
+.orderDetailPage {
+  padding: 20px 0;
+}
+
+.pageTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainInfo {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.infoTitle {
+  margin-bottom: 10px;
+}
+
+.detailContent {
+  background-color: white;
+  padding: 10px 10px;
+  min-height: 100px;
+}
+
+.detailContent p {
+  line-height: 24px;
+}
+
+.listOrderItems {
+  background-color: white;
+  padding: 10px 10px;
+  align-items: center;
+}
+
+.listOrderItemsTemplate {
+  display: grid;
+  grid-template-columns: 40% 10% 10% 10% 12%;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+.bookImgTitle {
+  justify-self: self-start;
+  display: grid;
+  grid-template-columns: 40px auto;
+  gap: 10px;
+}
+
+.orderItems {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.author {
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.header {
+  color: #787878;
+}
+
+.hrLine {
+  width: 100%;
+  border: 1px solid #C4C4C4;
+}
+
+.originalPrice {
+  text-decoration: line-through ;
+}
+
+.buyItAgain {
+  line-height: 24px;
+  padding: 4px 8px;
+}
+
+.priceBlock {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 100px;
+  line-height: 32px;
+}
+
+.priceBlockText {
+  color: #787878;
+}
+
+.priceBlockValue {
+  color: #000000;
+  text-align: end;
+}
+
+.totalPrice {
+  color: #D70F13;
+  font-size: 18px;
+}

@@ -1,0 +1,49 @@
+.mainContainer {
+  background-color: white;
+  margin: 20px 0;
+  padding: 10px;
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-spacing: unset;
+  text-align: center;
+}
+
+
+.orderItem:hover {
+  background-color: #f5f5f5;
+}
+
+.orderItem td{
+  padding: 5px 8px;
+}
+
+.hrLine {
+  width: 100%;
+  border: 1px solid #C4C4C4;
+}
+
+.templateHeader {
+  color: #787878;
+}
+
+.viewDetail {
+  padding: 6px 18px;
+}
+
+.normalStatus {
+  color: #53c305;
+}
+
+.failedStatus{
+  color: #FF3838;
+}
+
+.successStatus{
+  color: #53c305;
+}
+
+.pendingStatus{
+  color: #f29339
+}

@@ -1,0 +1,36 @@
+.accountInfo {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 20px 20px;
+}
+
+.dataRow {
+  display: grid;
+  grid-template-columns: 20% auto;
+  grid-gap: 10px;
+  align-items: center;
+}
+
+.labelText {
+  color: #333333;
+  line-height: 16px;
+}
+
+.inputText {
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.inputText:focus {
+  outline: 1px solid #b5b5b5;
+}
+
+.editButton {
+  width: 250px;
+  align-self: center;
+  text-align: center;
+}

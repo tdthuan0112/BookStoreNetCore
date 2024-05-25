@@ -47,3 +47,19 @@ button {
 h1, h2, h3 {
   margin: 0;
 }
+
+.normal-status {
+  color: #53c305;
+}
+
+.failed-status{
+  color: #FF3838;
+}
+
+.success-status{
+  color: #53c305;
+}
+
+.pending-status{
+  color: #f29339
+}

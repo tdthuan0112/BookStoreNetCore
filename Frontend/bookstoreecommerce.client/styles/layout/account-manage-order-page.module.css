@@ -1,0 +1,32 @@
+.listOrders {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 20px 20px;
+}
+
+.templateOrder {
+  display: grid;
+  grid-template-columns: 15% 17% 40% 10% 10%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.templateOrder.header {
+  color: #787878;
+}
+
+.orderItemLink {
+  color: #007FF0;
+}
+
+.hrLine {
+  width: 100%;
+  border: 1px solid #C4C4C4;
+}
+
+.normalStatus {
+  color: #53c305;
+}

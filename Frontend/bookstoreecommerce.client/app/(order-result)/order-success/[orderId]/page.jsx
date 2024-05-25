@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import OrderInfo from "@/components/order-result/order-info";
+import OrderInfo from "@/components/order/order-result-info";
 
 import { BTN_PRIMARY, LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
 import { navigateAllBooks } from "@/lib/helper/navigate-helper";

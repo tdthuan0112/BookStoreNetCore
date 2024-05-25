@@ -1,0 +1,41 @@
+.mainContainer {
+  margin: 20px 0;
+  padding: 10px 0;
+  display: block;
+  white-space: nowrap;
+  border-spacing: unset;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 32% 32% 32%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fullName{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.userCard {
+  padding: 10px 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  line-height: 24px;
+  overflow: hidden;
+  box-shadow: 0px 5px 5px #7794B640;
+  border: 1px solid #7794B640;
+}
+
+.userCard:hover {
+  border: 1px solid #d70f13e6;
+}
+
+.userInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

@@ -1,0 +1,12 @@
+.adminLayout {
+  padding: 30px 0;
+  display: grid;  
+  grid-template-columns: 15% 83%;
+  justify-content: space-between;
+  width: 1200px;
+  margin: auto;
+}
+
+.mainContent {
+  width: 100%;
+}

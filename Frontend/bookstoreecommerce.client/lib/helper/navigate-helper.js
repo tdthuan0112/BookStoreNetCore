@@ -13,3 +13,12 @@ export async function navigateOrderSuccess() {
 export async function navigateAllBooks() {
   redirect(`/all-books`);
 }
+
+export async function navigateEditBuyerAccount() {
+  redirect(`/account?mode=edit`);
+}
+
+export async function navigateAdminOrderDetail(formData) {
+  const orderId = formData.get("orderId");
+  redirect(`/admin/manage-orders/${orderId}`);
+}

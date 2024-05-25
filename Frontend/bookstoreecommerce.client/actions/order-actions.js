@@ -20,6 +20,16 @@ export async function submitOrderAction(data) {
   redirect(`/order-success/${result.orderId}`);
 }
 
+export async function getAllUserOrdersAction(userId) {
+  const adminUser = await getAdminUserAction();
+  const adminId = adminUser.userId;
+  return await ORDER_API.getAllUserOrders(adminId);
+}
+
 export async function getOrderDetailByIdAction(orderId) {
   return await ORDER_API.getOrderDetailByOrderId(orderId);
+}
+
+export async function GetAllOrdersAction() {
+  return await ORDER_API.GetAllOrders();
 }

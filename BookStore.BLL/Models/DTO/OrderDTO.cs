@@ -13,6 +13,7 @@
         public Guid ModifiedBy { get; set; }
         public DateTime DateLastModified { get; set; }
         public bool IsActive { get; set; }
+        public List<OrderItemDTO> ListOrderItems { get; set; }
     }
 
     public class SubmitOrderModelResponse()

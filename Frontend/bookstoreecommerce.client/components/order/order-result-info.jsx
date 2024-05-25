@@ -15,7 +15,10 @@ export default function OrderInfo({ orderDetailInfo }) {
       <p className={classes.orderId}>#{orderDetailInfo.orderNumber}</p>
       <p>
         You can review with{" "}
-        <Link className={classes.myOrderLink} href={"/my-order"}>
+        <Link
+          className={classes.myOrderLink}
+          href={`/order-detail/${orderDetailInfo.orderId}`}
+        >
           My Order
         </Link>
       </p>

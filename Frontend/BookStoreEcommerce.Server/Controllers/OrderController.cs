@@ -52,5 +52,17 @@ namespace BookStoreEcommerce.Server.Controllers
             responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
+
+
+        [HttpGet("GetAllOrders")]
+        public IActionResult GetAllOrders()
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _orderService.GetAllOrders( baseResponseErrorModel);
+            responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
+            return ReturnData(responseModel);
+        }
     }
 }

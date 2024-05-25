@@ -9,5 +9,6 @@ namespace BookStore.BLL.Interfaces
         SubmitOrderModelResponse SubmitOrder(RequestSubmitOrder request, BaseResponseErrorModel baseResponseErrorModel);
         List<OrderDTO> GetAllUserOrders(Guid userId, BaseResponseErrorModel baseResponseErrorModel);
         OrderDTO GetOrderDetailByOrderId(Guid orderId, BaseResponseErrorModel baseResponseErrorModel);
+        List<OrderDTO> GetAllOrders(BaseResponseErrorModel baseResponseErrorModel);
     }
 }
