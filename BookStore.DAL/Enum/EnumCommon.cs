@@ -8,11 +8,11 @@ namespace BookStore.DAL.Enum
 
     public enum Sexes
     {
-        [Description("Mr/Mrs")]
+        [Description("Undifined")]
         Undefined = -1,
-        [Description("Mrs.")]
+        [Description("Female")]
         Female = 0,
-        [Description("Mr.")]
+        [Description("Male")]
         Male = 1,
     }
 }

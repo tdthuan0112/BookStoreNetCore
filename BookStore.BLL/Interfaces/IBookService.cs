@@ -10,6 +10,6 @@ namespace BookStore.BLL.Interfaces
         List<BookDTO> GetBestSellerBooks(BaseResponseErrorModel responseErrorModel);
         List<BookDTO> GetBooksByCategoryUrl(string categoryUrl, BaseResponseErrorModel responseErrorModel);
         BookDTO GetBookDetailByUrl(string bookUrl, BaseResponseErrorModel responseErrorModel);
-        BookDTO GetBookDetailById(Guid bookId, BaseResponseErrorModel responseErrorModel);
+        BookDTO GetBookDetailByBookId(Guid bookId, BaseResponseErrorModel responseErrorModel);
     }
 }

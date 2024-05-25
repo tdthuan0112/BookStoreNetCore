@@ -10,3 +10,7 @@ export async function getAdminUserAction() {
   const listUser = await getAllUsersAction();
   return listUser[0];
 }
+
+export async function getUserDetailByIdAction(userId) {
+  return await USER_API.getUserDetailById(userId);
+}

@@ -5,6 +5,7 @@ import {
   PENDING_STATUS,
   SUCCESS_STATUS,
 } from "../constant/constantCssName";
+import { GENDER_TYPES } from "../constant/constantType";
 
 export function isNullOrUndefined(value) {
   return [null, undefined].indexOf(value) !== -1;
@@ -78,5 +79,16 @@ export function getCssOrderStatus(orderStatus) {
       return SUCCESS_STATUS;
     case "PENDING":
       return PENDING_STATUS;
+  }
+}
+
+export function getGenderById(id) {
+  switch (id) {
+    case -1:
+      return GENDER_TYPES.Undefined.name;
+    case 0:
+      return GENDER_TYPES.Female.name;
+    case 1:
+      return GENDER_TYPES.Male.name;
   }
 }

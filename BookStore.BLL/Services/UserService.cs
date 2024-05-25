@@ -42,7 +42,7 @@ namespace BookStore.BLL.Services
             return listUsersDTO != null && listUsersDTO.Count != 0 ? listUsersDTO : [];
         }
 
-        public UserDTO GetUserById(Guid userId, BaseResponseErrorModel responseErrorModel)
+        public UserDTO GetUserDetailById(Guid userId, BaseResponseErrorModel responseErrorModel)
         {
             #region HARDCODE HERE - MODIFY LATER
             var adminUser = _context.User

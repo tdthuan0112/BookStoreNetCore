@@ -6,6 +6,10 @@ class UserApi extends RestApiConnection {
   async getAllUsers() {
     return await super.get("GetAllUsers", {});
   }
+
+  async getUserDetailById(userId) {
+    return await super.get(`GetUserDetailById?userId=${userId}`, {});
+  }
 }
 
 export default UserApi;

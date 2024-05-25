@@ -7,7 +7,6 @@ import classes from "@/styles/layout/admin-manage-users-page.module.css";
 
 export default async function AdminManageUsersPage() {
   const users = await getAllUsersAction();
-  console.log(users);
   return (
     <div>
       <h3>Mangage Users</h3>

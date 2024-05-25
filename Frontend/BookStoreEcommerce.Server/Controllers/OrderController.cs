@@ -55,11 +55,11 @@ namespace BookStoreEcommerce.Server.Controllers
 
 
         [HttpGet("GetAllOrders")]
-        public IActionResult GetAllOrders()
+        public IActionResult GetAllOrders(Guid userId, Guid orderId)
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();
-            var result = _orderService.GetAllOrders( baseResponseErrorModel);
+            var result = _orderService.GetAllOrders(userId, orderId, baseResponseErrorModel);
             responseModel.Data = result;
             responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);

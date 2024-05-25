@@ -2,17 +2,21 @@ import { GetAllOrdersAction } from "@/actions/order-actions";
 import { BTN_PRIMARY } from "@/lib/constant/constantCssName";
 import {
   getCssOrderStatus,
+  isNullOrUndefined,
   transfomDateTimeValue,
 } from "@/lib/helper/common-helper";
 import { navigateAdminOrderDetail } from "@/lib/helper/navigate-helper";
 import classes from "@/styles/layout/admin-manage-orders-page.module.css";
 
-export default async function AdminManageOrdersPage() {
-  const allOrders = await GetAllOrdersAction();
-  console.log(allOrders);
+export default async function ManageOrdersPage({ searchParams }) {
+  const userId = searchParams.userId;
+  console.log(userId);
+  const orderId = searchParams.orderId;
+  console.log(orderId);
+  const allOrders = await GetAllOrdersAction(userId, orderId);
   return (
     <div>
-      <h3>Mangage Orders</h3>
+      <h3>Mangage Orders {!isNullOrUndefined(userId)}</h3>
       <table className={classes.mainContainer}>
         <tbody>
           <tr>

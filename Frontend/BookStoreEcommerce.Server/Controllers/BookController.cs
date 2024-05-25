@@ -60,5 +60,16 @@ namespace BookStoreEcommerce.Server.Controllers
             responseModel.Data = result;
             return ReturnData(responseModel);
         }
+
+        [HttpGet("GetBookDetailByBookId/{bookId}")]
+        public IActionResult GetBookDetailByBookId(Guid bookId)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.GetBookDetailByBookId(bookId, baseResponseErrorModel);
+            responseModel.SetResponseError(baseResponseErrorModel);
+            responseModel.Data = result;
+            return ReturnData(responseModel);
+        }
     }
 }

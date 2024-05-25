@@ -1,0 +1,68 @@
+.mainContainer {
+  margin: 20px 0;
+  padding: 20px 40px;
+  display: block;
+  white-space: nowrap;
+  border-spacing: unset;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 60% 30%;
+  justify-content: space-between;
+}
+
+.userInfoContainer {
+  display: flex;
+  flex-direction: column;
+  line-height: 24px;
+  gap: 20px;
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+
+.infoTitle {
+  color: #333333;
+  width: 150px;
+}
+
+.infoInput {
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  width: 100%;
+  height: 28px;
+  padding: 4px 12px;
+
+}
+
+.infoInput:focus {
+  outline: 1px solid #d70f13e6;
+}
+
+.buttonForm {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin: 20px auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteButton {
+  background: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px 64px;
+  color: black;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  border: 1px solid #d70f13e6;
+  color: #d70f13e6;
+}

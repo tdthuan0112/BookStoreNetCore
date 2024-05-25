@@ -30,6 +30,6 @@ export async function getOrderDetailByIdAction(orderId) {
   return await ORDER_API.getOrderDetailByOrderId(orderId);
 }
 
-export async function GetAllOrdersAction() {
-  return await ORDER_API.GetAllOrders();
+export async function GetAllOrdersAction(userId, orderId) {
+  return await ORDER_API.GetAllOrders(userId, orderId);
 }

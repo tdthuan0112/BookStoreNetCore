@@ -142,7 +142,7 @@ namespace BookStore.BLL.Services
                     List<OrderItemDTO> listOrderItemDTOs = [];
                     foreach (var item in order.ListOrderItems)
                     {
-                        Book book = _context.Book.Where(x=> x.BookId.Equals(item.BookId)).Single();
+                        Book book = _context.Book.Where(x => x.BookId.Equals(item.BookId)).Single();
                         OrderItemDTO orderItemDTO = _mapper.Map<OrderItemDTO>(item);
                         orderItemDTO.Title = book.Title;
                         orderItemDTO.Author = book.Author;
@@ -174,7 +174,7 @@ namespace BookStore.BLL.Services
             return orderDTO;
         }
 
-        public List<OrderDTO> GetAllOrders(BaseResponseErrorModel baseResponseErrorModel)
+        public List<OrderDTO> GetAllOrders(Guid userId, Guid orderId, BaseResponseErrorModel baseResponseErrorModel)
         {
             List<OrderDTO> listOrderDTOs = new();
             try
@@ -184,6 +184,14 @@ namespace BookStore.BLL.Services
                     .Include(x => x.ListOrderItems)
                     .OrderByDescending(x => x.DateCreated)
                     .ToList();
+                if (userId != Guid.Empty)
+                {
+                    listOrders = listOrders.Where(x => x.UserId.Equals(userId)).ToList();
+                }
+                if (orderId != Guid.Empty)
+                {
+                    listOrders = listOrders.Where(x => x.OrderId.Equals(orderId)).ToList();
+                }
                 if (listOrders != null && listOrders.Count != 0)
                 {
                     foreach (var order in listOrders)

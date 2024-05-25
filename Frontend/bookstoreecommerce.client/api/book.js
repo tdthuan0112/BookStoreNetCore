@@ -15,6 +15,10 @@ class BookApi extends RestApiConnection {
   async getBookDetailByUrl(bookUrl) {
     return await super.get(`GetBookDetailByUrl/${bookUrl}`, {});
   }
+
+  async getBookDetailByBookId(bookId) {
+    return await super.get(`getBookDetailByBookId/${bookId}`, {});
+  }
 }
 
 export default BookApi;

@@ -1,0 +1,94 @@
+.mainContainer {
+  margin: 20px 0;
+  padding: 20px 40px;
+  display: block;
+  border-spacing: unset;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 200px 680px;
+  justify-content: space-between;
+}
+
+.contentContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.columnTemplate {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 420px 220px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.singleProperty {
+  line-height: 24px;
+}
+
+.singleProperty p {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.singleProperty input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+}
+
+.singleProperty input:focus {
+  outline: unset;
+  border: 1px solid #d70f13e6;;
+  border-radius: 8px;
+}
+
+.singleProperty textarea {
+  width: 100%;
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  height: 150px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+.requiredProperty {
+  color: #D70F13B2;
+}
+
+.discountTypeInput {
+  display: flex;
+}
+
+.buttonBlock  {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.buttonBlock button {
+  width: 200px;
+  height: 40px;
+}
+
+.btnDeleteBook {
+  background: white;
+  border: 1px solid #1A1417;
+  color: #1A1417;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnDeleteBook:hover {
+  border: 1px solid #D70F13;
+  color: #D70F13;
+}
+
+.btnSaveBook {
+  padding: 0;
+}

@@ -2,6 +2,14 @@ html {
   font: 14px Arial, Helvetica, sans-serif;
 }
 
+textarea {
+  font: 14px Arial, Helvetica, sans-serif;
+}
+
+input[type='radio'] {
+  accent-color: #d70f13e6;
+}
+
 body {
   padding: 0;
   margin: 0;

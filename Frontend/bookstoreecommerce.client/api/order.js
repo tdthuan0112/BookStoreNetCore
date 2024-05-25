@@ -17,8 +17,14 @@ class OrderApi extends RestApiConnection {
     return await super.get(`GetOrderDetailByOrderId?orderId=${orderId}`);
   }
 
-  async GetAllOrders() {
-    return await super.get(`GetAllOrders`);
+  async GetAllOrders(userId, orderId) {
+    let url = "GetAllOrders";
+    if (userId && orderId)
+      url = `GetAllOrders?userId=${userId}&orderId=${orderId}`;
+    else if (userId) {
+      url = `GetAllOrders?userId=${userId}`;
+    } else if (orderId) url = `GetAllOrders?orderId=${orderId}`;
+    return await super.get(url);
   }
 }
 

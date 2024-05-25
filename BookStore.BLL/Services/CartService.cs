@@ -74,7 +74,7 @@ namespace BookStore.BLL.Services
             {
                 try
                 {
-                    var book = _bookService.GetBookDetailById(requestModel.BookId, responseErrorModel);
+                    var book = _bookService.GetBookDetailByBookId(requestModel.BookId, responseErrorModel);
                     if (!responseErrorModel.HasError())
                     {
                         var foundedItem = _context.CartItem

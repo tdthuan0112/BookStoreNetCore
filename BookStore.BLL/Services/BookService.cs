@@ -43,6 +43,7 @@ namespace BookStore.BLL.Services
                     .Include(x => x.ListCategories)
                     .ToList();
                 listBooksDTO = _mapper.Map<List<BookDTO>>(listBooks);
+                _commonService.GetFinalPrice(listBooksDTO);
 
             }
             catch (Exception ex)
@@ -121,13 +122,14 @@ namespace BookStore.BLL.Services
             return bookDTO;
         }
 
-        public BookDTO GetBookDetailById(Guid bookId, BaseResponseErrorModel responseErrorModel)
+        public BookDTO GetBookDetailByBookId(Guid bookId, BaseResponseErrorModel responseErrorModel)
         {
             BookDTO bookDTO = new();
             try
             {
                 var bookDetail = _context.Book
                     .AsNoTracking()
+                    .Include(x => x.ListCategories)
                     .FirstOrDefault(x => x.BookId.Equals(bookId));
                 if (bookDetail != null)
                 {
