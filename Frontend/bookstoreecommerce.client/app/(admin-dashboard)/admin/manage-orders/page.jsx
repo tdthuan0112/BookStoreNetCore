@@ -3,16 +3,14 @@ import { BTN_PRIMARY } from "@/lib/constant/constantCssName";
 import {
   getCssOrderStatus,
   isNullOrUndefined,
-  transfomDateTimeValue,
+  transformDateTimeValue,
 } from "@/lib/helper/common-helper";
 import { navigateAdminOrderDetail } from "@/lib/helper/navigate-helper";
 import classes from "@/styles/layout/admin-manage-orders-page.module.css";
 
 export default async function ManageOrdersPage({ searchParams }) {
   const userId = searchParams.userId;
-  console.log(userId);
   const orderId = searchParams.orderId;
-  console.log(orderId);
   const allOrders = await GetAllOrdersAction(userId, orderId);
   return (
     <div>
@@ -33,7 +31,7 @@ export default async function ManageOrdersPage({ searchParams }) {
               <td>{order.orderId}</td>
               <td>{Math.abs(order.orderNumber)}</td>
               <td>{order.userId}</td>
-              <td>{transfomDateTimeValue(order.dateCreated)}</td>
+              <td>{transformDateTimeValue(order.dateCreated)}</td>
               <td>$ {order.totalPrice}</td>
               <td className={getCssOrderStatus(order.orderStatus)}>
                 {order.orderStatus}

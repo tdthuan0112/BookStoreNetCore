@@ -1,0 +1,89 @@
+.adminCategoryForm {
+  background-color: white;
+  margin: 20px 0 0 0;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.singleProperty {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.singleProperty input::-webkit-outer-spin-button,
+.singleProperty input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.singleProperty input:focus {
+  outline: unset;
+  border: 1px solid #d70f13e6;;
+  border-radius: 8px;
+}
+
+.singleProperty p, .activeCheckbox p {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.singleProperty strong {
+  color: #D70F13B2;
+}
+
+.singleProperty input {
+  width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    border: 1px solid #C4C4C4;
+    border-radius: 8px;
+}
+
+.buttonBlock  {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.buttonBlock button {
+  width: 200px;
+  height: 40px;
+}
+
+.btnDeleteCategory {
+  background: white;
+  border: 1px solid #1A1417;
+  color: #1A1417;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnDeleteCategory:hover {
+  border: 1px solid #D70F13;
+  color: #D70F13;
+}
+
+.btnSaveCategory {
+  padding: 0;
+}
+
+.activeCheckbox {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.activeCheckbox svg {
+  cursor: pointer;
+  color: #D70F13;
+}
+
+.activeCheckbox svg:hover {
+  color: #d70104;
+}

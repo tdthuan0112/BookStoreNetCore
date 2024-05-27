@@ -64,7 +64,7 @@ export function transfomDateValue(value) {
   return `${date}/${month}/${year}`;
 }
 
-export function transfomDateTimeValue(value) {
+export function transformDateTimeValue(value) {
   var returnValue = moment(new Date(value));
   return returnValue.format("h:mm:ss a, DD/MM/YYYY");
 }

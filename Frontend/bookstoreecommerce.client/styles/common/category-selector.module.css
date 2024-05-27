@@ -1,0 +1,28 @@
+.categorySelector {
+  padding: 10px 20px;
+  white-space: nowrap;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  justify-content: space-between;
+}
+
+.singleCategory {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.singleCategory svg {
+  color: #D70F13
+}
+
+.singleCategory svg:hover {
+  color: #d70104;
+}
+
+.cateName {
+  font-size: 14px;
+  font-weight: normal;
+}

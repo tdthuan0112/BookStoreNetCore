@@ -32,3 +32,8 @@ export async function navigateAdminEditBookDetail(formData) {
   const bookId = formData.get("bookId");
   redirect(`/admin/manage-books/edit/${bookId}`);
 }
+
+export async function navigatedminEditCategoryPage(formData) {
+  const bookId = formData.get("categoryId");
+  redirect(`/admin/manage-categories/edit/${bookId}`);
+}

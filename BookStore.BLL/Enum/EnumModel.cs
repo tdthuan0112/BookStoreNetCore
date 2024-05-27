@@ -18,6 +18,8 @@ namespace BookStore.BLL.Enum
         ErrorGetBookDetailByUrl = 1003,
         [Description("Could not find book by book url")]
         CouldNotFindBookByUrl = 1004,
+        [Description("Error in add book, your book url is existed")]
+        ErrorInAddBookExistedUrl = 3005,
         #endregion
 
         #region Cart
@@ -44,6 +46,8 @@ namespace BookStore.BLL.Enum
         ErrorInFindCategoryById = 3003,
         [Description("Error in delete category by id")]
         ErrorInDeleteCategoryById = 3003,
+        [Description("Error in add category, your url is existed")]
+        ErrorInAddCategoryExistedUrl = 3004,
         #endregion
 
         #region User

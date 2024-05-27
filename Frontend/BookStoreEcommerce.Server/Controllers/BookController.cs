@@ -1,6 +1,7 @@
 ﻿using BookStore.BLL.Enum;
 using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
+using BookStore.BLL.Models.Request;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreEcommerce.Server.Controllers
@@ -67,6 +68,39 @@ namespace BookStoreEcommerce.Server.Controllers
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();
             var result = _bookService.GetBookDetailByBookId(bookId, baseResponseErrorModel);
+            responseModel.SetResponseError(baseResponseErrorModel);
+            responseModel.Data = result;
+            return ReturnData(responseModel);
+        }
+
+        [HttpPost("UpdateBookDetail")]
+        public IActionResult UpdateBookDetail([FromBody] RequestModelUpdateBook requestModel)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.UpdateBookDetail(requestModel, baseResponseErrorModel);
+            responseModel.SetResponseError(baseResponseErrorModel);
+            responseModel.Data = result;
+            return ReturnData(responseModel);
+        }
+
+        [HttpPost("AddNewBook")]
+        public IActionResult AddNewBook([FromBody] RequestModelAddNewBook requestModel)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.AddNewBook(requestModel, baseResponseErrorModel);
+            responseModel.SetResponseError(baseResponseErrorModel);
+            responseModel.Data = result;
+            return ReturnData(responseModel);
+        }
+
+        [HttpDelete("DeleteBook")]
+        public IActionResult AddNewBook([FromBody] Guid bookId)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _bookService.DeleteBook(bookId, baseResponseErrorModel);
             responseModel.SetResponseError(baseResponseErrorModel);
             responseModel.Data = result;
             return ReturnData(responseModel);

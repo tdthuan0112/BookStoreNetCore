@@ -23,7 +23,7 @@ namespace BookStore.BLL.Services
 
         public List<CategoryDTO> GetAllCategories(BaseResponseErrorModel responseErrorModel)
         {
-            List<CategoryDTO> listCategoryDTO = new();
+            List<CategoryDTO> listCategoryDTO = [];
             try
             {
                 var listCategories = _context.Category.AsNoTracking().OrderBy(x => x.Name).ToList();
@@ -43,7 +43,29 @@ namespace BookStore.BLL.Services
             return listCategoryDTO != null && listCategoryDTO.Count != 0 ? listCategoryDTO : [];
         }
 
-        public CategoryDTO FindCategoryByUrl(string url, BaseResponseErrorModel responseErrorModel)
+        public List<CategoryDTO> GetAllActiveCategories(BaseResponseErrorModel responseErrorModel)
+        {
+            List<CategoryDTO> listCategoryDTO = [];
+            try
+            {
+                var listCategories = _context.Category.AsNoTracking().Where(x => x.IsActive).OrderBy(x => x.Name).ToList();
+                if (listCategories != null && listCategories.Count != 0)
+                {
+                    int indexOfAllBook = listCategories.FindIndex(x => x.Url.Equals("all-books"));
+                    var allBookCate = listCategories[indexOfAllBook];
+                    listCategories.RemoveAt(indexOfAllBook);
+                    listCategories.Insert(indexOfAllBook, allBookCate);
+                    listCategoryDTO = _mapper.Map<List<CategoryDTO>>(listCategories);
+                }
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorGetAllCategory, ex.Message);
+            }
+            return listCategoryDTO != null && listCategoryDTO.Count != 0 ? listCategoryDTO : [];
+        }
+
+        public CategoryDTO GetCategoryDetailByUrl(string url, BaseResponseErrorModel responseErrorModel)
         {
             CategoryDTO categoryDTO = new();
             try
@@ -59,34 +81,70 @@ namespace BookStore.BLL.Services
             return categoryDTO ?? new CategoryDTO();
         }
 
-        public List<CategoryDTO> AddCategory(RequestModelCategory requestModel, BaseResponseErrorModel responseErrorModel)
+        public List<CategoryDTO> AddNewCategory(RequestModelAddCategory requestModel, BaseResponseErrorModel responseErrorModel)
         {
             //VALIDATE REQUEST
-            Category category = new Category
+            try
             {
-                CategoryId = Guid.NewGuid(),
-                Name = requestModel.Name,
-                Url = requestModel.Url,
-                CreatedBy = requestModel.CreatedBy,
-                DateCreated = DateTime.Now,
-                IsActive = true
-            };
-            if (category != null)
-            {
-                try
+                var cate = _context.Category.Where(x => x.Url.Equals(requestModel.Url)).FirstOrDefault();
+                if (cate != null)
                 {
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategoryExistedUrl, "");
+                }
+                else
+                {
+                    Category category = new()
+                    {
+                        CategoryId = Guid.NewGuid(),
+                        Name = requestModel.Name,
+                        Url = requestModel.Url,
+                        Quantity = requestModel.Quantity,
+                        CreatedBy = requestModel.CreatedBy,
+                        DateCreated = DateTime.Now,
+                        IsActive = requestModel.IsActive
+                    };
                     _context.Category.Add(category);
                     _context.SaveChanges();
                 }
-                catch (Exception ex)
-                {
-                    responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategory, ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategory, ex.Message);
             }
             return GetAllCategories(responseErrorModel);
         }
 
-        public CategoryDTO FindCategoryById(Guid categoryId, BaseResponseErrorModel responseErrorModel)
+        public List<CategoryDTO> UpdateCategory(RequestModelUpdateCategory requestModel, BaseResponseErrorModel responseErrorModel)
+        {
+            //VALIDATE REQUEST
+            try
+            {
+                var cate = _context.Category.Where(x => x.Url.Equals(requestModel.Url) &&! x.CategoryId.Equals(requestModel.CategoryId)).FirstOrDefault();
+                if (cate != null)
+                {
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategoryExistedUrl, "");
+                }
+                else
+                {
+                    _context.Category.Where(x => x.CategoryId.Equals(requestModel.CategoryId))
+                        .ExecuteUpdate(cate => cate
+                            .SetProperty(b => b.Name, requestModel.Name)
+                            .SetProperty(b => b.Url, requestModel.Url)
+                            .SetProperty(b => b.Quantity, requestModel.Quantity)
+                            .SetProperty(b => b.IsActive, requestModel.IsActive)
+                            .SetProperty(b => b.ModifiedBy, requestModel.ModifiedBy)
+                            .SetProperty(b => b.DateLastModified, DateTime.Now)
+                        );
+                }
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategory, ex.Message);
+            }
+            return GetAllCategories(responseErrorModel);
+        }
+
+        public CategoryDTO GetCategoryDetailById(Guid categoryId, BaseResponseErrorModel responseErrorModel)
         {
             CategoryDTO categoryDTO = new();
             try

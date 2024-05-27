@@ -52,10 +52,9 @@ class RestApiConnection {
     });
   }
 
-  async _fetch(url, config, payload) {
-    console.log(url);
+  async _fetch(url, config) {
+    // console.log(url);
     // console.log(config);
-    // console.log(payload);
 
     const result = await fetch(url, config)
       .then((response) => {

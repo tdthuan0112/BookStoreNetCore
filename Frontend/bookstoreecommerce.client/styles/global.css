@@ -8,6 +8,7 @@ textarea {
 
 input[type='radio'] {
   accent-color: #d70f13e6;
+  cursor: pointer;
 }
 
 body {

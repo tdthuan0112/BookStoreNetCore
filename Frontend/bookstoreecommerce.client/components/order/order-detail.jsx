@@ -1,7 +1,7 @@
 import { BTN_PRIMARY, LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
 import {
   getCssOrderStatus,
-  transfomDateTimeValue,
+  transformDateTimeValue,
 } from "@/lib/helper/common-helper";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,12 +10,12 @@ import classes from "@/styles/common/order-detail.module.css";
 
 export default function OrderDetail({ order, isAdmin = false }) {
   return (
-    <div className={LAYOUT_PRIMARY + classes.orderDetailPage}>
+    <div className={classes.orderDetailPage}>
       <div className={classes.pageTitle}>
         <h2>Order details - #{order.orderNumber}</h2>
         <p>
           <strong>Order date</strong>:{" "}
-          {transfomDateTimeValue(order.dateCreated)}
+          {transformDateTimeValue(order.dateCreated)}
         </p>
       </div>
       <div className={classes.mainInfo}>

@@ -28,7 +28,7 @@
   line-height: 24px;
 }
 
-.singleProperty p {
+.propertyTitle {
   font-size: 18px;
   font-weight: 600;
   line-height: 30px;
@@ -42,7 +42,14 @@
   border-radius: 8px;
 }
 
-.singleProperty input:focus {
+.singleProperty input::-webkit-outer-spin-button,
+.singleProperty input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.singleProperty input:focus, .singleProperty textarea:focus {
   outline: unset;
   border: 1px solid #d70f13e6;;
   border-radius: 8px;
@@ -91,4 +98,20 @@
 
 .btnSaveBook {
   padding: 0;
+}
+
+.activeCheckbox {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.checkboxIcon svg {
+  color: #D70F13;
+  cursor: pointer;
+}
+
+.checkboxIcon svg:hover {
+  color: #d70104;
 }

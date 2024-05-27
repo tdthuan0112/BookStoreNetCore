@@ -29,19 +29,52 @@ namespace BookStoreEcommerce.Server.Controllers
             return ReturnData(responseModel);
         }
 
-        [HttpPost("AddCategory")]
-        public IActionResult AddCategory([FromBody] RequestModelCategory requestModel)
+        [HttpGet("GetAllActiveCategories")]
+        public IActionResult GetAllActiveCategories()
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();
-            var result = _categoryService.AddCategory(requestModel,baseResponseErrorModel);
+            var result = _categoryService.GetAllActiveCategories(baseResponseErrorModel);
+            responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
+            return ReturnData(responseModel);
+        }
+
+        [HttpGet("GetCategoryDetailById/{categoryId}")]
+        public IActionResult GetCategoryDetailById(Guid categoryId)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _categoryService.GetCategoryDetailById(categoryId, baseResponseErrorModel);
+            responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
+            return ReturnData(responseModel);
+        }
+
+        [HttpPost("AddNewCategory")]
+        public IActionResult AddNewCategory([FromBody] RequestModelAddCategory requestModel)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _categoryService.AddNewCategory(requestModel,baseResponseErrorModel);
+            responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
+            return ReturnData(responseModel);
+        }
+
+        [HttpPost("UpdateCategory")]
+        public IActionResult UpdateCategory([FromBody] RequestModelUpdateCategory requestModel)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _categoryService.UpdateCategory(requestModel, baseResponseErrorModel);
             responseModel.Data = result;
             responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
 
         [HttpDelete("DeleteCategory")]
-        public IActionResult DeleteCategory([Required] Guid categoryId)
+        public IActionResult DeleteCategory([FromBody][Required] Guid categoryId)
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();

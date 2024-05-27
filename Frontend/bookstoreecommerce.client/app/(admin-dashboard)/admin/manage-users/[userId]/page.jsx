@@ -10,7 +10,6 @@ import { navigateAdminManageOrderByUserId } from "@/lib/helper/navigate-helper";
 export default async function AdminManageUserDetailPage({ params }) {
   const userId = params.userId;
   const user = await getUserDetailByIdAction(userId);
-  console.log(user);
 
   return (
     <div>

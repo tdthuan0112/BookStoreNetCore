@@ -4,7 +4,9 @@ using BookStore.BLL.Enum;
 using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
 using BookStore.BLL.Models.DTO;
+using BookStore.BLL.Models.Request;
 using BookStore.DAL;
+using BookStore.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.BLL.Services
@@ -77,7 +79,7 @@ namespace BookStore.BLL.Services
             List<BookDTO> listBooksDTO = [];
             try
             {
-                var category = _categoryService.FindCategoryByUrl(categoryUrl, responseErrorModel);
+                var category = _categoryService.GetCategoryDetailByUrl(categoryUrl, responseErrorModel);
                 if (category == null) listBooksDTO = null;
                 else
                 {
@@ -145,6 +147,109 @@ namespace BookStore.BLL.Services
                 responseErrorModel.SetErrorModel(ResponseError.ErrorGetBookDetailByUrl, ex.Message);
             }
             return bookDTO;
+        }
+
+        public List<BookDTO> UpdateBookDetail(RequestModelUpdateBook requestModel, BaseResponseErrorModel responseErrorModel)
+        {
+            //VALIDATE REQUEST
+            try
+            {
+                var cate = _context.Book.Where(x => x.Url.Equals(requestModel.Url) && !x.BookId.Equals(requestModel.BookId)).FirstOrDefault();
+                if (cate != null)
+                {
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorInAddBookExistedUrl, "");
+                }
+                else
+                {
+                    _context.Book.Where(x => x.BookId.Equals(requestModel.BookId))
+                        .ExecuteUpdate(cate => cate
+                            .SetProperty(b => b.Title, requestModel.Title)
+                            .SetProperty(b => b.Author, requestModel.Author)
+                            .SetProperty(b => b.Description, requestModel.Description)
+                            .SetProperty(b => b.Url, requestModel.Url)
+                            .SetProperty(b => b.ImageUrl, requestModel.ImageUrl)
+                            .SetProperty(b => b.QuantityInStock, requestModel.QuantityInStock)
+                            .SetProperty(b => b.OriginalPrice, requestModel.OriginalPrice)
+                            .SetProperty(b => b.DiscountPrice, requestModel.DiscountPrice)
+                            .SetProperty(b => b.IsDiscountPercent, requestModel.IsDiscountPercent)
+                            .SetProperty(b => b.IsActive, requestModel.IsActive)
+                            .SetProperty(b => b.ModifiedBy, requestModel.ModifiedBy)
+                            .SetProperty(b => b.DateLastModified, DateTime.Now)
+                        );
+                    _context.BookCategory.Where(x => x.BookId.Equals(requestModel.BookId)).ExecuteDelete();
+                    foreach(var categoryActiveId in requestModel.ListCategoryIds)
+                    {
+                        BookCategory bookCategory = new()
+                        {
+                            CategoryId = categoryActiveId,
+                            BookId = requestModel.BookId,
+                        };
+                        _context.BookCategory.Add(bookCategory);
+                    }
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategory, ex.Message);
+            }
+            return GetAllBooks(responseErrorModel);
+        }
+
+        public List<BookDTO> AddNewBook(RequestModelAddNewBook requestModel, BaseResponseErrorModel responseErrorModel)
+        {
+            //VALIDATE REQUEST
+            try
+            {
+                var cate = _context.Book.Where(x => x.Url.Equals(requestModel.Url)).FirstOrDefault();
+                if (cate != null)
+                {
+                    responseErrorModel.SetErrorModel(ResponseError.ErrorInAddBookExistedUrl, "");
+                }
+                else
+                {
+                    Book book = new()
+                    {
+                        BookId = Guid.NewGuid(),
+                        Title = requestModel.Title,
+                        Author = requestModel.Author,
+                        Description = requestModel.Description,
+                        Url = requestModel.Url,
+                        ImageUrl = requestModel.ImageUrl,
+                        QuantityInStock = requestModel.QuantityInStock,
+                        OriginalPrice = requestModel.OriginalPrice,
+                        DiscountPrice = requestModel.DiscountPrice,
+                        IsDiscountPercent = requestModel.IsDiscountPercent,
+                        CreatedBy = requestModel.CreatedBy,
+                        DateCreated = DateTime.Now,
+                        IsActive = requestModel.IsActive
+                    };
+                    _context.Book.Add(book);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInAddCategory, ex.Message);
+            }
+            return GetAllBooks(responseErrorModel);
+        }
+
+        public List<BookDTO> DeleteBook(Guid bookId, BaseResponseErrorModel responseErrorModel)
+        {
+            List<BookDTO> listBookDTO = [];
+            try
+            {
+                _context.Book.Where(x => x.BookId.Equals(bookId)).ExecuteDelete();
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInDeleteCategoryById, ex.Message);
+            }
+
+            listBookDTO = GetAllBooks(responseErrorModel);
+
+            return listBookDTO ?? [];
         }
     }
 }

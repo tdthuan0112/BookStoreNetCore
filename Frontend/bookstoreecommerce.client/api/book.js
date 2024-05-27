@@ -19,6 +19,18 @@ class BookApi extends RestApiConnection {
   async getBookDetailByBookId(bookId) {
     return await super.get(`getBookDetailByBookId/${bookId}`, {});
   }
+
+  async updateBookDetail(payload) {
+    return await super.post(`UpdateBookDetail`, payload);
+  }
+
+  async deleteBook(bookId) {
+    return await super.delete(`DeleteBook`, bookId);
+  }
+
+  async addNewBook(payload) {
+    return await super.post(`AddNewBook`, payload);
+  }
 }
 
 export default BookApi;

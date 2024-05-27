@@ -1,0 +1,57 @@
+.adminManageCategoriesPage {
+  width: 100%;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnAddNewCate {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 12px 32px;
+}
+
+.mainContainer {
+  width: 100%;
+  background-color: white;
+  margin: 20px 0;
+  padding: 10px;
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-spacing: unset;
+  text-align: center;
+}
+
+.cateItem:hover {
+  background-color: #f5f5f5;
+}
+
+.cateItem:hover td svg {
+  color: #D70F13E6;
+}
+
+.cateItem:hover td button {
+  background-color: #D70F13E6;
+  color: white;
+}
+
+.cateItem td {
+  padding: 10px 16px;
+}
+
+.cateItem td svg {
+  color: #D70F13B2;
+}
+
+.buttonEdit {
+  width: 120px;
+  height: 28px;
+  padding: 0;
+}

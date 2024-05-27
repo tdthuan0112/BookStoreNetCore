@@ -1,26 +1,40 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import CustomIcon from "@/components/common/custom-icon.jsx";
+
+import classes from "@/styles/layout/admin-manage-books-page.module.css";
 
 import { getAllBooksAction } from "@/actions/book-actions";
-import classes from "@/styles/layout/admin-manage-books-age.module.css";
 import { navigateAdminEditBookDetail } from "@/lib/helper/navigate-helper";
+import { BTN_PRIMARY } from "@/lib/constant/constantCssName";
 
 export default async function ManageBooksPage() {
   const listBooks = await getAllBooksAction();
   return (
     <div>
-      <h3>Manage Books</h3>
-      <form className={classes.mainContainer}>
+      <div className={classes.headerBlock}>
+        <h3>Manage Books</h3>
+        <Link
+          className={BTN_PRIMARY + classes.btnAddNewBook}
+          href="/admin/manage-books/add-new-book"
+        >
+          <CustomIcon icon="carbon:add-filled" />
+          Add new book
+        </Link>
+      </div>
+      <div className={classes.mainContainer}>
         {listBooks.map((book) => {
           const isHaveDiscount = book.discountPrice > 0;
           return (
-            <div className={classes.bookCard} key={book.id}>
+            <div className={classes.bookCard} key={book.id} bookid={book.id}>
               <Image
                 src={book.imageUrl}
                 width={120}
                 height={180}
                 alt={book.title}
               />
-              <div className={classes.bookInfo}>
+              <form className={classes.bookInfo}>
                 <h3>{book.title}</h3>
                 <p>{book.author}</p>
                 <div className={classes.priceBlock}>
@@ -47,11 +61,11 @@ export default async function ManageBooksPage() {
                 >
                   Edit book
                 </button>
-              </div>
+              </form>
             </div>
           );
         })}
-      </form>
+      </div>
     </div>
   );
 }
