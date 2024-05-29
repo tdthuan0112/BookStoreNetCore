@@ -48,6 +48,8 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
   height: 32px;
+  height: 34px;
+    line-height: 16px;
 }
 
 .author {

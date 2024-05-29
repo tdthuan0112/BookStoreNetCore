@@ -3,7 +3,7 @@ import {
   getCssOrderStatus,
   transfomDateValue,
 } from "@/lib/helper/common-helper";
-import classes from "@/styles/layout/manage-order-page.module.css";
+import classes from "@/styles/layout/account-manage-order-page.module.css";
 import Link from "next/link";
 
 export default async function AccountManageOrderPage() {

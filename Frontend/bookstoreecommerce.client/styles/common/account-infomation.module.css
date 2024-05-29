@@ -34,3 +34,7 @@
   align-self: center;
   text-align: center;
 }
+
+.userName {
+  padding: 8px 0px;
+}

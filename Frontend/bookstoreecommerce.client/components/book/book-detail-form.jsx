@@ -196,7 +196,7 @@ function AddNewBookDetailForm({ allCategories }) {
       <Image
         src={defaultImageSquare}
         width={200}
-        height={280}
+        height={200}
         alt="Default Image Square"
       />
       <div className={classes.contentContainer}>

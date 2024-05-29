@@ -31,16 +31,28 @@ export default function AccountInfomation({ userDetail, searchParams }) {
     <>
       <h2>Account infomation</h2>
       <form className={classes.accountInfo}>
-        <DataRow labelText="First Name" value="Thuan" disabled={!isEditMode} />
-        <DataRow labelText="Last Name" value="Tran" disabled={!isEditMode} />
+        <div className={classes.dataRow}>
+          <p>Username</p>
+          <p className={classes.userName}>ThuanTran</p>
+        </div>
+        <DataRow
+          labelText="First Name"
+          defaultValue="Thuan"
+          disabled={!isEditMode}
+        />
+        <DataRow
+          labelText="Last Name"
+          defaultValue="Tran"
+          disabled={!isEditMode}
+        />
         <DataRow
           labelText="Phone"
-          value="(+84) 123 456 789"
+          defaultValue="(+84) 123 456 789"
           disabled={!isEditMode}
         />
         <DataRow
           labelText="Email"
-          value="thuanmaildemo@gmail.com"
+          defaultValue="thuanmaildemo@gmail.com"
           disabled={!isEditMode}
         />
         {/* Gender */}
@@ -48,25 +60,25 @@ export default function AccountInfomation({ userDetail, searchParams }) {
         <DataRow
           type="date"
           labelText="Birthday"
-          value="2017-06-01"
+          defaultValue="2017-06-01"
           disabled={!isEditMode}
         />
         <DataRow
           type="password"
           labelText="Cureent password"
-          value="123456"
+          defaultValue="123456"
           disabled={!isEditMode}
         />
         <DataRow
           type="password"
           labelText="New password"
-          value="123456"
+          defaultValue="123456"
           disabled={!isEditMode}
         />
         <DataRow
           type="password"
           labelText="Re-type password"
-          value="12345"
+          defaultValue="12345"
           disabled={!isEditMode}
         />
         {button}
@@ -78,7 +90,7 @@ export default function AccountInfomation({ userDetail, searchParams }) {
 function DataRow({
   type = "text",
   labelText,
-  value,
+  defaultValue,
   placeholder,
   disabled = true,
 }) {
@@ -88,7 +100,7 @@ function DataRow({
       <input
         className={classes.inputText}
         type={type}
-        value={value}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         disabled={disabled}
       />
