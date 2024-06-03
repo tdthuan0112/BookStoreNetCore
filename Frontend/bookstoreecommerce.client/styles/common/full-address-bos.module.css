@@ -1,0 +1,6 @@
+.fullAddressBox {
+  display: grid;
+  grid-template-columns: 48% 48%;  
+  justify-content: space-between;
+  grid-gap: 20px;
+}

@@ -4,10 +4,10 @@ import Articles from "@/components/article/articles";
 import BookRecommendation from "@/components/book/book-recommendation";
 import SubscribeEmail from "@/components/common/subscribe-email";
 
-import { BOOK_API } from "@/api/index";
+import { getAllBooksAction } from "@/actions/book-actions";
 
 export default async function HomePage() {
-  const books = await BOOK_API.getAllBook();
+  const books = await getAllBooksAction();
 
   //TODO
   function fetchBestOfTheMonth() {}

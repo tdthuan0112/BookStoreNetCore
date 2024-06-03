@@ -63,7 +63,7 @@ namespace BookStore.BLL.Services
                 var listBooks = _context.Book
                     .AsNoTracking()
                     .OrderByDescending(book => book.QuantitySold)
-                    .Take(ConstantCommon.NumberOfBookHomePage)
+                    .Take(CommonConstant.NumberOfBookHomePage)
                     .ToList();
                 listBooksDTO = _mapper.Map<List<BookDTO>>(listBooks);
             }

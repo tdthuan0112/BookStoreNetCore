@@ -1,0 +1,44 @@
+.adminHeaderBlock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 25px;
+}
+
+.authenticated {
+  display: flex;
+  gap: 3px;
+}
+
+.quickMenu {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  top: 25px;
+  white-space: nowrap;
+  box-shadow: 3px 3px 3px 3px #7794B640;
+  border: 1px solid  #C4C4C4;
+  border-radius: 8px;
+}
+
+.quickMenu a {
+  color: black !important;
+}
+
+.quickMenu a:hover {
+  color: #D70F13 !important;
+  text-decoration: underline;
+}
+
+.hrLine {
+  width: 100%;
+  border: 1px solid #C4C4C4;
+  margin: 0;
+}
+
+.logoutBtn {
+  padding: 6px 50px;
+}

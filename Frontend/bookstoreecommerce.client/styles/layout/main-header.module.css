@@ -1,3 +1,10 @@
+.main {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .header {
   background: linear-gradient(180deg, rgba(215, 15, 19, 0.9) 0%, rgba(215, 15, 19, 0.7) 100%);
   color: white;
@@ -40,6 +47,8 @@
 .authentication a:hover {
   text-decoration: underline;
 }
+
+
 
 .headerInfo {
   display: flex;

@@ -1,0 +1,95 @@
+.locationSelection {
+  width: 100%;
+  height: 30px;
+  position: relative;
+}
+
+.btnContainer {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #a4a3a3;
+  border-radius: 8px;
+  background-color: white;
+  text-align: start;
+  padding: 0 12px;
+  position: relative;
+  color: #757575;
+}
+
+.btnContainer.hasValue {
+  color: #000000;
+}
+
+.btnContainer:before, .btnContainer:after {
+  content: "";
+  position: absolute;
+  background: #000000;
+  border-radius: 24px;
+  display: block;
+  width: 5px;
+  height: 1px;
+  top: 50%;
+}
+
+.btnContainer:before {
+  border: 0;
+  transform: rotate(45deg);
+  left: unset;
+  bottom: unset;
+  right: 18px;
+  z-index: 0;
+}
+
+.btnContainer:after {
+  border: 0;
+  transform: rotate(-45deg);
+  left: unset;
+  right: 15px;
+}
+
+.customSelect {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 4px 10px;
+  min-width: 250px;
+  border: 1px solid #a4a3a3;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.listOptions {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 190px;
+  display: grid;
+  grid-template-columns: 47% 47%;
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: start;
+  margin-top: 10px;
+  white-space: nowrap;
+}
+
+.inputSearch {
+  width: 90%;
+  margin-top: 10px;
+}
+
+.optionItem {
+  width: 100%;
+  min-height: 22px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  line-height: 22px;
+}
+
+.optionItem:hover {
+  background-color: #4285de;
+  color: white;
+}

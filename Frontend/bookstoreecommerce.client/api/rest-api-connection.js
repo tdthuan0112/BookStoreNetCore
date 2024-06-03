@@ -29,9 +29,18 @@ class RestApiConnection {
     return `${this.#baseApiUrl}/${this.#subPath}/${endpoint}`;
   }
 
-  async get(endpoint = "", payload = {}) {
+  async get(endpoint = "", payload = {}, config = {}) {
     const url = this.buildQuery(endpoint);
-    return await this._fetch(url, { method: "GET", ...this.#config }, payload);
+    console.log({ ...this.#config.headers, ...config.headers });
+    return await this._fetch(
+      url,
+      {
+        method: "GET",
+        ...this.#config,
+        headers: { ...this.#config.headers, ...config.headers },
+      },
+      payload
+    );
   }
 
   async post(endpoint = "", payload) {
@@ -68,7 +77,7 @@ class RestApiConnection {
         //TODO HANDLE DATA (OPTIONAL)
         //THINKING.......
 
-        return result.data;
+        return result;
       });
     return result;
   }

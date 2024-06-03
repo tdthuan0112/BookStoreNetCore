@@ -55,6 +55,10 @@ namespace BookStore.BLL.Enum
         ErrorGetAllUsers = 4000,
         [Description("Error get user by id")]
         ErrorGetUserById = 4001,
+        [Description("Error in add new user")]
+        ErrorInAddNewUser = 4002,
+        [Description("Error in delete user by user id")]
+        ErrorInDeleteUserByUserId= 4003,
         #endregion
 
         #region Order
@@ -64,6 +68,33 @@ namespace BookStore.BLL.Enum
         FailedToSubmitOrder = 5001,
         [Description("Failed to get order detail by order id")]
         FailedToGetOrderDetailByOrderId = 5001,
+        #endregion
+
+        #region Authentication
+        [Description("In correct Password")]
+        InCorrectPassword = 6000,
+        [Description("Could not find user by user name")]
+        CouldNotFindUserByUserName = 6001,
+        [Description("Error in login")]
+        ErrorInLogin = 6002,
+        [Description("Your login session is expired, please login again")]
+        ExpiredAuthentication = 6003,
+        #endregion
+
+        #region Role
+        [Description("Error in get role")]
+        ErrorInGetRole = 7000,
+        [Description("Could Not Find Role By Role Name")]
+        CouldNotFindRoleByRoleName = 7001,
+        #endregion
+
+        #region JWT
+        [Description("Expired Token")]
+        ExpiredToken = 8000,
+        [Description("Error in validate token")]
+        ErrorInValidateToken = 8001,
+        [Description("Token is empty")]
+        TokenIsEmpty = 8002,
         #endregion
     }
 

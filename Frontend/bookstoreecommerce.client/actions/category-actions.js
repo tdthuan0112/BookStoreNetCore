@@ -4,15 +4,18 @@ import { getAdminUserAction } from "./user-actions";
 import { redirect } from "next/navigation";
 
 export async function getAllCategoriesAction() {
-  return await CATEGORY_API.getAllCategories();
+  const response = await CATEGORY_API.getAllCategories();
+  return response.data;
 }
 
 export async function getAllActiveCategoriesAction() {
-  return await CATEGORY_API.getAllActiveCategories();
+  const response = await CATEGORY_API.getAllActiveCategories();
+  return response.data;
 }
 
 export async function getCategoryDetailByIdAction(categoryId) {
-  return await CATEGORY_API.getCategoryDetailById(categoryId);
+  const response = await CATEGORY_API.getCategoryDetailById(categoryId);
+  return response.data;
 }
 
 export async function deleteCategoryAction(formData) {

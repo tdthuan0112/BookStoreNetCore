@@ -6,7 +6,8 @@ namespace BookStore.DAL.Constant
     public static class ConstantInitDb
     {
         public static readonly Guid AdministratorId = Guid.NewGuid();
-        public static readonly Guid RoleId = Guid.NewGuid();
+        public static readonly Guid RoleAdminId = Guid.NewGuid();
+        public static readonly Guid RoleUserId = Guid.NewGuid();
         public static readonly Category[] DUMMY_CATEGORIES = [
             new Category {
                 CategoryId = Guid.NewGuid(),
@@ -195,30 +196,75 @@ namespace BookStore.DAL.Constant
         public static readonly User USER_ADMIN = new()
         {
             UserId = AdministratorId,
-            UserName = "Administrator",
-            UserPassword = "123456",
+            UserName = "admin",
+            UserPassword = "txPzQDMu4jM=", // 123456
             FirstName = "Thuan",
             LastName = "Tran",
             Email = "thuanmaildemo@gmail.com",
             Gender = (int)Sexes.Male,
             PhoneNumber = "0123 456 789",
             Address = "123 Highway 1k",
-            District = "Di An",
-            Ward = "Binh An",
-            Province = "Binh Duong",
+            ProvinceId = 74,
+            ProvinceName = "Binh Duong",
+            DistrictId = 724,
+            DistrictName = "Di An",
+            WardId = 25951,
+            WardName = "Binh An",
             DateOfBirth = new DateTime(1999, 12, 1),
             DateCreated = DateTime.Now,
             IsActive = true,
-            RoleId = RoleId
+            RoleId = RoleAdminId
         };
+
+        public static readonly User USER_NORMAL = new()
+        {
+            UserId = Guid.NewGuid(),
+            UserName = "user",
+            UserPassword = "txPzQDMu4jM=", // 123456
+            FirstName = "Lam",
+            LastName = "Nguyen",
+            Email = "lammaildemo@gmail.com",
+            Gender = (int)Sexes.Male,
+            PhoneNumber = "0123 456 789",
+            Address = "123 Highway 1k",
+            ProvinceId = 74,
+            ProvinceName = "Binh Duong",
+            DistrictId = 724,
+            DistrictName = "Di An",
+            WardId = 25951,
+            WardName = "Binh An",
+            DateOfBirth = new DateTime(2000, 1, 1),
+            DateCreated = DateTime.Now,
+            IsActive = true,
+            RoleId = RoleUserId
+        };
+
+        public static readonly User[] USERS = [
+            USER_ADMIN,
+            USER_NORMAL
+        ];
 
         public static readonly Role ROLE_ADMIN = new()
         {
-            RoleId = RoleId,
+            RoleId = RoleAdminId,
             RoleName = "Administrator",
             CreatedBy = AdministratorId,
             DateCreated = DateTime.Now,
             IsActive = true
         };
+
+        public static readonly Role ROLE_BUYER = new()
+        {
+            RoleId = RoleUserId,
+            RoleName = "Buyer",
+            CreatedBy = AdministratorId,
+            DateCreated = DateTime.Now,
+            IsActive = true
+        };
+
+        public static readonly Role[] ROLES = [
+            ROLE_ADMIN,
+            ROLE_BUYER
+        ];
     }
 }

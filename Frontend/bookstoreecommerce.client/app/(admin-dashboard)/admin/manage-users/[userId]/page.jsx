@@ -1,6 +1,9 @@
 import Image from "next/image";
 
-import { getUserDetailByIdAction } from "@/actions/user-actions";
+import {
+  deleteUserByUserIdAction,
+  getUserDetailByIdAction,
+} from "@/actions/user-actions";
 import classes from "@/styles/layout/admin-manage-user-detail-page.module.css";
 import userCircleImg from "@/assets/img/user-circle-solid.png";
 import { getGenderById } from "@/lib/helper/common-helper";
@@ -10,7 +13,7 @@ import { navigateAdminManageOrderByUserId } from "@/lib/helper/navigate-helper";
 export default async function AdminManageUserDetailPage({ params }) {
   const userId = params.userId;
   const user = await getUserDetailByIdAction(userId);
-
+  console.log(user);
   return (
     <div>
       <h2>User #{user.userId}</h2>
@@ -69,7 +72,7 @@ export default async function AdminManageUserDetailPage({ params }) {
             <input
               className={classes.infoInput}
               type="text"
-              defaultValue={`${user.address} ${user.ward} ${user.district} ${user.province}`}
+              defaultValue={`${user.address} ${user.wardName} ${user.districtName} ${user.provinceName}`}
             />
           </div>
         </div>
@@ -88,7 +91,12 @@ export default async function AdminManageUserDetailPage({ params }) {
           >
             Orders of user
           </button>
-          <button className={classes.deleteButton}>Delete user</button>
+          <button
+            formAction={deleteUserByUserIdAction}
+            className={classes.deleteButton}
+          >
+            Delete user
+          </button>
         </form>
       </div>
     </div>

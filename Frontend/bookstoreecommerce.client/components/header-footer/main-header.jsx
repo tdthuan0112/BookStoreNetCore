@@ -11,8 +11,22 @@ import cartIcon from "@/assets/img/cart.png";
 
 import { LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
 import classes from "@/styles/layout/main-header.module.css";
+import { isAuthenticatedAction } from "@/actions/authentication-actions";
+import UserHeaderBlock from "./user-header-block";
 
-export default function MainHeader() {
+export default async function MainHeader() {
+  let userHeaderBlock;
+  const isAuthenticated = await isAuthenticatedAction();
+  if (!isAuthenticated) {
+    userHeaderBlock = (
+      <li className={classes.authentication}>
+        <Link href="/buyer/login">Login</Link>|
+        <Link href="/buyer/signup">Sign Up</Link>
+      </li>
+    );
+  } else {
+    userHeaderBlock = <UserHeaderBlock />;
+  }
   return (
     <header className={classes.header}>
       <main className={LAYOUT_PRIMARY + classes.main}>
@@ -39,10 +53,7 @@ export default function MainHeader() {
                 <p>Help</p>
               </Link>
             </li>
-            <li className={classes.authentication}>
-              <Link href="/buyer/login">Login</Link>|
-              <Link href="/buyer/signup">Sign Up</Link>
-            </li>
+            {userHeaderBlock}
           </ul>
         </div>
         <div className={classes.headerInfo}>

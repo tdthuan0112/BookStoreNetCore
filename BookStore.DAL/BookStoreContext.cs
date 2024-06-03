@@ -52,12 +52,12 @@ namespace BookStore.DAL
 
         private void SeedData_User(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasData(ConstantInitDb.USER_ADMIN);
+            foreach (var item in ConstantInitDb.USERS) { modelBuilder.Entity<User>().HasData(item); };
         }
 
         private void SeedData_Role(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Role>().HasData(ConstantInitDb.ROLE_ADMIN);
+            foreach (var item in ConstantInitDb.ROLES) { modelBuilder.Entity<Role>().HasData(item); };
         }
 
         private void SeedData_BookCategory(ModelBuilder modelBuilder)

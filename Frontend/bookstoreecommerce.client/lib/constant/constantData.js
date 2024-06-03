@@ -211,3 +211,18 @@ export const DUMMY_PAYMENT_METHODS = [
     methodName: "Pay with international cards Visa, Master, JCB",
   },
 ];
+
+export const DEFAULT_PROVINCE = {
+  id: -1,
+  value: "Select Province",
+};
+
+export const DEFAULT_DISTRICT = {
+  id: -1,
+  value: "Select District",
+};
+
+export const DEFAULT_WARD = {
+  id: -1,
+  value: "Select Ward",
+};

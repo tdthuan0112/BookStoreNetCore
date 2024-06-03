@@ -25,9 +25,12 @@ namespace BookStore.DAL.Models
         public int Gender { get; set; }
         public string PhoneNumber { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-        public string District { get; set; } = string.Empty;
-        public string Ward { get; set; } = string.Empty;
-        public string Province { get; set; } = string.Empty;
+        public int DistrictId { get; set; }
+        public string DistrictName { get; set; } = string.Empty;
+        public int WardId { get; set; }
+        public string WardName { get; set; } = string.Empty;
+        public int ProvinceId { get; set; }
+        public string ProvinceName { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateLastModified { get; set; }

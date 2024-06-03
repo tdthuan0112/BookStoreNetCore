@@ -20,6 +20,9 @@ namespace BookStore.BLL.Mapping
             CreateMap<RequestModelCart, CartItem>();
 
             CreateMap<OrderItem, OrderItemDTO>();
+
+            CreateMap<RoleDTO, Role>();
+            CreateMap<Role, RoleDTO>();
         }
     }
 }

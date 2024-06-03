@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 import { BTN_PRIMARY } from "@/lib/constant/constantCssName";
 import classes from "@/styles/layout/login-page.module.css";
-import Link from "next/link";
+
+import { loginAction } from "@/actions/authentication-actions.js";
 
 export default function LoginPage() {
   return (
@@ -14,7 +17,7 @@ export default function LoginPage() {
           </Link>
         </div>
       </div>
-      <form className={classes.userInputForm}>
+      <form action={loginAction} className={classes.userInputForm}>
         <input type="text" placeholder="Username" name="userName" />
         <input type="password" placeholder="Password" name="password" />
         <button type="submit" className={BTN_PRIMARY + classes.loginBtn}>

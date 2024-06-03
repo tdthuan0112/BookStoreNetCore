@@ -1,8 +1,12 @@
+import Link from "next/link";
+//Component
+import FullAddressBox from "@/components/common/full-address-box";
+//Css
 import { BTN_PRIMARY } from "@/lib/constant/constantCssName";
 import classes from "@/styles/layout/signup-page.module.css";
-import Link from "next/link";
+import { createUserAction } from "@/actions/user-actions";
 
-export default function SignupPage() {
+export default async function SignupPage() {
   return (
     <div className={classes.signUpPage}>
       <div className={classes.header}>
@@ -14,9 +18,15 @@ export default function SignupPage() {
           </Link>
         </div>
       </div>
-      <form className={classes.userInputForm}>
+      <form action={createUserAction} className={classes.userInputForm}>
         <input type="text" placeholder="Username" name="userName" />
         <input type="password" placeholder="Password" name="password" />
+        <input type="text" placeholder="FirstName" name="firstName" />
+        <input type="text" placeholder="LastName" name="lastName" />
+        <input type="text" placeholder="Email" name="email" />
+        <input type="number" placeholder="PhoneNumber" name="phoneNumber" />
+        <FullAddressBox />
+        <input type="date" placeholder="PhoneNumber" name="dateOfBirth" />
         <button type="submit" className={BTN_PRIMARY + classes.loginBtn}>
           Sign up
         </button>

@@ -4,11 +4,10 @@ import ListBooks from "@/components/book/list-books";
 import CategoryCatalog from "@/components/category/category-catalog";
 import SortBy from "@/components/common/sort-by";
 import { getAllActiveCategoriesAction } from "@/actions/category-actions.js";
+import { getBookByCategoryUrlAction } from "@/actions/book-actions";
 
 import classes from "@/styles/layout/category-page.module.css";
 import { LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
-
-import { BOOK_API, CATEGORY_API } from "@/api";
 
 export default async function CategoryPage({ params }) {
   const categoryName = params.categoryName;
@@ -20,7 +19,7 @@ export default async function CategoryPage({ params }) {
   );
   if (!category) redirect("/all-books");
 
-  const booksByCategoryUrl = await BOOK_API.getBookByCategoryUrl(categoryName);
+  const booksByCategoryUrl = await getBookByCategoryUrlAction(categoryName);
 
   return (
     <div className={LAYOUT_PRIMARY + classes.categoryPage}>

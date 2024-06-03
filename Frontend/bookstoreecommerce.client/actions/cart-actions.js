@@ -19,7 +19,7 @@ export async function getCartAction(redirectUrl = "") {
   ) {
     redirect(redirectUrl);
   }
-  return cart;
+  return cart.data;
 }
 export async function addToCartAction(userId, bookId, formData) {
   const adminUser = await getAdminUserAction();

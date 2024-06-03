@@ -23,13 +23,16 @@ export async function submitOrderAction(data) {
 export async function getAllUserOrdersAction(userId) {
   const adminUser = await getAdminUserAction();
   const adminId = adminUser.userId;
-  return await ORDER_API.getAllUserOrders(adminId);
+  const response = await ORDER_API.getAllUserOrders(adminId);
+  return response.data;
 }
 
 export async function getOrderDetailByIdAction(orderId) {
-  return await ORDER_API.getOrderDetailByOrderId(orderId);
+  const response = await ORDER_API.getOrderDetailByOrderId(orderId);
+  return response.data;
 }
 
 export async function GetAllOrdersAction(userId, orderId) {
-  return await ORDER_API.GetAllOrders(userId, orderId);
+  const response = await ORDER_API.GetAllOrders(userId, orderId);
+  return response.data;
 }

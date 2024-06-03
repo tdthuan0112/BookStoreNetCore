@@ -1,3 +1,4 @@
+using BookStore.BLL.Constant;
 using BookStore.BLL.Interfaces;
 using BookStore.BLL.Mapping;
 using BookStore.BLL.Services;
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -44,12 +45,22 @@ builder.Services.AddCors(options =>
                       });
 });
 
+builder.Services.Configure<ConfigAuthentication>(
+    builder.Configuration.GetSection(ConfigAuthentication.Authentication));
+
+builder.Services.Configure<ConfigJwt>(
+    builder.Configuration.GetSection(ConfigJwt.JWT));
+
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<ICommonService, CommonService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<ILocationService, LocationService>();
 
 var app = builder.Build();
 

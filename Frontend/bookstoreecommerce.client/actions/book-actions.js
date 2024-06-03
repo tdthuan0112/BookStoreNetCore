@@ -4,16 +4,29 @@ import { BOOK_API } from "@/api";
 import { getAdminUserAction } from "./user-actions";
 
 export async function getAllBooksAction() {
-  return await BOOK_API.getAllBook();
+  const response = await BOOK_API.getAllBook();
+  return response.data;
+}
+
+export async function getBookByCategoryUrlAction(categoryUrl) {
+  const response = await BOOK_API.getBookByCategoryUrl(categoryUrl);
+  return response.data;
+}
+
+export async function getBookDetailByUrlAction(bookUrl) {
+  const response = await BOOK_API.getBookDetailByUrl(bookUrl);
+  return response.data;
 }
 
 export async function getBookDetailByBookId(bookId) {
-  return await BOOK_API.getBookDetailByBookId(bookId);
+  const response = await BOOK_API.getBookDetailByBookId(bookId);
+  return response.data;
 }
 
 export async function deleteBookAction(formData) {
   const bookId = formData.get("bookId");
-  return await BOOK_API.deleteBook(bookId);
+  const response = await BOOK_API.deleteBook(bookId);
+  return response.data;
 }
 
 export async function updateBookDetailAction(formData) {
@@ -36,7 +49,8 @@ export async function updateBookDetailAction(formData) {
     listCategoryIds: data.listCategoryIds.split(","),
   };
   console.log(payload);
-  return await BOOK_API.updateBookDetail(payload);
+  const response = await BOOK_API.updateBookDetail(payload);
+  return response.data;
 }
 
 export async function addNewBookAction(formData) {
@@ -57,6 +71,6 @@ export async function addNewBookAction(formData) {
     createdBy: createdBy,
     listCategoryIds: data.listCategoryIds.split(","),
   };
-  console.log(payload);
-  return await BOOK_API.addNewBook(payload);
+  const response = await BOOK_API.addNewBook(payload);
+  return response.data;
 }
