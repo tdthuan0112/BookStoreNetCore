@@ -1,14 +1,14 @@
 "use server";
 
 import { ORDER_API } from "@/api/index";
-import { getAdminUserAction } from "./user-actions";
+import { getUserDetailAction } from "./user-actions";
 import { redirect } from "next/navigation";
 
 export async function submitOrderAction(data) {
-  const adminUser = await getAdminUserAction();
-  const adminId = adminUser.userId;
+  const user = await getUserDetailAction();
+  const userId = user.userId;
   let submitData = {
-    userId: adminId,
+    userId: userId,
     userNote: "Nothing to NOTE here",
     address: "123 Highway 1k Binh An",
     ward: "Di An",
@@ -16,14 +16,16 @@ export async function submitOrderAction(data) {
     shippingMethod: 0,
     paymentMethod: 0,
   };
-  const result = await ORDER_API.submitOrder(submitData);
+  const response = await ORDER_API.submitOrder(submitData);
+  console.log(response);
+  const result = response.data;
   redirect(`/order-success/${result.orderId}`);
 }
 
-export async function getAllUserOrdersAction(userId) {
-  const adminUser = await getAdminUserAction();
-  const adminId = adminUser.userId;
-  const response = await ORDER_API.getAllUserOrders(adminId);
+export async function getAllUserOrdersAction() {
+  const user = await getUserDetailAction();
+  const userId = user.userId;
+  const response = await ORDER_API.getAllUserOrders(userId);
   return response.data;
 }
 

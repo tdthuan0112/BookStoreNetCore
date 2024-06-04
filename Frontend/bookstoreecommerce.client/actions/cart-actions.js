@@ -2,52 +2,66 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 
 import { CART_API } from "@/api";
-import { getAdminUserAction } from "./user-actions";
+import { getUserDetailAction } from "./user-actions";
 import { isEmptyObject, isNullOrUndefined } from "@/lib/helper/common-helper";
+import { checkAuth } from "./authentication-actions";
 
-export async function getCartAction(redirectUrl = "") {
-  const adminUser = await getAdminUserAction();
-  const adminId = adminUser.userId;
-  const cart = await CART_API.getCart(adminId);
+export async function handleClickCartIcon(pathname) {
+  const isAuthenticated = await checkAuth(pathname);
+  if (isAuthenticated) redirect("/cart");
+}
+
+export async function getCartAction(isRedirectCartPage = false) {
+  const user = await getUserDetailAction();
+  if (isNullOrUndefined(user)) redirect("/");
+  const userId = user.userId;
+  const response = await CART_API.getCart(userId);
+  const cart = response.data;
   if (
     (isNullOrUndefined(cart) ||
       isNullOrUndefined(cart?.cartItems) ||
       isEmptyObject(cart.cartItems)) &&
-    redirectUrl !== ""
+    isRedirectCartPage
   ) {
-    redirect(redirectUrl);
+    redirect("/cart");
   }
-  return cart.data;
+  return cart;
 }
-export async function addToCartAction(userId, bookId, formData) {
-  const adminUser = await getAdminUserAction();
-  const adminId = adminUser.userId;
+export async function addToCartAction(callbackUrl, bookId, formData) {
+  await checkAuth(callbackUrl);
+  const user = await getUserDetailAction();
+  if (isNullOrUndefined(user)) redirect("/");
+  console.log(user);
+  const userId = user.userId;
   let quantity = 1;
   if (formData != null) {
     quantity = formData.get("quantity");
   }
-  await CART_API.addToCart(adminId, bookId, quantity);
+  await CART_API.addToCart(userId, bookId, quantity);
   revalidatePath("/cart");
 }
 
-export async function buyNowAction(userId, bookId, formData) {
-  addToCartAction(userId, bookId, formData);
+export async function buyNowAction(callbackUrl, bookId, formData) {
+  addToCartAction(callbackUrl, bookId, formData);
   redirect("/cart");
 }
 
-export async function deleteCartAction(userId, bookId) {
-  const adminUser = await getAdminUserAction();
-  const adminId = adminUser.userId;
-  await CART_API.deleteCart(adminId, bookId);
+export async function deleteCartAction(bookId) {
+  const user = await getUserDetailAction();
+  if (isNullOrUndefined(user)) redirect("/");
+  const userId = user.userId;
+  await CART_API.deleteCart(userId, bookId);
   revalidatePath("/cart");
 }
 
-export async function updateCartAction(userId, bookId, quantity) {
-  const adminUser = await getAdminUserAction();
-  const adminId = adminUser.userId;
+export async function updateCartAction(bookId, quantity) {
+  const user = await getUserDetailAction();
+  if (isNullOrUndefined(user)) redirect("/");
+  const userId = user.userId;
 
-  await CART_API.updateCart(adminId, bookId, quantity);
+  await CART_API.updateCart(userId, bookId, quantity);
   revalidatePath("/cart");
 }

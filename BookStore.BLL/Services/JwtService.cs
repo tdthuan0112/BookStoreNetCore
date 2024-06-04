@@ -52,7 +52,7 @@ namespace BookStore.BLL.Services
 
         public JwtResponseUserModel ValidateJWTSercurityToken(string token, BaseResponseErrorModel responseErrorModel)
         {
-            if (token == null)
+            if (token == null || String.IsNullOrEmpty(token))
             {
                 responseErrorModel.SetErrorModel(ResponseError.TokenIsEmpty);
                 return null;

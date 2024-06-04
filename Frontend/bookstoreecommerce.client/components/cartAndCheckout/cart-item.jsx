@@ -12,10 +12,10 @@ export default function CartItem({ cartItem }) {
   const { pending } = useFormStatus();
   const isHaveDiscount = cartItem.discountPrice > 0;
   function onHandleUpdateCart(quantity) {
-    updateCartAction("", cartItem.bookId, quantity);
+    updateCartAction(cartItem.bookId, quantity);
   }
   return (
-    <form action={() => deleteCartAction("", cartItem.bookId)}>
+    <form action={() => deleteCartAction(cartItem.bookId)}>
       <div className={classes.cartItem}>
         <div className={classes.imageAndTitle}>
           <Link href={`/book-detail/${cartItem.url}`}>

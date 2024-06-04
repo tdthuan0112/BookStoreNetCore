@@ -1,13 +1,14 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
 import { AUTHENTICATION_API } from "@/api/index.js";
 import {
   isEmptyOrNull,
   isHasError,
   isNullOrUndefined,
 } from "@/lib/helper/common-helper";
-import { redirect } from "next/navigation";
 
 export async function loginAction(formData) {
   const data = Object.fromEntries(formData);
@@ -16,22 +17,13 @@ export async function loginAction(formData) {
     const responseData = response.data;
     cookies().set("token", responseData.token);
     cookies().set("expiration", responseData.expiration);
-    const redirectUrl = cookies().get("redirectUrl");
-    if (!isEmptyOrNull(redirectUrl) && !isNullOrUndefined(redirectUrl)) {
-      cookies().delete("redirectUrl");
-      redirect(redirectUrl);
+    const callbackCookie = cookies().get("callbackUrl");
+    if (!isEmptyOrNull(callbackCookie) && !isNullOrUndefined(callbackCookie)) {
+      cookies().delete("callbackUrl");
+      redirect(callbackCookie.value);
     }
   }
   redirect("/");
-}
-
-export async function isAuthenticatedAction() {
-  const tokenCookie = cookies().get("token");
-  let token;
-  if (!isNullOrUndefined(tokenCookie)) token = tokenCookie.value;
-  const tokenDuration = getTokenDuration();
-  if (token && tokenDuration > 0) return true;
-  return false;
 }
 
 function getTokenDuration() {
@@ -46,13 +38,22 @@ function getTokenDuration() {
   return duration;
 }
 
+export async function isAuthenticatedAction() {
+  const tokenCookie = cookies().get("token");
+  let token;
+  if (!isNullOrUndefined(tokenCookie)) token = tokenCookie.value;
+  const tokenDuration = getTokenDuration();
+  if (token && tokenDuration > 0) return true;
+  return false;
+}
+
 export async function checkAuth(currentRoute) {
   const isAuthenticated = await isAuthenticatedAction();
   if (!isAuthenticated) {
-    cookies().set("redirectUrl", currentRoute);
+    cookies().set("callbackUrl", currentRoute);
     redirect("/buyer/login");
   }
-  return null;
+  return true;
 }
 
 export async function logoutAction() {

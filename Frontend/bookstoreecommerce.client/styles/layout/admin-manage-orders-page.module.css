@@ -46,3 +46,23 @@
 .pendingStatus{
   color: #f29339
 }
+
+/* width */
+.mainContainer ::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.mainContainer ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.mainContainer ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.mainContainer ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

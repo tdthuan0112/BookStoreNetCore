@@ -7,6 +7,7 @@ import ratingStarIcon from "@/assets/img/rating-star-full.png";
 import classes from "@/styles/common/book-detail.module.css";
 import QuantityCounter from "@/components/common/quantity-counter";
 import { addToCartAction, buyNowAction } from "@/actions/cart-actions";
+import { usePathname } from "next/navigation";
 
 export default function BookDetail({ book }) {
   let finalPrice = book.originalPrice;
@@ -60,14 +61,16 @@ export default function BookDetail({ book }) {
 
 function ButtonBlock({ book }) {
   const { pending } = useFormStatus();
-
+  const pathName = usePathname();
   return (
     <div className={classes.buttonBlock}>
       <button
         className={classes.addToCartBtn}
         type="submit"
         disabled={pending}
-        formAction={(formData) => addToCartAction("", book.bookId, formData)}
+        formAction={(formData) =>
+          addToCartAction(pathName, book.bookId, formData)
+        }
       >
         {pending ? "Processing ..." : "Add to Cart"}
       </button>
@@ -75,7 +78,7 @@ function ButtonBlock({ book }) {
         className={classes.buyNowBtn}
         type="submit"
         disabled={pending}
-        formAction={(formData) => buyNowAction("", book.bookId, formData)}
+        formAction={(formData) => buyNowAction(pathName, book.bookId, formData)}
       >
         {pending ? "Processing ..." : "Buy Now"}
       </button>

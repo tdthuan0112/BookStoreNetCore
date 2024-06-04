@@ -1,7 +1,11 @@
 "use server";
 
 import { USER_API } from "@/api";
-import { isNullOrUndefined } from "@/lib/helper/common-helper";
+import {
+  isEmptyOrNull,
+  isHasError,
+  isNullOrUndefined,
+} from "@/lib/helper/common-helper";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -48,13 +52,18 @@ export async function getUserDetailAction() {
   const tokenCookie = cookies().get("token");
   let token;
   if (!isNullOrUndefined(tokenCookie)) token = tokenCookie.value;
+  else token = "";
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
   const response = await USER_API.getUserDetail(config);
-  return response.data;
+  if (!isHasError(response.code)) {
+    return response.data;
+  } else {
+    return null;
+  }
 }
 
 export async function deleteUserByUserIdAction(formData) {

@@ -28,6 +28,7 @@ export default function AdminHeaderBlock({ user }) {
       </Link>
       {isShowQuickMenu && (
         <div className={classes.quickMenu}>
+          <Link href="/account">Manage Account</Link>
           <Link href="/admin/manage-orders">Manage Orders</Link>
           <Link href="/admin/manage-books">Manage Books</Link>
           <Link href="/admin/manage-users">Manage Users</Link>

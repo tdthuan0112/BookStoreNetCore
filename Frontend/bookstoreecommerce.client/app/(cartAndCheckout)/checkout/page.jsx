@@ -9,7 +9,7 @@ import { submitOrderAction } from "@/actions/order-actions";
 import { getCartAction } from "@/actions/cart-actions";
 
 export default async function CheckoutPage() {
-  const cart = await getCartAction("/cart");
+  const cart = await getCartAction(true);
 
   return (
     <form

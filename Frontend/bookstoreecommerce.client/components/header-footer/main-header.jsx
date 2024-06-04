@@ -9,10 +9,13 @@ import bookStoreLogo from "@/assets/img/bookStoreLogo.png";
 import searchIcon from "@/assets/img/search.png";
 import cartIcon from "@/assets/img/cart.png";
 
+import CartIcon from "./cart-icon";
+import UserHeaderBlock from "./user-header-block";
+
+import { isAuthenticatedAction } from "@/actions/authentication-actions";
+
 import { LAYOUT_PRIMARY } from "@/lib/constant/constantCssName";
 import classes from "@/styles/layout/main-header.module.css";
-import { isAuthenticatedAction } from "@/actions/authentication-actions";
-import UserHeaderBlock from "./user-header-block";
 
 export default async function MainHeader() {
   let userHeaderBlock;
@@ -67,14 +70,7 @@ export default async function MainHeader() {
               <Image src={searchIcon} height={20} alt="searchIcon" />
             </button>
           </form>
-          <Link href="/cart">
-            <Image
-              className={classes.cartIcon}
-              src={cartIcon}
-              height={32}
-              alt="cartIcon"
-            />
-          </Link>
+          <CartIcon />
         </div>
       </main>
     </header>

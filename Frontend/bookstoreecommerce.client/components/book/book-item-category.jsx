@@ -1,24 +1,26 @@
 "use client";
-
+//Packages
 import Image from "next/image";
 import Link from "next/link";
 import { useTransition } from "react";
-
+//Img
 import ratingStarIcon from "@/assets/img/rating-star-full.png";
+//CSS
 import classes from "@/styles/common/book-item.category.module.css";
-
+//Actions
 import { addToCartAction } from "@/actions/cart-actions";
+import { usePathname } from "next/navigation";
 
 export default function BookItemCategory({ book }) {
   const [isPending, startTransition] = useTransition();
-
+  const pathName = usePathname();
   function buildBookUrl(url) {
     return `/book-detail/${url}`;
   }
 
   function handleAddToCart(bookId) {
     startTransition(async () => {
-      await addToCartAction(null, bookId);
+      await addToCartAction(pathName, bookId);
     });
   }
 

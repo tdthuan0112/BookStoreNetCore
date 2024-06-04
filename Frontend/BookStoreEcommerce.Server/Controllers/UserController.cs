@@ -62,7 +62,10 @@ namespace BookStoreEcommerce.Server.Controllers
             BaseResponseErrorModel baseResponseErrorModel = new();
             Request.Headers.TryGetValue("Authorization", out var authToken);
             string[] words = authToken.ToString().Split(' ');
-            string token = words[1];
+            string token = "";
+            if (words.Length == 2) { 
+                token = words[1];
+            }
             var authResult = _jwtService.ValidateJWTSercurityToken(token, baseResponseErrorModel);
             UserDTO result = new();
             if (authResult != null && !baseResponseErrorModel.HasError() && authResult.UserId != Guid.Empty) 
