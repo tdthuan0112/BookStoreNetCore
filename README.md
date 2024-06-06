@@ -10,7 +10,7 @@ This is a E-commerce Project for selling books
   + Front-end:
     + Nextjs v14.2.3 (SSR) combine with React (CSR)
       + Router: [App Router Nextjs](https://nextjs.org/docs/app)
-      + Fetch data: [Axios](https://axios-http.com/docs/intro)
+      + Data: [Data fetching](https://nextjs.org/docs/app/building-your-application/data-fetching)
       + Styling: [CSS Modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
   + Back-end: Dotnet core 8.0 (C#) 
   + Database: Sql
@@ -26,29 +26,36 @@ This is a E-commerce Project for selling books
 ### Config Host
   + Open C:\Windows\System32\drivers\etc\host
   + Add `127.0.0.1  www.bookstore.com`
-### Run Project
+### Open Project
   + Clone the project to local directory
   + Switch to branch `develop`
-  + Open Visual Studio 2022
+  + Open Visual Studio 2022 
   + Select "Open a project or solution" => Select and open the BookStoreNetCore.sln
 ### Set start up project
   + Set "BookStoreEcommerce.Server" as Start up Project
-### Config appsettings.json and generate DB
+### Config appsettings.json and migrate the DB
   + Open appsettings.json and appsettings.Development.json in /Frontend/BookstoreEcommerce.Server
   + Replace "DefaultConnection" into your local DB Connection String
     + ex: "bookStoreConnectionString" -> "Server=`your-local-server-name`;Database=`your-custom-db-name`;Trusted_Connection=true;TrustServerCertificate=true"
+  + Config all missing value in appsetting.json
   + In Visual Studio, select Tools > NuGet Package Manager > Package Manager Console
-  + In Package Manager Console, Change the default project to BookStore.Migrations Project
+  + In Package Manager Console, change the default project to BookStore.Migrations Project
   + Add commands:
     + `add-migration InitialDb -project BookStore.Migrations`
     + `update-database`
-  + Stash the appsettings file in local
+### Run Project
+  + Backend - On Visual Studio 2022 run at administrator - press f5
+  + Frontend - On Visual Studio Code run at administrator - open bookstoreecommerce.client folder - type `npm run dev` in terminal
 
 ## Push Code to Git:
 > [!IMPORTANT]
-> Discard appsettings file before push
+> Stash the appsettings file in local
+
+> [!IMPORTANT]
+> Remember to discard appsettings file before push
 
 # References
   + [Iconify](https://icon-sets.iconify.design/?query=facebook)
   + [VectorStock](https://www.vectorstock.com/royalty-free-vectors/girl-reading-vectors-order_isolated)
   + [Vecteezy](https://www.vecteezy.com/free-vector/reading)
+  + [Momentjs](https://momentjs.com/)
