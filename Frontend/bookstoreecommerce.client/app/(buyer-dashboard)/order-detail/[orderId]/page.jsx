@@ -7,7 +7,7 @@ export default async function OrderDetailPage({ params }) {
   const order = await getOrderDetailByIdAction(orderId);
   return (
     <div className={LAYOUT_PRIMARY} style={{ paddingTop: "20px" }}>
-      <OrderDetail order={order} />;
+      <OrderDetail order={order} />
     </div>
   );
 }

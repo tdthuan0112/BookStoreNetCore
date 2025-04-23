@@ -197,7 +197,7 @@ namespace BookStore.DAL.Constant
         {
             UserId = AdministratorId,
             UserName = "admin",
-            UserPassword = "txPzQDMu4jM=", // 123456
+            UserPassword = "$2a$13$X3ejIEseEGOCB9JrYAnlBOv6Z9R2Mqwn0AiciztX7.Wvb1C74Jtb.", // 123456
             FirstName = "Thuan",
             LastName = "Tran",
             Email = "thuanmaildemo@gmail.com",
@@ -220,7 +220,7 @@ namespace BookStore.DAL.Constant
         {
             UserId = Guid.NewGuid(),
             UserName = "user",
-            UserPassword = "txPzQDMu4jM=", // 123456
+            UserPassword = "$2a$13$X3ejIEseEGOCB9JrYAnlBOv6Z9R2Mqwn0AiciztX7.Wvb1C74Jtb.", // 123456
             FirstName = "Lam",
             LastName = "Nguyen",
             Email = "lammaildemo@gmail.com",

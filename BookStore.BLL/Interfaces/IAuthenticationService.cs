@@ -6,8 +6,10 @@ namespace BookStore.BLL.Interfaces
 {
     public interface IAuthenticationService
     {
-        string EncryptPassWord(string passWord);
-        string DecryptPassWord(string passWord);
+        string EncryptPlainText(string plainText);
+        string DecryptPlainText(string plainText);
+        string HashPassword(string passWord);
+        bool VerifyPassword(string password, string passwordHash);
         LoginDTO Login(RequestModelLogin requestModel, BaseResponseErrorModel baseResponseErrorModel);
         string ValidateToken(string token, BaseResponseErrorModel baseResponseErrorModel);
     }

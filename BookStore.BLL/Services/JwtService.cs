@@ -16,11 +16,13 @@ namespace BookStore.BLL.Services
     public class JwtService : IJwtService
     {
         private readonly ConfigJwt _configJwt;
+        private readonly ILoggingConsoleService _loggingConsoleService;
 
 
-        public JwtService(IOptions<ConfigJwt> configJwtOptions)
+        public JwtService(IOptions<ConfigJwt> configJwtOptions, ILoggingConsoleService loggingConsoleService)
         {
             _configJwt = configJwtOptions.Value;
+            _loggingConsoleService = loggingConsoleService;
         }
         public JwtCreateModel GenerateJWTSecurityToken(Guid userId, string userName = "", string email = "", string roleName = "")
         {
@@ -63,8 +65,8 @@ namespace BookStore.BLL.Services
                 var validationParameters = new TokenValidationParameters
                 {
                     ValidateLifetime = true,
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configJwt.SecretKey)),
                     ValidAudience = _configJwt.Audience,
@@ -96,10 +98,12 @@ namespace BookStore.BLL.Services
                 catch (SecurityTokenExpiredException ex)
                 {
                     responseErrorModel.SetErrorModel(ResponseError.ExpiredToken, ex.Message);
+                    _loggingConsoleService.LogError(ex);
                 }
                 catch (Exception ex)
                 {
                     responseErrorModel.SetErrorModel(ResponseError.ErrorInValidateToken, ex.Message);
+                    _loggingConsoleService.LogError(ex);
                 }
                 return jwtResponse;
             }

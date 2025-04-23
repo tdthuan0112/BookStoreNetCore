@@ -31,7 +31,6 @@ class RestApiConnection {
 
   async get(endpoint = "", payload = {}, config = {}) {
     const url = this.buildQuery(endpoint);
-    console.log({ ...this.#config.headers, ...config.headers });
     return await this._fetch(
       url,
       {

@@ -5,7 +5,7 @@ export default function AdminDashBoardLayout({ children }) {
   return (
     <>
       <MainHeader />
-      <div style={{ minHeight: "600px", backgroundColor: "#F4F4F4" }}>
+      <div style={{ minHeight: "800px", backgroundColor: "#F4F4F4" }}>
         {children}
       </div>
       <MainFooter />

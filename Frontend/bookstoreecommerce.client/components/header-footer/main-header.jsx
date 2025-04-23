@@ -20,6 +20,7 @@ import classes from "@/styles/layout/main-header.module.css";
 export default async function MainHeader() {
   let userHeaderBlock;
   const isAuthenticated = await isAuthenticatedAction();
+  console.log(isAuthenticated)
   if (!isAuthenticated) {
     userHeaderBlock = (
       <li className={classes.authentication}>

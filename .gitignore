@@ -37,9 +37,11 @@ bld/
 !*.[Cc]ache/
 
 # Ignore Appsettings
-# appsettings.*
-# appsettings.*.json
-# appsettings.json
+# *.appsettings.*
+# *.appsettings.Development.json
+# *.appsettings.json
+/Frontend/BookStoreEcommerce.Server/appsettings.Development.json
+/Frontend/BookStoreEcommerce.Server/appsettings.*.json
 
 #BookStore.Migration
 [Mm]igrations

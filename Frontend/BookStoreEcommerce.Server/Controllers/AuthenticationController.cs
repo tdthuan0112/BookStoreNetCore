@@ -18,30 +18,52 @@ namespace BookStoreEcommerce.Server.Controllers
         }
 
 
-        [HttpPost("EncryptPassWord")]
-        public IActionResult EncryptPassWord([FromBody]string password)
+        [HttpPost("EncryptPlainText")]
+        public IActionResult EncryptPlainText([FromBody]string plainText)
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();
-            var result = _authService.EncryptPassWord(password);
+            var result = _authService.EncryptPlainText(plainText);
             responseModel.Data = result;
             responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
 
-        [HttpPost("DecryptPassWord")]
-        public IActionResult DecryptPassWord([FromBody] string password)
+        [HttpPost("DecryptPlainText")]
+        public IActionResult DecryptPlainText([FromBody] string plainText)
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();
-            var result = _authService.DecryptPassWord(password);
+            var result = _authService.DecryptPlainText(plainText);
+            responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
+            return ReturnData(responseModel);
+        }
+
+        [HttpPost("HashPassword")]
+        public IActionResult HashPassword([FromBody] string password)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _authService.HashPassword(password);
+            responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
+            return ReturnData(responseModel);
+        }
+
+        [HttpPost("VerifyPassword")]
+        public IActionResult VerifyPassword(string password, string passwordHash)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            var result = _authService.VerifyPassword(password, passwordHash);
             responseModel.Data = result;
             responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] RequestModelLogin requestModel)
+        public IActionResult Login([FromBody] RequestModelLogin requestModel) 
         {
             var responseModel = new BaseResponseModel();
             BaseResponseErrorModel baseResponseErrorModel = new();

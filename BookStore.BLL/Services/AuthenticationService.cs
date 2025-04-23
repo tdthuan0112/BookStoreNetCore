@@ -1,4 +1,5 @@
-﻿using BookStore.BLL.Constant;
+﻿using BCrypt.Net;
+using BookStore.BLL.Constant;
 using BookStore.BLL.Enum;
 using BookStore.BLL.Extensions;
 using BookStore.BLL.Interfaces;
@@ -14,23 +15,38 @@ namespace BookStore.BLL.Services
         private readonly ConfigAuthentication _configAuth;
         private readonly IUserService _userService;
         private readonly IJwtService _jwtService;
+        private readonly ILoggingConsoleService _loggingConsoleService;
+        private const int WORK_FACTOR = 13;
 
-        public AuthenticationService(IOptions<ConfigAuthentication> configAuthOptions, IUserService userService, IJwtService jwtService)
+        public AuthenticationService(IOptions<ConfigAuthentication> configAuthOptions, IUserService userService, IJwtService jwtService, ILoggingConsoleService loggingConsoleService)
         {
             _configAuth = configAuthOptions.Value;
             _userService = userService;
             _jwtService = jwtService;
+            _loggingConsoleService = loggingConsoleService;
         }
-        public string EncryptPassWord(string passWord)
+
+        public string EncryptPlainText(string plainText)
         {
-            var result = CryptoExt.Encrypt(passWord, _configAuth.SecretKey);
+            var result = CryptoExt.Encrypt(plainText, _configAuth.SecretKey);
             return result;
         }
 
-        public string DecryptPassWord(string passWord)
+        public string DecryptPlainText(string plainText)
         {
-            var result = CryptoExt.Decrypt(passWord, _configAuth.SecretKey);
+            var result = CryptoExt.Decrypt(plainText, _configAuth.SecretKey);
             return result;
+        }
+
+        public string HashPassword(string password)
+        {
+            string passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, WORK_FACTOR);
+            return passwordHash;
+        }
+
+        public bool VerifyPassword(string password, string passwordHash)
+        {
+            return BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
         }
 
         public LoginDTO Login(RequestModelLogin requestModel, BaseResponseErrorModel baseResponseErrorModel)
@@ -45,8 +61,7 @@ namespace BookStore.BLL.Services
                 }
                 if (!baseResponseErrorModel.HasError() && user != null && user.UserId != Guid.Empty)
                 {
-                    var userPassword = CryptoExt.Decrypt(user.UserPassword, _configAuth.SecretKey);
-                    if (requestModel.Password == userPassword)
+                    if (VerifyPassword(requestModel.Password, user.UserPassword))
                     {
                         var jwtModel = _jwtService.GenerateJWTSecurityToken(user.UserId, user.UserName, user.Email, user.Role.RoleName);
                         loginDTO = new()
