@@ -33,9 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BookStore.BLL\BookStore.BLL.csproj" />
-    <ProjectReference Include="..\..\BookStore.DAL\BookStore.DAL.csproj" />
-    <ProjectReference Include="..\..\BookStore.Migrations\BookStore.Migrations.csproj" />
+    <ProjectReference Include="..\BookStore.BLL\BookStore.BLL.csproj" />
+    <ProjectReference Include="..\BookStore.DAL\BookStore.DAL.csproj" />
+    <ProjectReference Include="..\BookStore.Migrations\BookStore.Migrations.csproj" />
     <ProjectReference Include="..\bookstoreecommerce.client\bookstoreecommerce.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

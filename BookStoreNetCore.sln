@@ -11,11 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Libraries.Common"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Migrations", "BookStore.Migrations\BookStore.Migrations.csproj", "{EABC2803-157D-4B30-A3F1-7B51D30243CC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{D5193773-437F-4425-B675-0A8C200C6E74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreEcommerce.Server", "BookStoreEcommerce.Server\BookStoreEcommerce.Server.csproj", "{833AE9E1-D13C-4BDE-994E-725FE4C9DB45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreEcommerce.Server", "Frontend\BookStoreEcommerce.Server\BookStoreEcommerce.Server.csproj", "{833AE9E1-D13C-4BDE-994E-725FE4C9DB45}"
-EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "bookstoreecommerce.client", "Frontend\bookstoreecommerce.client\bookstoreecommerce.client.esproj", "{0A37267D-38AE-41A7-BEB6-72457152DEE1}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "bookstoreecommerce.client", "bookstoreecommerce.client\bookstoreecommerce.client.esproj", "{0A37267D-38AE-41A7-BEB6-72457152DEE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,9 +50,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{0A37267D-38AE-41A7-BEB6-72457152DEE1} = {D5193773-437F-4425-B675-0A8C200C6E74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {77C76CB8-A2BF-48B4-BCC2-10D9B5407B28}
