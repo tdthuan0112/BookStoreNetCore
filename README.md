@@ -47,6 +47,45 @@ This is a E-commerce Project for selling books
   + Backend - On Visual Studio 2022 run at administrator - press f5
   + Frontend - On Visual Studio Code run at administrator - open bookstoreecommerce.client folder - type `npm run dev` in terminal
 
+### Project Structure:
+```
+|__Project  
+    |__ BookStore.BBL (Business Logic Layer)  
+    |    |__ Constant
+    |    |__ Enum
+    |    |__ Extension
+    |    |__ Interface
+    |    |__ Mapping
+    |    |__ Models
+    |    |__ Services
+    |__ BookStore.DAL (Data Access Layer)
+    |    |__ Constant
+    |    |__ Enum
+    |    |__ Models
+    |    |    |__ BookStoreContext.cs
+    |__ BookStore.Libraries.Common
+    |__ BookStore.Migrations (Migration Database Code First)
+    |__ bookstoreecommerce.client (Presentation Layer)
+    |    |__ action
+    |    |__ api
+    |    |__ app
+    |    |__ assets
+    |    |__ certificates
+    |    |__ components
+    |    |__ lib
+    |    |__ styles
+    |    |__ .env
+    |    |__ eslintrc.cjs
+    |    |__ jsconfig.json
+    |    |__ next.config.js
+    |    |__ nuget.config
+    |    |__ package.js
+    |__ BookStoreEcommerce.Server (Config and implement API)
+    |    |__ Controllers
+    |    |__ appsettings.json
+    |    |__ Program.cs
+```
+
 ## Push Code to Git:
 > [!IMPORTANT]
 > Stash the appsettings file in local
