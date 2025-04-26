@@ -6,7 +6,6 @@ import classes from "@/styles/layout/admin-edit-book-detail-page.module.css";
 export default async function AdminEditBookDetailPage({ params }) {
   const bookId = params.bookId;
   const book = await getBookDetailByBookId(bookId);
-  console.log(book);
   const allCategories = await getAllCategoriesAction();
   return (
     <div>

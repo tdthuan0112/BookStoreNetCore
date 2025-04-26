@@ -2,6 +2,7 @@
 
 import { BOOK_API } from "@/api";
 import { getAdminUserAction } from "./user-actions";
+import { isHasError } from "@/lib/helper/common-helper";
 
 export async function getAllBooksAction() {
   const response = await BOOK_API.getAllBook();
@@ -15,6 +16,9 @@ export async function getBookByCategoryUrlAction(categoryUrl) {
 
 export async function getBookDetailByUrlAction(bookUrl) {
   const response = await BOOK_API.getBookDetailByUrl(bookUrl);
+  if(isHasError(response)){
+    return null;
+  }
   return response.data;
 }
 
@@ -48,7 +52,6 @@ export async function updateBookDetailAction(formData) {
     modifiedBy: modifiedBy,
     listCategoryIds: data.listCategoryIds.split(","),
   };
-  console.log(payload);
   const response = await BOOK_API.updateBookDetail(payload);
   return response.data;
 }

@@ -79,7 +79,7 @@ export default function AdminNavigation() {
       </div>
       {navigationItems.map(item => (
         <Link
-          key={item.key}
+          key={item.key} 
           href={item.href}
           className={`${classes.navLink} ${item.isActive ? classes.activeLink : undefined
             }`}

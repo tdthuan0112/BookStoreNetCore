@@ -40,13 +40,13 @@ function EditCategoryDetailForm({ category }) {
         <input type="text" name="name" defaultValue={category.name} />
       </div>
       <div className={classes.singleProperty}>
-        <p htmlFor="name">
+        <p htmlFor="url">
           Url <strong>*</strong>
         </p>
         <input type="text" name="url" defaultValue={category.url} />
       </div>
       <div className={classes.singleProperty}>
-        <p htmlFor="name">
+        <p htmlFor="quantity">
           Quantity <strong>*</strong>
         </p>
         <input type="number" name="quantity" defaultValue={category.quantity} />

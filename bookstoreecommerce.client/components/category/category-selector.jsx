@@ -9,7 +9,6 @@ export default function CategorySelector({ bookCategory = [], allCategories }) {
   );
 
   function updateListCateIds(payload) {
-    console.log(payload);
     if (payload.status) {
       if (listCategoryIds.includes(payload.categoryId)) {
         return;

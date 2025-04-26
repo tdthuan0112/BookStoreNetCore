@@ -1,4 +1,4 @@
-.adminManageCategoriesPage {
+.adminManageRolesPage {
   width: 100%;
 }
 
@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.btnAddNewCate {
+.btnAddNewRole {
   display: flex;
   gap: 15px;
   align-items: center;
@@ -29,24 +29,24 @@
   text-align: center;
 }
 
-.cateItem:hover {
+.roleItem:hover {
   background-color: #f5f5f5;
 }
 
-.cateItem:hover td svg {
+.roleItem:hover td svg {
   color: #D70F13E6;
 }
 
-.cateItem:hover td button {
+.roleItem:hover td button {
   background-color: #D70F13E6;
   color: white;
 }
 
-.cateItem td {
+.roleItem td {
   padding: 10px 16px;
 }
 
-.cateItem td svg {
+.roleItem td svg {
   color: #D70F13B2;
 }
 

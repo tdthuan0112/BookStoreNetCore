@@ -34,7 +34,6 @@ export async function addToCartAction(callbackUrl, bookId, formData) {
   await checkAuth(callbackUrl);
   const user = await getUserDetailAction();
   if (isNullOrUndefined(user)) redirect("/");
-  console.log(user);
   const userId = user.userId;
   let quantity = 1;
   if (formData != null) {

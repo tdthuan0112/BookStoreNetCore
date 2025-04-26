@@ -86,6 +86,8 @@ namespace BookStore.BLL.Enum
         ErrorInGetRole = 7000,
         [Description("Could Not Find Role By Role Name")]
         CouldNotFindRoleByRoleName = 7001,
+        [Description("Could Not Find Role By Role ID")]
+        CouldNotFindRoleByRoleId = 7002,
         #endregion
 
         #region JWT

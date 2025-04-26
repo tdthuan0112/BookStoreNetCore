@@ -33,7 +33,12 @@ export async function navigateAdminEditBookDetail(formData) {
   redirect(`/admin/manage-books/edit/${bookId}`);
 }
 
-export async function navigatedminEditCategoryPage(formData) {
+export async function navigateAdminEditCategoryPage(formData) {
   const bookId = formData.get("categoryId");
   redirect(`/admin/manage-categories/edit/${bookId}`);
+}
+
+export async function navigateAdminEditRolePage(formData) {
+  const roleId = formData.get("roleId");
+  redirect(`/admin/manage-roles/edit/${roleId}`);
 }

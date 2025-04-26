@@ -15,7 +15,7 @@ export default async function BookDetailPage({ params }) {
   let book = await getBookDetailByUrlAction(bookUrl);
 
   //TODO HANDLE NOT FOUND BOOK
-  // if (!book) notFound();
+  if (!book) notFound();
   return (
     <div className={LAYOUT_PRIMARY + classes.bookDetailPage}>
       <BookDetail book={book} />

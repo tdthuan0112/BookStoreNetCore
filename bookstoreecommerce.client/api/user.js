@@ -1,4 +1,5 @@
 import RestApiConnection from "@/api/rest-api-connection";
+
 class UserApi extends RestApiConnection {
   constructor() {
     super("User");

@@ -17,7 +17,6 @@ export async function submitOrderAction(data) {
     paymentMethod: 0,
   };
   const response = await ORDER_API.submitOrder(submitData);
-  console.log(response);
   const result = response.data;
   redirect(`/order-success/${result.orderId}`);
 }

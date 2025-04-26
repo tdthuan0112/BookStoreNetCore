@@ -28,8 +28,8 @@ export function isArrayHasAnyElements(array = []) {
   return Array.isArray(array) === true && array.length > 0;
 }
 
-export function isHasError(code) {
-  return code !== 0;
+export function isHasError(response) {
+  return response.code !== 0 && response.errorMessage !== "";
 }
 
 export function isArrayContainValue(array, value) {

@@ -13,8 +13,7 @@ import {
 export async function loginAction(formData) {
   const data = Object.fromEntries(formData);
   const response = await AUTHENTICATION_API.login(data);
-  console.log(response)
-  if (!isHasError(response.code)) {
+  if (!isHasError(response)) {
     const responseData = response.data;
     cookies().set("token", responseData.token);
     cookies().set("expiration", responseData.expiration);
@@ -44,7 +43,6 @@ export async function isAuthenticatedAction() {
   let token;
   if (!isNullOrUndefined(tokenCookie)) token = tokenCookie.value;
   const tokenDuration = getTokenDuration();
-  console.log(tokenDuration)
   if (token && tokenDuration > 0) return true;
   return false;
 }

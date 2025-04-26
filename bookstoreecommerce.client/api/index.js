@@ -5,6 +5,7 @@ import CartApi from "@/api/cart";
 import OrderApi from "@/api/order";
 import AuthenticationApi from "@/api/authentication";
 import LocationApi from "@/api/location";
+import RoleApi from "@/api/role";
 
 export const BOOK_API = new BookApi();
 export const CATEGORY_API = new CategoryApi();
@@ -13,3 +14,4 @@ export const CART_API = new CartApi();
 export const ORDER_API = new OrderApi();
 export const AUTHENTICATION_API = new AuthenticationApi();
 export const LOCATION_API = new LocationApi();
+export const ROLE_API = new RoleApi();

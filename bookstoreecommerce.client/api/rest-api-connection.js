@@ -61,8 +61,7 @@ class RestApiConnection {
   }
 
   async _fetch(url, config) {
-    // console.log(url);
-    // console.log(config);
+
 
     const result = await fetch(url, config)
       .then((response) => {

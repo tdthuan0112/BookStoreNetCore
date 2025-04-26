@@ -1,9 +1,8 @@
-﻿using BookStore.BLL.Enum;
+﻿using System.ComponentModel.DataAnnotations;
 using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
 using BookStore.BLL.Models.Request;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 namespace BookStoreEcommerce.Server.Controllers
 {

@@ -34,7 +34,7 @@ This is a E-commerce Project for selling books
 ### Set start up project
   + Set "BookStoreEcommerce.Server" as Start up Project
 ### Config appsettings.json and migrate the DB
-  + Open appsettings.json and appsettings.Development.json in /Frontend/BookstoreEcommerce.Server
+  + Open appsettings.json and appsettings.Development.json in /BookstoreEcommerce.Server
   + Replace "DefaultConnection" into your local DB Connection String
     + ex: "bookStoreConnectionString" -> "Server=`your-local-server-name`;Database=`your-custom-db-name`;Trusted_Connection=true;TrustServerCertificate=true"
   + Config all missing value in appsetting.json

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { navigatedminEditCategoryPage } from "@/lib/helper/navigate-helper.js";
+import { navigateAdminEditCategoryPage } from "@/lib/helper/navigate-helper.js";
 import { getAllCategoriesAction } from "@/actions/category-actions.js";
 import { transformDateTimeValue } from "@/lib/helper/common-helper.js";
 import { BTN_PRIMARY } from "@/lib/constant/constantCssName.js";
@@ -51,7 +51,7 @@ export default async function AdminManageCategoriesPage() {
                 />
               </td>
               <td>
-                <form action={navigatedminEditCategoryPage}>
+                <form action={navigateAdminEditCategoryPage}>
                   <input
                     type="hidden"
                     defaultValue={category.categoryId}

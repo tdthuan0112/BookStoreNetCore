@@ -59,7 +59,7 @@ export async function getUserDetailAction() {
     },
   };
   const response = await USER_API.getUserDetail(config);
-  if (!isHasError(response.code)) {
+  if (!isHasError(response)) {
     return response.data;
   } else {
     return null;
