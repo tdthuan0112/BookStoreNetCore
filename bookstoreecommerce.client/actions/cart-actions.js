@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 import { CART_API } from "@/api";
-import { getUserDetailAction } from "./user-actions";
+import { getCurrentUserLoggedInAction } from "./user-actions";
 import { isEmptyObject, isNullOrUndefined } from "@/lib/helper/common-helper";
 import { checkAuth } from "./authentication-actions";
 
@@ -15,7 +15,7 @@ export async function handleClickCartIcon(pathname) {
 }
 
 export async function getCartAction(isRedirectCartPage = false) {
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   if (isNullOrUndefined(user)) redirect("/");
   const userId = user.userId;
   const response = await CART_API.getCart(userId);
@@ -32,7 +32,7 @@ export async function getCartAction(isRedirectCartPage = false) {
 }
 export async function addToCartAction(callbackUrl, bookId, formData) {
   await checkAuth(callbackUrl);
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   if (isNullOrUndefined(user)) redirect("/");
   const userId = user.userId;
   let quantity = 1;
@@ -49,7 +49,7 @@ export async function buyNowAction(callbackUrl, bookId, formData) {
 }
 
 export async function deleteCartAction(bookId) {
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   if (isNullOrUndefined(user)) redirect("/");
   const userId = user.userId;
   await CART_API.deleteCart(userId, bookId);
@@ -57,7 +57,7 @@ export async function deleteCartAction(bookId) {
 }
 
 export async function updateCartAction(bookId, quantity) {
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   if (isNullOrUndefined(user)) redirect("/");
   const userId = user.userId;
 

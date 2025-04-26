@@ -11,5 +11,6 @@ namespace BookStore.BLL.Interfaces
         UserDTO GetUserDetailByUserName(string userName, BaseResponseErrorModel responseErrorModel);
         string CreateUser(RequestModelAddUser requestModel, BaseResponseErrorModel baseResponseErrorModel);
         List<UserDTO> DeleteUserByUserId(Guid userId, BaseResponseErrorModel baseResponseErrorModel);
+        void UpdateUserInfo(RequestModelUpdateUser requestModel, BaseResponseErrorModel responseErrorModel);
     }
 }

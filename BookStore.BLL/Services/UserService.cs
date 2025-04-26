@@ -19,14 +19,16 @@ namespace BookStore.BLL.Services
         private readonly BookStoreContext _context;
         private readonly IMapper _mapper;
         private readonly IRoleService _roleService;
+        private readonly ILoggingConsoleService _loggingConsoleService;
         private readonly ConfigAuthentication _configAuth;
 
-        public UserService(BookStoreContext context, IMapper mapper, IRoleService roleService, IOptions<ConfigAuthentication> configAuthOptions)
+        public UserService(BookStoreContext context, IMapper mapper, IRoleService roleService, IOptions<ConfigAuthentication> configAuthOptions, ILoggingConsoleService loggingConsoleService)
         {
             _context = context;
             _mapper = mapper;
             _roleService = roleService;
             _configAuth = configAuthOptions.Value;
+            _loggingConsoleService = loggingConsoleService;
         }
 
         /// <summary>
@@ -48,6 +50,7 @@ namespace BookStore.BLL.Services
             catch (Exception ex)
             {
                 responseErrorModel.SetErrorModel(ResponseError.ErrorGetAllUsers, ex.Message);
+                _loggingConsoleService.LogError(ex);
             }
             return listUsersDTO != null && listUsersDTO.Count != 0 ? listUsersDTO : [];
         }
@@ -78,6 +81,7 @@ namespace BookStore.BLL.Services
             catch (Exception ex)
             {
                 responseErrorModel.SetErrorModel(ResponseError.ErrorGetUserById, ex.Message);
+                _loggingConsoleService.LogError(ex);
             }
             return userDTO;
         }
@@ -100,6 +104,7 @@ namespace BookStore.BLL.Services
             catch (Exception ex)
             {
                 responseErrorModel.SetErrorModel(ResponseError.ErrorGetUserById, ex.Message);
+                _loggingConsoleService.LogError(ex);
             }
             return userDTO;
         }
@@ -139,6 +144,7 @@ namespace BookStore.BLL.Services
             catch (Exception ex)
             {
                 baseResponseErrorModel.SetErrorModel(ResponseError.ErrorInAddNewUser, ex.Message);
+                _loggingConsoleService.LogError(ex);
             }
             return "Success create user";
         }
@@ -161,9 +167,33 @@ namespace BookStore.BLL.Services
             catch (Exception ex)
             {
                 responseErrorModel.SetErrorModel(ResponseError.ErrorInDeleteUserByUserId, ex.Message);
+                _loggingConsoleService.LogError(ex);
             }
             List<UserDTO> listUsers = GetAllUsers(responseErrorModel);
             return listUsers;
+        }
+
+        public void UpdateUserInfo(RequestModelUpdateUser requestModel, BaseResponseErrorModel responseErrorModel)
+        {
+            //VALIDATE PARAMS
+            try
+            {
+                _context.User.Where(x => x.UserId.Equals(requestModel.UserId))
+                    .ExecuteUpdate(user => user
+                    .SetProperty(u => u.FirstName, requestModel.FirstName)
+                    .SetProperty(u => u.LastName, requestModel.LastName)
+                    .SetProperty(u => u.Email, requestModel.Email)
+                    .SetProperty(u => u.Gender, requestModel.Gender)
+                    .SetProperty(u => u.PhoneNumber, requestModel.PhoneNumber)
+                    .SetProperty(u => u.Address, requestModel.Address)
+                    .SetProperty(u => u.DateLastModified, DateTime.Now)
+                    );
+            }
+            catch (Exception ex)
+            {
+                responseErrorModel.SetErrorModel(ResponseError.ErrorInUpdateUserDetail);
+                _loggingConsoleService.LogError(ex);
+            }
         }
     }
 }

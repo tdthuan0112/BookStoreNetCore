@@ -1,11 +1,11 @@
 "use server";
 
 import { ORDER_API } from "@/api/index";
-import { getUserDetailAction } from "./user-actions";
+import { getCurrentUserLoggedInAction } from "./user-actions";
 import { redirect } from "next/navigation";
 
 export async function submitOrderAction(data) {
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   const userId = user.userId;
   let submitData = {
     userId: userId,
@@ -22,7 +22,7 @@ export async function submitOrderAction(data) {
 }
 
 export async function getAllUserOrdersAction() {
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   const userId = user.userId;
   const response = await ORDER_API.getAllUserOrders(userId);
   return response.data;

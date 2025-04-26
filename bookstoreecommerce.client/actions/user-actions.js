@@ -48,7 +48,8 @@ export async function createUserAction(formData) {
   return response.data;
 }
 
-export async function getUserDetailAction() {
+//GET CURRENT USER LOGGED IN
+export async function getCurrentUserLoggedInAction() {
   const tokenCookie = cookies().get("token");
   let token;
   if (!isNullOrUndefined(tokenCookie)) token = tokenCookie.value;
@@ -70,4 +71,17 @@ export async function deleteUserByUserIdAction(formData) {
   const data = Object.fromEntries(formData);
   const response = await USER_API.deleteUserByUserId(data.userId);
   redirect("admin/manage-users");
+}
+
+export async function updateUserDetail(formData) {
+  const data = Object.fromEntries(formData);
+  const payload = {
+    ...data,
+    gender: parseInt(data.gender)
+  };
+  console.log(payload)
+  const response = await USER_API.updateUserDetail(payload);
+  console.log(response)
+  //CHECK ERROR OF RESPONSE HERE
+  redirect(`/admin/manage-users/${data.userId}`);
 }

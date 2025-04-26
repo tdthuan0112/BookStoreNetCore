@@ -1,6 +1,6 @@
 "use server";
 import { CATEGORY_API } from "@/api";
-import { getUserDetailAction } from "./user-actions";
+import { getCurrentUserLoggedInAction } from "./user-actions";
 import { redirect } from "next/navigation";
 
 export async function getAllCategoriesAction() {
@@ -30,7 +30,7 @@ export async function updateCategoryAction(formData) {
   const url = formData.get("url");
   const quantity = formData.get("quantity");
   const isActive = formData.get("isActive");
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   const modifiedBy = user.userId;
 
   const payload = {
@@ -50,7 +50,7 @@ export async function addNewCategoryAction(formData) {
   const url = formData.get("url");
   const quantity = formData.get("quantity");
   const isActive = formData.get("isActive");
-  const user = await getUserDetailAction();
+  const user = await getCurrentUserLoggedInAction();
   const createdBy = user.userId;
 
   const payload = {

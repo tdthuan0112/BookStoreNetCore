@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   deleteUserByUserIdAction,
   getUserDetailByIdAction,
+  updateUserDetail
 } from "@/actions/user-actions";
 
 import classes from "@/styles/layout/admin-manage-user-detail-page.module.css";
@@ -14,6 +15,7 @@ import { BTN_PRIMARY } from "@/lib/constant/constantCssName";
 import { navigateAdminManageOrderByUserId } from "@/lib/helper/navigate-helper";
 
 import CustomIcon from "@/components/common/custom-icon"
+import { GENDER_TYPES } from "@/lib/constant/constantType";
 
 export default async function AdminManageUserDetailPage({ params, searchParams }) {
   const userId = params.userId;
@@ -22,16 +24,25 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
   let isEditMode = mode === "edit";
 
   return (
-    <div>
+    <form>
       <div className={classes.headerBlock}>
         <h2>User - {`${user.firstName} ${user.lastName}`}</h2>
-        <Link
-          className={BTN_PRIMARY + classes.btnEdit}
-          href={`/admin/manage-users/${userId}?mode=edit`}
-        >
-          <CustomIcon icon={isEditMode ? "lucide:save" : "fa-regular:edit"} width="15" height="15" />
-          {isEditMode ? "Save" : "Edit"}
-        </Link>
+        {!isEditMode ?
+          <Link
+            className={BTN_PRIMARY + classes.btnEdit}
+            href={`/admin/manage-users/${userId}?mode=edit`}
+          >
+            <CustomIcon icon="fa-regular:edit" width="15" height="15" />
+            Edit
+          </Link>
+          :
+          <button
+            formAction={updateUserDetail}
+            className={BTN_PRIMARY + classes.btnEdit}
+          >
+            <CustomIcon icon="lucide:save" width="15" height="15" />
+            Save
+          </button>}
       </div>
       <div className={classes.mainContainer}>
         <div className={classes.userInfoContainer}>
@@ -39,9 +50,10 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
             <p className={classes.infoTitle}>Username</p>
             <input
               className={classes.infoInput}
+              name="userName"
               type="text"
               defaultValue={user.userName}
-              disabled={!isEditMode}
+              disabled={true}
             />
           </div>
           <div className={classes.infoRow}>
@@ -49,6 +61,7 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
             <input
               className={classes.infoInput}
               type="text"
+              name="firstName"
               defaultValue={user.firstName}
               disabled={!isEditMode}
             />
@@ -58,6 +71,7 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
             <input
               className={classes.infoInput}
               type="text"
+              name="lastName"
               defaultValue={user.lastName}
               disabled={!isEditMode}
             />
@@ -67,6 +81,7 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
             <input
               className={classes.infoInput}
               type="text"
+              name="email"
               defaultValue={user.email}
               disabled={!isEditMode}
             />
@@ -80,9 +95,9 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
                 defaultValue={getGenderById(user.gender)}
                 disabled
               /> :
-              <select id="gender" name="gender">
-                <option value="volvo">Male</option>
-                <option value="audi">Female</option>
+              <select id="gender" name="gender" className={classes.infoInput} defaultValue={user.gender}>
+                <option value={GENDER_TYPES.Male.id}>Male</option>
+                <option value={GENDER_TYPES.Female.id}>Female</option>
               </select>
             }
           </div>
@@ -91,6 +106,7 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
             <input
               className={classes.infoInput}
               type="text"
+              name="phoneNumber"
               defaultValue={user.phoneNumber}
               disabled={!isEditMode}
             />
@@ -100,6 +116,7 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
             <input
               className={classes.infoInput}
               type="text"
+              name="adress"
               defaultValue={`${user.address} ${user.wardName} ${user.districtName} ${user.provinceName}`}
               disabled={!isEditMode}
             />
@@ -111,7 +128,7 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
           height={150}
           alt="User Circle Image"
         />
-        <form className={classes.buttonForm}>
+        <div className={classes.buttonForm}>
           <input type="hidden" name="userId" defaultValue={user.userId} />
           <button
             type="submit"
@@ -126,8 +143,8 @@ export default async function AdminManageUserDetailPage({ params, searchParams }
           >
             Delete user
           </button>
-        </form>
+        </div>
       </div>
-    </div>
+    </form>
   );
 }

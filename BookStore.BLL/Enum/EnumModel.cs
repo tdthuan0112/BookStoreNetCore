@@ -59,6 +59,8 @@ namespace BookStore.BLL.Enum
         ErrorInAddNewUser = 4002,
         [Description("Error in delete user by user id")]
         ErrorInDeleteUserByUserId= 4003,
+        [Description("Error in update user detail")]
+        ErrorInUpdateUserDetail= 4004,
         #endregion
 
         #region Order

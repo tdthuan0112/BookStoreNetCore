@@ -23,6 +23,10 @@ class UserApi extends RestApiConnection {
   async deleteUserByUserId(payload) {
     return await super.delete(`DeleteUserByUserId`, payload);
   }
+
+  async updateUserDetail(payload) {
+    return await super.post(`UpdateUserDetail`, payload);
+  }
 }
 
 export default UserApi;

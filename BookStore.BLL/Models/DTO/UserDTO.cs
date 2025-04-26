@@ -1,4 +1,5 @@
-﻿using BookStore.DAL.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using BookStore.DAL.Models;
 
 namespace BookStore.BLL.Models.DTO
 {
@@ -6,6 +7,7 @@ namespace BookStore.BLL.Models.DTO
     {
         public Guid UserId { get; set; }
         public string UserName { get; set; }
+        [NotMapped]
         public string UserPassword { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;

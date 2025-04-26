@@ -3,6 +3,7 @@ using BookStore.BLL.Interfaces;
 using BookStore.BLL.Models;
 using BookStore.BLL.Models.DTO;
 using BookStore.BLL.Models.Request;
+using BookStore.DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
@@ -84,6 +85,16 @@ namespace BookStoreEcommerce.Server.Controllers
             BaseResponseErrorModel baseResponseErrorModel = new();
             var result = _userService.DeleteUserByUserId(userId, baseResponseErrorModel);
             responseModel.Data = result;
+            responseModel.SetResponseError(baseResponseErrorModel);
+            return ReturnData(responseModel);
+        }
+
+        [HttpPost("UpdateUserDetail")]
+        public IActionResult UpdateUserDetail([FromBody] RequestModelUpdateUser requestModel)
+        {
+            var responseModel = new BaseResponseModel();
+            BaseResponseErrorModel baseResponseErrorModel = new();
+            _userService.UpdateUserInfo(requestModel, baseResponseErrorModel);
             responseModel.SetResponseError(baseResponseErrorModel);
             return ReturnData(responseModel);
         }
